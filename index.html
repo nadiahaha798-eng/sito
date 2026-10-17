@@ -126,13 +126,15 @@ html.lenis, html.lenis body { height: auto; }
 /* ===================== INTRO 3D A TUTTO SCHERMO ===================== */
 .intro { display: none; }
 html.intro-on .intro {
-  display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  min-height: 100vh; min-height: 100lvh; z-index: 1000; overflow: hidden;
+  /* Overscan: l'intro sporge 120px sopra e 220px sotto lo schermo, così le barre di Safari/Chrome
+     (che si alzano e si abbassano) non lasciano mai vedere la pagina sotto. */
+  display: block; position: fixed; left: 0; right: 0; top: -120px; bottom: -220px; width: auto; height: auto;
+  z-index: 1000; overflow: hidden;
   background: radial-gradient(120% 90% at 50% 40%, #1B2433 0%, var(--navy-2) 62%);
   color: var(--white); will-change: transform;
 }
 .intro canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.intro-ui { position: absolute; left: 0; right: 0; top: 70%; display: grid; justify-items: center; gap: 14px; text-align: center; padding: 0 16px; pointer-events: none; }
+.intro-ui { position: absolute; left: 0; right: 0; top: calc(70% - 118px); display: grid; justify-items: center; gap: 14px; text-align: center; padding: 0 16px; pointer-events: none; }
 .intro-name { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 0.3em; font: 500 clamp(2rem, 7vw, 3.6rem)/1.05 var(--serif); letter-spacing: 0.12em; margin-right: -0.12em; }
 .intro-name .wd { display: inline-flex; overflow: hidden; padding: 0.06em 0 0.14em; }
 .intro-name .ch { display: inline-block; transform: translateY(110%); }
@@ -144,7 +146,7 @@ html.intro-on .intro {
 .intro-pct::after { content: "%"; font-size: 0.34em; margin-left: 0.15em; color: var(--orange-light); vertical-align: top; }
 .intro-skip { pointer-events: auto; background: none; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white); font: 600 0.72rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 16px; cursor: pointer; transition: border-color 0.3s, background 0.3s; }
 .intro-skip:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.08); }
-.intro-line { position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-light)); transform: scaleX(0); transform-origin: 0 50%; }
+.intro-line { position: absolute; left: 0; bottom: 220px; width: 100%; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-light)); transform: scaleX(0); transform-origin: 0 50%; }
 .intro-svg { position: absolute; left: 50%; top: 38%; width: clamp(110px, 22vw, 170px); transform: translate(-50%, -50%); overflow: visible; }
 .intro-svg .roof { fill: none; stroke: var(--orange-light); stroke-width: 3.6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1s var(--ease) 0.6s forwards; }
 .intro-svg .blk { fill: var(--white); opacity: 0; transform: translateY(-40px); transform-box: fill-box; animation: drop 0.7s var(--spring) forwards; animation-delay: calc(0.2s + var(--i) * 0.1s); }
@@ -1223,14 +1225,16 @@ var COMPANY_KB = [
     glow.position.set(0, 1.9, -0.2); glow.scale.set(7, 3.6, 1); group.add(glow);
     group.scale.setScalar(0.55); group.position.y = 1.5;
 
+    var shiftPx = (220 - 120) / 2, shiftWorld = 0;   // il centro dell'intro è 50px più in basso del centro dello schermo
     function size() {
-      var w = W.innerWidth, h = W.innerHeight;
+      var w = canvas.clientWidth || W.innerWidth, h = canvas.clientHeight || W.innerHeight;
       renderer.setSize(w, h, false); camera.aspect = w / h;
       bgMat.uniforms.uAspect.value = w / h;
       bgMat.uniforms.uRows.value = w / h < 0.8 ? 16 : 13;     // numero di file del muro
       var gs = w / h < 0.8 ? 0.55 : Math.min(0.62, 0.3 + (w / h) * 0.2);   // dimensione della casa
       group.scale.setScalar(gs); group.position.y = 1.5 * gs / 0.55;
       camera.position.set(0, 1.1, w / h < 0.8 ? 18 : 11.5);
+      shiftWorld = shiftPx * (2 * camera.position.z * 0.2867 / h);
       camera.updateProjectionMatrix();
     }
     size(); W.addEventListener("resize", size);
@@ -1247,7 +1251,7 @@ var COMPANY_KB = [
       cx += (mx - cx) * 0.05; cy += (my - cy) * 0.05;
       group.rotation.y = Math.sin(t * 0.4) * 0.12 + cx * 0.5;
       group.rotation.x = cy * 0.18;
-      camera.lookAt(0, 0.7, 0);
+      camera.lookAt(0, 0.7 - shiftWorld, 0);
       bgMat.uniforms.uTime.value = t; bgMat.uniforms.uMouse.value.set(0.5 + cx, 0.5 - cy);
       renderer.clear(); renderer.render(bgScene, bgCam);
       renderer.clearDepth(); renderer.render(scene, camera);
