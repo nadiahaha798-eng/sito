@@ -306,6 +306,31 @@ html.pin .show-cta { margin: 0; padding-block: 64px 96px; }
 .about-main img, .about-sub img { width: 100%; height: 118%; object-fit: cover; will-change: transform; }
 @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; } }
 
+/* ===================== RECENSIONI (carosello con frecce, swipe e puntini) ===================== */
+.reviews { background: var(--cream); }
+.rev-head { grid-template-columns: 1fr auto; align-items: end; justify-items: stretch; }
+.rev-head .eyebrow, .rev-head .h2 { grid-column: 1; }
+.rev-nav { grid-column: 2; grid-row: 1 / span 2; align-self: end; display: flex; gap: 10px; }
+.rev-btn { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-dark); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .3s, color .3s, border-color .3s, transform .3s var(--spring); }
+.rev-btn:hover, .rev-btn:focus-visible { background: var(--orange); border-color: var(--orange); color: #fff; transform: scale(1.06); }
+.rev-btn:disabled { opacity: .35; pointer-events: none; }
+.rev-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.rev-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 4px 2px 8px; outline: none; }
+.rev-track::-webkit-scrollbar { display: none; }
+@media (min-width: 720px) { .rev-track { grid-auto-columns: calc((100% - 20px) / 2); } }
+@media (min-width: 1100px) { .rev-track { grid-auto-columns: calc((100% - 40px) / 3); } }
+.rev-card { margin: 0; scroll-snap-align: start; display: grid; grid-template-rows: auto 1fr auto; gap: 18px; padding: clamp(24px, 3vw, 34px); background: #fff; border: 1px solid #ECE5DA; border-radius: 18px; box-shadow: 0 18px 40px -28px rgba(21, 27, 37, .35); }
+.rev-stars { display: flex; gap: 3px; color: #E8A33D; }
+.rev-stars svg { width: 19px; height: 19px; fill: currentColor; }
+.rev-card blockquote { margin: 0; font: 400 1.04rem/1.7 var(--sans); color: var(--ink); }
+.rev-card figcaption { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #EFE8DD; }
+.rev-av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font: 500 1.1rem/1 var(--serif); }
+.rev-card b { font: 600 .95rem/1.2 var(--sans); }
+.rev-dots { display: flex; justify-content: center; gap: 8px; margin-top: 26px; }
+.rev-dots i { width: 8px; height: 8px; border-radius: 99px; background: var(--line-dark); transition: width .4s var(--spring), background .3s; }
+.rev-dots i.on { width: 26px; background: var(--orange); }
+@media (max-width: 560px) { .rev-head { grid-template-columns: 1fr; } .rev-nav { grid-column: 1; grid-row: auto; } }
+
 /* ===================== SERVIZI ===================== */
 .services { background: var(--sand); }
 .cards { display: grid; gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); perspective: 1200px; }
@@ -810,6 +835,53 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
         <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg><h3>Pietra e saperi del territorio</h3><p>Muratura tradizionale ligure unita a tecniche e materiali moderni.</p></li>
         <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><h3>Preventivi chiari</h3><p>Voci dettagliate e tempi concordati prima di aprire il cantiere.</p></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ============ RECENSIONI ============ -->
+  <section class="sec reviews" id="recensioni" aria-roledescription="carosello">
+    <div class="in">
+      <div class="sec-head rev-head">
+        <p class="eyebrow"><span data-split>Recensioni</span></p>
+        <h2 class="h2" data-split>Cosa dicono <em>i nostri clienti.</em></h2>
+        <div class="rev-nav">
+          <button class="rev-btn" id="revPrev" type="button" aria-label="Recensione precedente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="rev-btn" id="revNext" type="button" aria-label="Recensione successiva"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="rev-track" id="revTrack" tabindex="0" aria-label="Recensioni dei clienti">
+          <figure class="rev-card" role="group" aria-roledescription="recensione" aria-label="1 di 6">
+            <div class="rev-stars" role="img" aria-label="5 stelle su 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div>
+            <blockquote>“Abbiamo affidato la ristrutturazione completa del nostro appartamento in centro ad Alassio e il risultato ha superato le aspettative. Lavori eseguiti nei tempi previsti, massima pulizia a fine giornata e una cura nei dettagli davvero rara. Precisione e serietà dall'inizio alla fine.”</blockquote>
+            <figcaption><span class="rev-av" aria-hidden="true">M</span><b>Marco T.</b></figcaption>
+          </figure>
+          <figure class="rev-card" role="group" aria-roledescription="recensione" aria-label="2 di 6">
+            <div class="rev-stars" role="img" aria-label="5 stelle su 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div>
+            <blockquote>“Azienda estremamente professionale. Hanno rifatto la pavimentazione della terrazza e il ripristino della facciata vista mare. Squadra coordinata benissimo, sempre disponibili e trasparenti nei costi. Consiglio vivamente per qualsiasi lavoro edile in zona!”</blockquote>
+            <figcaption><span class="rev-av" aria-hidden="true">E</span><b>Elena B.</b></figcaption>
+          </figure>
+          <figure class="rev-card" role="group" aria-roledescription="recensione" aria-label="3 di 6">
+            <div class="rev-stars" role="img" aria-label="5 stelle su 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div>
+            <blockquote>“Lavoro eccezionale per il rifacimento totale del bagno e dell'impiantistica. Hanno saputo consigliarci le soluzioni migliori per ottimizzare gli spazi e i materiali usati sono di altissima qualità. Puntuali nelle scadenze e sempre molto ordinati.”</blockquote>
+            <figcaption><span class="rev-av" aria-hidden="true">L</span><b>Luca S.</b></figcaption>
+          </figure>
+          <figure class="rev-card" role="group" aria-roledescription="recensione" aria-label="4 di 6">
+            <div class="rev-stars" role="img" aria-label="5 stelle su 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div>
+            <blockquote>“Affidarsi a loro per una ristrutturazione “chiavi in mano” è stata la scelta migliore. Gestione delle pratiche e dei lavori impeccabile, senza lo stress di dover rincorrere le singole maestranze. Veri professionisti del settore ad Alassio.”</blockquote>
+            <figcaption><span class="rev-av" aria-hidden="true">C</span><b>Chiara M.</b></figcaption>
+          </figure>
+          <figure class="rev-card" role="group" aria-roledescription="recensione" aria-label="5 di 6">
+            <div class="rev-stars" role="img" aria-label="5 stelle su 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div>
+            <blockquote>“Impresa seria, affidabile e con prezzi onesti rispetto alla qualità offerta. Hanno realizzato delle pareti in cartongesso e l'isolamento acustico di un locale in tempi record. Massima attenzione anche al rispetto delle regole condominiali.”</blockquote>
+            <figcaption><span class="rev-av" aria-hidden="true">M</span><b>Matteo G.</b></figcaption>
+          </figure>
+          <figure class="rev-card" role="group" aria-roledescription="recensione" aria-label="6 di 6">
+            <div class="rev-stars" role="img" aria-label="5 stelle su 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></div>
+            <blockquote>“Disponibilità, precisione e grande competenza artigianale. Hanno curato la ristrutturazione della nostra casa vacanze prestando molta attenzione alle rifiniture. Ottima comunicazione durante tutto il cantiere, consigliatissimi!”</blockquote>
+            <figcaption><span class="rev-av" aria-hidden="true">F</span><b>Francesca V.</b></figcaption>
+          </figure>
+      </div>
+      <div class="rev-dots" id="revDots" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -1654,6 +1726,28 @@ var COMPANY_KB = [
       cur.textContent = z ? "Apri" : "";
     });
   }
+
+  /* ---------------------------------------------------------------
+     Recensioni: frecce, puntini e scorrimento col dito (scroll-snap nativo)
+     --------------------------------------------------------------- */
+  (function reviews() {
+    var track = $("#revTrack"); if (!track) return;
+    var cards = $$(".rev-card", track), prev = $("#revPrev"), next = $("#revNext"), dotsEl = $("#revDots");
+    function perView() { var c = cards[0]; return c ? Math.max(1, Math.round(track.clientWidth / (c.offsetWidth + 20))) : 1; }
+    function pages() { return Math.max(1, cards.length - perView() + 1); }
+    function cur() { var c = cards[0]; return c ? Math.round(track.scrollLeft / (c.offsetWidth + 20)) : 0; }
+    function go(i) { var n = pages(); i = (i + n) % n; track.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: reduced ? "auto" : "smooth" }); }
+    function paint() {
+      var n = pages(), c = Math.min(cur(), n - 1);
+      if (dotsEl.childNodes.length !== n) { dotsEl.textContent = ""; for (var k = 0; k < n; k++) dotsEl.appendChild(D.createElement("i")); }
+      [].forEach.call(dotsEl.childNodes, function (d, k) { d.className = k === c ? "on" : ""; });
+    }
+    prev.addEventListener("click", function () { go(cur() - 1); });
+    next.addEventListener("click", function () { go(cur() + 1); });
+    track.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") { e.preventDefault(); go(cur() - 1); } else if (e.key === "ArrowRight") { e.preventDefault(); go(cur() + 1); } });
+    var raf = 0; track.addEventListener("scroll", function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(paint); }, { passive: true });
+    W.addEventListener("resize", paint); paint();
+  })();
 
   /* ---------------------------------------------------------------
      Lightbox
