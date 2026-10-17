@@ -668,6 +668,30 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
             </button>
             <figcaption><small>Ville &amp; Case</small><h3>Giardino con percorsi in pietra</h3></figcaption>
           </figure>
+          <figure class="piece" data-cat="Ville &amp; Case">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Piscina con muro in pietra">
+              <img src="img/pool2-v2.webp" width="1206" height="1577" alt="Piscina rivestita in grigio con muro di contenimento in pietra e scala" style="object-position:50% 55%" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">06</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Ville &amp; Case</small><h3>Piscina con muro in pietra</h3></figcaption>
+          </figure>
+          <figure class="piece" data-cat="Ville &amp; Case">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Area piscina e locale tecnico in pietra">
+              <img src="img/poolarea-v2.webp" width="1206" height="881" alt="Piscina rialzata con pavimentazione in pietra e locale tecnico rivestito in pietra" style="object-position:45% 50%" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">07</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Ville &amp; Case</small><h3>Area piscina e locale tecnico in pietra</h3></figcaption>
+          </figure>
+          <figure class="piece" data-cat="In Cantiere">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Muri in cemento armato in costruzione">
+              <img src="img/cantiere-v2.webp" width="1206" height="1578" alt="Cantiere con casseforme, armature in ferro e sollevatore telescopico" style="object-position:50% 45%" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">08</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>In Cantiere</small><h3>Muri in cemento armato in costruzione</h3></figcaption>
+          </figure>
           <a class="piece-end" href="#contatti" data-open-chat>
             <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>
             <b>Il prossimo cantiere può essere il tuo.</b>
@@ -677,7 +701,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
       </div>
       <div class="in rail-ctl">
         <div class="rail-bar" aria-hidden="true"><i id="railFill"></i></div>
-        <span class="rail-count" aria-hidden="true"><b id="railNow">01</b> / 05</span>
+        <span class="rail-count" aria-hidden="true"><b id="railNow">01</b> / 08</span>
       </div>
     </div>
     <div class="in show-cta" data-r>
@@ -809,9 +833,9 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
         <h2 class="h2" data-split>Parliamo del tuo <em>progetto.</em></h2>
         <p class="lead" data-r>Raccontaci cosa vuoi realizzare: organizziamo un sopralluogo e ti proponiamo una soluzione su misura.</p>
         <dl class="details" data-r>
-          <div><dt>Sede</dt><dd>Regione Serre, 7 – 17021 Alassio (SV)</dd></div>
+          <div><dt>Indirizzo</dt><dd>Via Michelangelo – 17021 Alassio (SV)</dd></div>
           <div><dt>Telefono e WhatsApp</dt><dd class="numrow"><span id="numtxt">+39 393 351 8858</span><button class="copy-btn" id="copy" type="button">Copia</button></dd></div>
-          <div><dt>Mappa</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Regione+Serre+7+17021+Alassio" target="_blank" rel="noopener">Apri in Google Maps</a></dd></div>
+          <div><dt>Mappa</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Michelangelo+17021+Alassio" target="_blank" rel="noopener">Apri in Google Maps</a></dd></div>
         </dl>
       </div>
       <form class="form" id="form" data-r autocomplete="on" novalidate>
@@ -972,7 +996,7 @@ var SITE = {
    ========================================================================= */
 var COMPANY_KB = [
   "AZIENDA: Real E Group è il nome commerciale di REAL&GROUP COSTRUZIONI S.R.L.S., impresa edile radicata ad Alassio (SV), in Liguria. Lavora ad Alassio e lungo la Riviera di Ponente.",
-  "SEDE: Regione Serre, 7 – 17021 Alassio (SV). Mappa: Google Maps 'Regione Serre 7 17021 Alassio'.",
+  "INDIRIZZO: Via Michelangelo – 17021 Alassio (SV). Sede legale: Regione Serre, 7 – 17021 Alassio (SV).",
   "CONTATTI: telefono e WhatsApp +39 393 351 8858. Si può richiedere un sopralluogo dal sito: il modulo o l'assistente preparano un messaggio WhatsApp che il cliente invia.",
   "DATI SOCIETARI: P.IVA / C.F. 01918290097; Codice REA SV 244252; Camera di Commercio di Savona; Codice ATECO 43.91.00 – Lavori di muratura e altre opere.",
   "CHI SIAMO: segue ville, abitazioni di pregio e opere tradizionali in pietra della Liguria, unendo tecniche moderne e il sapere dei maestri muratori del territorio. Valori: solidità (strutture pensate per durare, anche con il clima ligure), cura dei dettagli (finiture e materiali scelti con attenzione dal cantiere alla consegna), eccellenza artigianale (pietra locale lavorata con le tecniche dei maestri muratori).",
@@ -1546,7 +1570,7 @@ var COMPANY_KB = [
         scrollTrigger: { trigger: "#showPin", start: "top top", end: function () { return "+=" + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true,
           onUpdate: function (self) {
             fill.style.transform = "scaleX(" + (0.12 + 0.88 * self.progress) + ")";
-            now.textContent = ("0" + Math.min(5, 1 + Math.floor(self.progress * 5))).slice(-2);
+            now.textContent = ("0" + Math.min(pieces.length, 1 + Math.floor(self.progress * pieces.length))).slice(-2);
             gsap.to(".rail .piece, .rail .piece-end", { skewX: clamp(-self.getVelocity() / 600, -4, 4), duration: 0.4, overwrite: "auto" });
           },
           onLeave: function () { gsap.to(".rail .piece, .rail .piece-end", { skewX: 0, duration: 0.6 }); } } });
@@ -1557,7 +1581,7 @@ var COMPANY_KB = [
       return function () { R.classList.remove("pin"); gsap.set(rail, { x: 0 }); };
     });
     mm.add("(max-width: 999px), (max-height: 619px), (hover: none)", function () {
-      var upd = function () { var max = rail.scrollWidth - rail.clientWidth, p = max > 0 ? rail.scrollLeft / max : 0; fill.style.transform = "scaleX(" + (0.12 + 0.88 * p) + ")"; now.textContent = ("0" + Math.min(5, 1 + Math.round(p * 4))).slice(-2); };
+      var upd = function () { var max = rail.scrollWidth - rail.clientWidth, p = max > 0 ? rail.scrollLeft / max : 0; fill.style.transform = "scaleX(" + (0.12 + 0.88 * p) + ")"; now.textContent = ("0" + Math.min(pieces.length, 1 + Math.round(p * (pieces.length - 1)))).slice(-2); };
       rail.addEventListener("scroll", upd, { passive: true }); upd();
       gsap.to("#bgword", { xPercent: -25, ease: "none", scrollTrigger: { trigger: "#lavori", start: "top bottom", end: "bottom top", scrub: true } });
       return function () { rail.removeEventListener("scroll", upd); };
@@ -1821,13 +1845,13 @@ var COMPANY_KB = [
     { k: ["industri", "capannon", "logistic", "uffici", "negozi", "commerc"], a: "Nell'edilizia industriale e commerciale realizziamo capannoni, centri logistici, uffici e negozi." },
     { k: ["pubblic", "strade", "strada", "ponti", "ponte", "scavo", "scavi", "infrastrutt", "ingegneria"], a: "Seguiamo anche opere pubbliche e infrastrutture: ingegneria civile, strade, ponti e opere di scavo." },
     { k: ["finitur", "pavimen", "rivestim", "cartongess", "struttur", "portant"], a: "Ci occupiamo di strutture portanti e finiture di pregio: pavimenti, rivestimenti e cartongesso." },
-    { k: ["dove", "sede", "indirizz", "zona", "alassio", "riviera", "mappa", "trovate", "lavorate"], a: "La sede è in Regione Serre, 7 – 17021 Alassio (SV). Lavoriamo ad Alassio e lungo la Riviera di Ponente." },
+    { k: ["dove", "sede", "indirizz", "zona", "alassio", "riviera", "mappa", "trovate", "lavorate"], a: "Ci trovi in Via Michelangelo – 17021 Alassio (SV); la sede legale è in Regione Serre, 7. Lavoriamo ad Alassio e lungo la Riviera di Ponente." },
     { k: ["telefon", "numero", "whatsapp", "contatt", "chiamar", "scriver", "email", "mail"], a: "Puoi chiamarci o scriverci su WhatsApp al +39 393 351 8858. Sul sito non è indicato un indirizzo email." },
     { k: ["prezz", "cost", "quanto", "preventiv", "tariff", "euro", "metro", "budget"], a: "Il sito non riporta prezzi: dipendono dal lavoro. Dopo il sopralluogo prepariamo un preventivo scritto con voci chiare, materiali indicati e tempi stimati. Puoi richiederlo su WhatsApp al +39 393 351 8858." },
     { k: ["tempi", "tempo", "durata", "quando", "giorni", "settiman", "mesi"], a: "I tempi dipendono dal lavoro e vengono stimati nel preventivo scritto, con date concordate prima di iniziare. Per una stima sul tuo caso scrivici al +39 393 351 8858." },
     { k: ["sopralluog", "come", "funzion", "metodo", "fasi", "passi", "procedur", "iniziare"], a: "Lavoriamo in cinque passi: sopralluogo, preventivo scritto, pratiche e programma, cantiere con un referente fisso, consegna con controllo finale insieme. Puoi richiedere il sopralluogo dalla scheda 'Richiedi sopralluogo'." },
     { k: ["perche", "scegliere", "affidab", "sicurezz", "garanz", "qualita", "referente"], a: "Un solo referente dal sopralluogo alla consegna, cantiere sicuro e ordinato, pietra e saperi del territorio uniti a tecniche moderne, preventivi chiari con tempi concordati prima di aprire il cantiere." },
-    { k: ["opere", "realizzat", "foto", "esempi", "progetti", "piscina", "giardino", "soggiorno", "corridoio", "scala"], a: "Nel sito trovi cinque lavori: piscina a sfioro vista mare, soggiorno con soffitto decorato, scala e muro in pietra locale, corridoio con luce lineare e giardino con percorsi in pietra." },
+    { k: ["opere", "realizzat", "foto", "esempi", "progetti", "piscina", "giardino", "soggiorno", "corridoio", "scala", "cantiere"], a: "Nel sito trovi otto lavori: piscina a sfioro vista mare, soggiorno con soffitto decorato, scala e muro in pietra locale, corridoio con luce lineare, giardino con percorsi in pietra, piscina con muro in pietra, area piscina con locale tecnico in pietra e un cantiere di muri in cemento armato." },
     { k: ["privacy", "dati", "cookie", "gdpr"], a: "Il modulo e l'assistente non inviano dati ai nostri server: il messaggio parte solo quando lo invii da WhatsApp. Il sito non usa cookie propri né di profilazione. Trovi i dettagli nella Privacy Policy." },
     { k: ["iva", "partita", "rea", "ateco", "fiscal", "codice", "camera"], a: "REAL&GROUP COSTRUZIONI S.R.L.S., P.IVA / C.F. 01918290097, REA SV 244252, Camera di Commercio di Savona, ATECO 43.91.00." },
     { k: ["orari", "orario", "aperti", "apertura", "sabato", "domenica"], a: "Il sito non indica orari d'ufficio. Puoi scriverci su WhatsApp al +39 393 351 8858 e ti rispondiamo appena possibile." },
