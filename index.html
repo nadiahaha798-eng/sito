@@ -418,7 +418,7 @@ html.pin .show-cta { margin: 0; padding-block: 64px 96px; }
 .lb-cap { color: var(--white); text-align: center; padding: 6px 60px 12px; }
 .lb-cap small { display: block; font: 600 0.7rem/1.4 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-light); }
 .lb-cap strong { font: 500 1.5rem/1.2 var(--serif); }
-.lb-btn { position: absolute; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 50%; background: rgba(21, 27, 37, 0.6); color: var(--white); cursor: pointer; display: grid; place-items: center; transition: background 0.3s, border-color 0.3s, transform 0.4s var(--spring); }
+.lb-btn { z-index: 3; position: absolute; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 50%; background: rgba(21, 27, 37, 0.6); color: var(--white); cursor: pointer; display: grid; place-items: center; transition: background 0.3s, border-color 0.3s, transform 0.4s var(--spring); }
 .lb-btn:hover { background: var(--orange); border-color: var(--orange); transform: scale(1.08); }
 .lb-btn svg { width: 22px; height: 22px; }
 .lb-x { top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
@@ -1638,7 +1638,9 @@ var COMPANY_KB = [
   var pieces = $$(".piece"), idx = 0, opener = null;
   function showLb() {
     var w = pieces[idx], img = $("img", w);
-    lbImg.removeAttribute("src"); lbImg.sizes = "100vw"; lbImg.srcset = img.getAttribute("srcset"); lbImg.src = img.getAttribute("src"); lbImg.alt = img.getAttribute("alt");
+    lbImg.src = img.getAttribute("src"); lbImg.alt = img.getAttribute("alt");
+    // precarico la foto precedente e la successiva così le frecce sono istantanee
+    [1, -1].forEach(function (d) { var n = $("img", pieces[(idx + d + pieces.length) % pieces.length]); if (n) { var pre = new Image(); pre.src = n.getAttribute("src"); } });
     lbCat.textContent = $("small", w).textContent; lbTitle.textContent = $("h3", w).textContent;
     if (hasGsap) gsap.fromTo(lbImg, { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "expo.out" });
   }
@@ -1650,6 +1652,13 @@ var COMPANY_KB = [
   $("#lb-p").addEventListener("click", function () { step(-1); });
   $("#lb-n").addEventListener("click", function () { step(1); });
   lb.addEventListener("click", function (e) { if (e.target === lb || e.target.id === "lb-stage") closeLb(); });
+  // scorrimento con il dito: trascina a sinistra/destra per cambiare foto
+  var tx = 0, ty = 0;
+  lb.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  lb.addEventListener("touchend", function (e) {
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
 
   /* ---------------------------------------------------------------
      Modulo contatti → messaggio WhatsApp
