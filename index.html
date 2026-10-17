@@ -797,7 +797,6 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
       <p data-r>Scrivici su WhatsApp o chiedi al nostro assistente: ti rispondiamo per organizzare il sopralluogo e capire insieme da dove partire.</p>
       <div class="btns" data-r>
         <a class="btn btn-light magnetic" href="#contatti" data-open-chat>Scrivici su WhatsApp <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-line magnetic" href="#contatti" data-open-ai>Chiedi all'assistente AI</a>
       </div>
     </div>
   </section>
@@ -873,14 +872,12 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
   <h3>2. Quali dati trattiamo, perché e su quale base giuridica</h3>
   <ul>
     <li><strong>Richieste di contatto e di sopralluogo.</strong> Nome e cognome, telefono, tipo di lavoro, località dell'immobile e contenuto dei messaggi che ci invii su WhatsApp o per telefono. Finalità: risponderti, organizzare il sopralluogo, preparare il preventivo. Base giuridica: misure precontrattuali su tua richiesta (art. 6.1.b GDPR).</li>
-    <li><strong>Domande all'assistente AI.</strong> Il testo delle domande che scrivi nella sezione "Chiedi all'AI" e le risposte della stessa conversazione. Finalità: generare la risposta. Base giuridica: la tua richiesta (art. 6.1.b) e il nostro legittimo interesse a offrire informazioni rapide sul sito (art. 6.1.f). Non scrivere nelle domande dati personali o informazioni riservate.</li>
     <li><strong>Dati tecnici di navigazione.</strong> Indirizzo IP, data e ora, pagina richiesta, browser e dispositivo, registrati automaticamente dal server che ospita il sito. Finalità: far funzionare il sito, proteggerlo da abusi e attacchi. Base giuridica: legittimo interesse (art. 6.1.f).</li>
     <li><strong>Obblighi di legge.</strong> Dati necessari ad adempimenti fiscali, contabili o amministrativi, se il contatto porta a un contratto (art. 6.1.c).</li>
   </ul>
   <p>Non trattiamo categorie particolari di dati (art. 9), non facciamo profilazione né decisioni basate unicamente su trattamenti automatizzati (art. 22). Il sito non usa strumenti di statistica, pubblicità o tracciamento.</p>
-  <h3>3. Come funzionano modulo, assistente guidato e assistente AI</h3>
+  <h3>3. Come funzionano modulo e assistente guidato</h3>
   <p>Il modulo "Richiedi un sopralluogo" e l'assistente guidato non inviano dati ai nostri server: il messaggio viene preparato nel tuo browser e parte solo quando premi il pulsante che apre WhatsApp. Da quel momento si applica l'informativa di WhatsApp Ireland Ltd (gruppo Meta): <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">whatsapp.com/legal/privacy-policy-eea</a>.</p>
-  <p>L'assistente del sito è un sistema automatico che risponde con la ricerca nelle informazioni pubblicate: funziona interamente nel tuo browser, non invia le domande a nessun server e non le conserva. Le risposte hanno valore solo informativo: per preventivi, tempi e condizioni fa fede solo quanto concordato direttamente con noi.</p>
   <h3>4. Destinatari e responsabili del trattamento</h3>
   <ul>
     <li><strong>Vercel Inc.</strong> (hosting del sito e della funzione dell'assistente).</li>
@@ -894,7 +891,6 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
     <li>Richieste di contatto senza seguito: fino a 24 mesi dall'ultimo contatto.</li>
     <li>Rapporti contrattuali: per la durata del rapporto e poi per i termini di legge (10 anni per la documentazione contabile e fiscale, art. 2220 c.c.).</li>
     <li>Dati tecnici di navigazione: per il periodo limitato previsto dal fornitore di hosting per sicurezza e diagnostica.</li>
-    <li>Domande all'assistente AI: non conservate da noi; il fornitore le conserva per il periodo limitato indicato nelle sue condizioni.</li>
   </ul>
   <h3>7. I tuoi diritti</h3>
   <p>Puoi chiedere in ogni momento l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità e opporti ai trattamenti basati sul legittimo interesse (artt. 15–22 GDPR), scrivendoci ai contatti del punto 1. Rispondiamo entro un mese. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali, Piazza Venezia 11, 00187 Roma: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>.</p>
@@ -923,22 +919,17 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
 </template>
 
 <!-- ============ CHATBOT ============ -->
-<span class="teaser animate-tease" id="teaser" aria-hidden="true">Domande? Chiedi all'assistente</span>
-<button class="fab" id="wa-fab" type="button" aria-label="Apri l'assistente: sopralluogo su WhatsApp e domande sull'azienda" aria-expanded="false" aria-controls="wa-panel" aria-haspopup="dialog">
+<span class="teaser animate-tease" id="teaser" aria-hidden="true">Un lavoro in mente? Scrivici</span>
+<button class="fab" id="wa-fab" type="button" aria-label="Apri la chat: richiedi un sopralluogo su WhatsApp" aria-expanded="false" aria-controls="wa-panel" aria-haspopup="dialog">
   <i class="ring animate-ring"></i>
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.5A8.4 8.4 0 1 1 21 11.5Z"/></svg>
-  <span class="ai-badge" aria-hidden="true">AI</span>
 </button>
 
 <section class="panel" id="wa-panel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-describedby="wa-desc" hidden>
   <div class="panel-head">
     <span class="panel-av" aria-hidden="true"><svg class="mark" viewBox="0 0 64 64"><use href="#lg"/></svg></span>
-    <div><strong id="wa-title">Real E Group</strong><span id="wa-desc">Sopralluogo su WhatsApp o domande sull'azienda</span></div>
+    <div><strong id="wa-title">Real E Group</strong><span id="wa-desc">Richiedi un sopralluogo su WhatsApp</span></div>
     <button class="panel-x" id="wa-close" type="button" aria-label="Chiudi la chat">&times;</button>
-  </div>
-  <div class="tabs" role="tablist" aria-label="Modalità assistente">
-    <button class="tab" id="tab-guide" role="tab" type="button" aria-selected="true" aria-controls="wa-log">Richiedi sopralluogo</button>
-    <button class="tab" id="tab-ai" role="tab" type="button" aria-selected="false" aria-controls="wa-log"><span class="spark" aria-hidden="true">✦</span> Chiedi all'AI</button>
   </div>
   <div class="steps-bar" id="wa-steps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="panel-act">
@@ -947,7 +938,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
   </div>
   <div class="log" id="wa-log" data-lenis-prevent role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversazione con l'assistente" tabindex="0"></div>
   <div class="ctl" id="wa-ctl"></div>
-  <p class="direct" id="wa-direct">Preferisci scrivere subito? <a href="https://wa.me/393933518858" target="_blank" rel="noopener">Apri WhatsApp</a> · <button class="inline-legal" type="button" data-legal="privacy">Privacy</button><br>Le risposte sono automatiche e hanno valore informativo.</p>
+  <p class="direct" id="wa-direct">Preferisci scrivere subito? <a href="https://wa.me/393933518858" target="_blank" rel="noopener">Apri WhatsApp</a> · <button class="inline-legal" type="button" data-legal="privacy">Privacy</button></p>
 </section>
 <a class="fab-call" id="fab-call" href="tel:+393933518858" aria-label="Chiama ora il +39 393 351 8858"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></a>
 
@@ -1700,7 +1691,7 @@ var COMPANY_KB = [
      CHATBOT: percorso guidato WhatsApp (con i numeri) + assistente AI
      ================================================================= */
   var fab = $("#wa-fab"), panel = $("#wa-panel"), log = $("#wa-log"), ctl = $("#wa-ctl"), teaser = $("#teaser"), bars = $$("#wa-steps i");
-  var tabGuide = $("#tab-guide"), tabAi = $("#tab-ai"), stepsBar = $("#wa-steps");
+  var stepsBar = $("#wa-steps");
   var WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.5A8.4 8.4 0 1 1 21 11.5Z"/></svg>';
   var mode = "guide", data = {}, session = 0, lastOpener = null;
   var guideLog = [], aiTurns = [], aiBusy = false, aiCtl = null;
@@ -1896,13 +1887,9 @@ var COMPANY_KB = [
   function setMode(m, restart) {
     if (aiCtl) { try { aiCtl.abort(); } catch (e) {} aiCtl = null; }
     mode = m;
-    tabGuide.setAttribute("aria-selected", m === "guide" ? "true" : "false");
-    tabAi.setAttribute("aria-selected", m === "ai" ? "true" : "false");
     stepsBar.hidden = m !== "guide";
-    if (m === "guide") startGuide(restart && typeof restart === "string" ? restart : undefined); else startAI();
+    startGuide(restart && typeof restart === "string" ? restart : undefined);
   }
-  tabGuide.addEventListener("click", function () { if (mode !== "guide") setMode("guide"); });
-  tabAi.addEventListener("click", function () { if (mode !== "ai") setMode("ai"); });
 
   function openChat(o, job, wantAi) {
     if (o) lastOpener = D.activeElement;
@@ -1915,8 +1902,7 @@ var COMPANY_KB = [
         if (M && M.animate) { try { M.animate(panel, { opacity: [0, 1], scale: [0.85, 1], y: [24, 0] }, { type: "spring", stiffness: 300, damping: 24 }); } catch (e) {} }
         else if (hasGsap) gsap.fromTo(panel, { opacity: 0, scale: 0.85, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" });
       }
-      if (wantAi) setMode("ai");
-      else if (job) setMode("guide", job);
+      if (job) setMode("guide", job);
       else if (!log.childNodes.length) setMode(mode);
       else focusFirst();
     } else if (lastOpener && lastOpener.focus) (fab.offsetParent !== null ? fab : lastOpener).focus();
@@ -1924,7 +1910,6 @@ var COMPANY_KB = [
   fab.addEventListener("click", function () { openChat(panel.hidden); });
   $("#wa-close").addEventListener("click", function () { openChat(false); });
   $$("[data-open-chat]").forEach(function (el) { el.addEventListener("click", function (e) { e.preventDefault(); setMenu(false); openChat(true, el.getAttribute("data-job")); }); });
-  $$("[data-open-ai]").forEach(function (el) { el.addEventListener("click", function (e) { e.preventDefault(); openChat(true, null, true); }); });
   panel.addEventListener("keydown", function (e) {
     if (e.key !== "Tab") return;
     var f = $$("button, a[href], input", panel).filter(function (n) { return !n.disabled && n.offsetParent !== null; });
