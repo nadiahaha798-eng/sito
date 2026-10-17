@@ -125,11 +125,14 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ===================== INTRO 3D A TUTTO SCHERMO ===================== */
 .intro { display: none; }
+html.intro-on { background: #0E131B; }
+html.intro-on body > *:not(.intro):not(script):not(style) { visibility: hidden; }   /* durante l'intro la pagina sotto non si vede */
 html.intro-on .intro {
   /* Overscan: l'intro sporge 120px sopra e 220px sotto lo schermo, così le barre di Safari/Chrome
      (che si alzano e si abbassano) non lasciano mai vedere la pagina sotto. */
   display: block; position: fixed; left: 0; right: 0; top: -120px; bottom: -220px; width: auto; height: auto;
   z-index: 1000; overflow: hidden;
+  box-shadow: 0 0 0 100vmax #0E131B;   /* se un browser lascia una striscia scoperta, resta blu notte e mai la pagina */
   background: radial-gradient(120% 90% at 50% 40%, #1B2433 0%, var(--navy-2) 62%);
   color: var(--white); will-change: transform;
 }
