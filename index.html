@@ -1,0 +1,1905 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Real E Group</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Real E Group: costruzioni e ristrutturazioni di pregio ad Alassio. Muri in pietra, ville, ristrutturazioni chiavi in mano.">
+<meta name="theme-color" content="#0E131B">
+<link rel="preload" href="fonts/cormorant.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/manrope.woff" as="font" type="font/woff" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23151B25'/%3E%3Cpath d='M6 30 32 9l26 21' fill='none' stroke='%23EE8A3E' stroke-width='3.6'/%3E%3Cg fill='%23fff'%3E%3Crect x='18' y='51' width='16' height='6'/%3E%3Crect x='35.5' y='51' width='10.5' height='6'/%3E%3Crect x='18' y='43' width='7' height='6'/%3E%3Crect x='26.5' y='43' width='12.5' height='6'/%3E%3Crect x='18' y='35' width='12' height='6'/%3E%3Crect x='31.5' y='35' width='14.5' height='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/pool-1920.jpg" imagesrcset="img/pool-1280.jpg 1280w, img/pool-1920.jpg 1920w, img/pool-2560.jpg 2560w, img/pool-3840.jpg 3840w, img/pool-5120.jpg 5120w, img/pool-7680.jpg 7680w" imagesizes="(max-aspect-ratio: 4/3) 134vh, 100vw" fetchpriority="high">
+
+
+<style>
+/* Caratteri ospitati sul sito (nessuna richiesta a Google: conforme GDPR) */
+@font-face { font-family: "Cormorant Garamond"; src: url("fonts/cormorant.woff") format("woff"); font-weight: 300 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url("fonts/cormorant-italic.woff") format("woff"); font-weight: 300 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("fonts/manrope.woff") format("woff"); font-weight: 200 800; font-style: normal; font-display: swap; }
+/* Micro-animazioni (keyframes + custom properties) */
+@keyframes ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.8); opacity: 0; } }
+@keyframes tease { 0% { opacity: 0; transform: translateX(12px); } 8%, 88% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateX(12px); } }
+.animate-ring { animation: ring 2.8s cubic-bezier(.2,.7,.2,1) infinite; }
+.animate-tease { animation: tease 9s ease 7s both; }
+/* Layout: sito aziendale cinematografico. Intro 3D a tutto schermo (i conci del marchio si posano e formano la casa),
+   hero con la foto della piscina in 8K su cui il mouse crea onde d'acqua (shader GLSL), fascia arancio guidata dalla
+   velocità di scroll, manifesto che si accende, galleria orizzontale bloccata, servizi con luce dinamica, metodo con
+   linea che avanza, invito su sfondo "lava" in shader, contatti, chatbot WhatsApp con assistente AI basato sul sito.
+   Look scelto dal cliente: serif Cormorant, crema, blu notte, arancio. Un solo tema. */
+:root {
+  --cream: #F9F6F1;
+  --sand: #E8E0D4;
+  --card: #FBF9F6;
+  --navy: #151B25;
+  --navy-2: #0E131B;
+  --ink: #151B25;
+  --gray: #5F6368;
+  --line: #DDD5C9;
+  --line-dark: #CFC6B8;
+  --orange: #CF5F14;
+  --orange-deep: #B9520F;
+  --orange-text: #B5540F;
+  --orange-light: #EE8A3E;
+  --white: #FFFFFF;
+  --wa: #3DBE6A;
+  --wa-dark: #17803F;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);       /* expo out */
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* leggero rimbalzo */
+  --gut: max(16px, env(safe-area-inset-left, 0px));
+  --gut-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: light;
+}
+@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--navy-2); scroll-padding-top: 90px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+h1, h2, h3, p, li, dd, dt, small, figcaption { overflow-wrap: break-word; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html.lock, html.lock body { overflow: hidden; }
+
+/* Scroll fluido (Lenis) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.in { max-width: 1180px; margin-inline: auto; padding-left: var(--gut); padding-right: var(--gut-r); }
+@media (min-width: 900px) { .in { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+.eyebrow { display: flex; align-items: center; gap: 14px; font: 600 0.8rem/1.4 var(--sans); letter-spacing: 0.24em; text-transform: uppercase; color: var(--orange-text); }
+.eyebrow::before { content: ""; width: 30px; height: 1px; background: currentColor; flex: none; transform-origin: 0 50%; }
+.h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.04; letter-spacing: -0.012em; text-wrap: balance; }
+.h2 em, h1 em { font-style: italic; }
+.h2 em { color: var(--orange-text); }
+.lead { font-size: 1.15rem; color: var(--gray); max-width: 36em; }
+.sec { padding-block: clamp(88px, 11vw, 150px); }
+.sec-head { display: grid; gap: 18px; margin-bottom: clamp(44px, 6vw, 72px); justify-items: start; }
+
+/* Parole che salgono da una maschera (preparate da JS) */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0.05em 0.16em; margin: -0.06em -0.05em -0.16em; }
+.wi { display: inline-block; will-change: transform; }
+
+/* ===================== PULSANTI ===================== */
+.btn {
+  --mx: 50%; --my: 50%;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 14px 28px;
+  font: 600 1rem/1.2 var(--sans); text-decoration: none; text-align: center; cursor: pointer;
+  background: var(--orange); color: var(--white); border: 1px solid var(--orange);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  will-change: transform;
+}
+/* luce che segue il mouse dentro il pulsante (CSS custom properties) */
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity 0.35s;
+  background: radial-gradient(160px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.32), transparent 70%); }
+.btn:hover::before { opacity: 1; }
+.btn:hover { background: var(--orange-deep); border-color: var(--orange-deep); }
+.btn .arr { width: 20px; height: 20px; transition: transform 0.45s var(--spring); }
+.btn:hover .arr { transform: translateX(5px); }
+.arr { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* bordo conico che ruota (Houdini @property) sul pulsante principale */
+.btn-glow::after { content: ""; position: absolute; inset: -1px; z-index: -2; border-radius: inherit;
+  background: conic-gradient(from var(--ang), transparent 0 70%, rgba(255, 221, 191, 0.95) 80%, transparent 90%); opacity: 0; transition: opacity 0.4s; }
+.btn-glow:hover::after { opacity: 1; animation: spinAng 2.4s linear infinite; }
+@keyframes spinAng { to { --ang: 360deg; } }
+.btn-line { background: rgba(21, 27, 37, 0.2); border-color: rgba(255, 255, 255, 0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.btn-line:hover { background: rgba(255, 255, 255, 0.14); border-color: var(--white); }
+.btn-wa { background: var(--wa-dark); border-color: var(--wa-dark); }
+.btn-wa:hover { background: #126A34; border-color: #126A34; }
+.btn-light { background: var(--white); color: var(--navy); border-color: var(--white); }
+.btn-light:hover { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.btns { display: flex; flex-direction: column; align-items: stretch; gap: 14px; width: 100%; }
+@media (min-width: 600px) { .btns { flex-direction: row; flex-wrap: wrap; align-items: center; width: auto; } }
+
+/* ===================== INTRO 3D A TUTTO SCHERMO ===================== */
+.intro { display: none; }
+html.intro-on .intro {
+  display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  min-height: 100vh; min-height: 100lvh; z-index: 1000; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 40%, #1B2433 0%, var(--navy-2) 62%);
+  color: var(--white); will-change: transform;
+}
+.intro canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.intro-ui { position: absolute; left: 0; right: 0; top: 70%; display: grid; justify-items: center; gap: 14px; text-align: center; padding: 0 16px; pointer-events: none; }
+.intro-name { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 0.3em; font: 500 clamp(2rem, 7vw, 3.6rem)/1.05 var(--serif); letter-spacing: 0.12em; margin-right: -0.12em; }
+.intro-name .wd { display: inline-flex; overflow: hidden; padding: 0.06em 0 0.14em; }
+.intro-name .ch { display: inline-block; transform: translateY(110%); }
+.intro-name .ch.o { color: var(--orange-light); }
+.intro-sub { font: 600 0.68rem/1.5 var(--sans); letter-spacing: clamp(0.18em, 1vw, 0.42em); margin-right: -0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.72); opacity: 0; }
+.intro-foot { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); display: flex; justify-content: space-between; align-items: flex-end;
+  padding-left: max(22px, env(safe-area-inset-left, 0px)); padding-right: max(22px, env(safe-area-inset-right, 0px)); }
+.intro-pct { font: 400 clamp(2.6rem, 8vw, 5rem)/1 var(--serif); font-variant-numeric: tabular-nums; }
+.intro-pct::after { content: "%"; font-size: 0.34em; margin-left: 0.15em; color: var(--orange-light); vertical-align: top; }
+.intro-skip { pointer-events: auto; background: none; border: 1px solid rgba(255, 255, 255, 0.35); color: var(--white); font: 600 0.72rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 16px; cursor: pointer; transition: border-color 0.3s, background 0.3s; }
+.intro-skip:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.08); }
+.intro-line { position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-light)); transform: scaleX(0); transform-origin: 0 50%; }
+.intro-svg { position: absolute; left: 50%; top: 38%; width: clamp(110px, 22vw, 170px); transform: translate(-50%, -50%); overflow: visible; }
+.intro-svg .roof { fill: none; stroke: var(--orange-light); stroke-width: 3.6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1s var(--ease) 0.6s forwards; }
+.intro-svg .blk { fill: var(--white); opacity: 0; transform: translateY(-40px); transform-box: fill-box; animation: drop 0.7s var(--spring) forwards; animation-delay: calc(0.2s + var(--i) * 0.1s); }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes drop { to { opacity: 1; transform: none; } }
+
+/* ===================== PROGRESSO + HEADER ===================== */
+.prog-unused { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 3px; z-index: 70; background: linear-gradient(90deg, var(--orange), var(--orange-light)); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none; }
+.bar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); color: var(--white); border-bottom: 1px solid transparent;
+  transition: background-color 0.4s, border-color 0.4s, transform 0.7s var(--ease); }
+.bar.solid, .bar.open { background: rgba(21, 27, 37, 0.82); -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); border-bottom-color: rgba(255, 255, 255, 0.1); }
+.bar-in { display: flex; align-items: center; justify-content: space-between; height: 80px; transition: height 0.4s var(--ease); }
+.bar.solid .bar-in { height: 66px; }
+.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+.mark { width: 44px; height: 44px; flex: none; display: block; color: var(--white); overflow: visible; transition: transform 0.7s var(--spring); }
+.brand:hover .mark { transform: rotate(-6deg) scale(1.08); }
+.brand-name { display: grid; gap: 5px; font: 500 1.9rem/1 var(--serif); letter-spacing: 0.01em; }
+.brand-name small { font: 600 0.56rem/1 var(--sans); letter-spacing: 0.32em; text-transform: uppercase; color: var(--orange-light); }
+.burger { width: 46px; height: 46px; display: grid; place-content: center; gap: 6px; background: none; border: 0; color: var(--white); cursor: pointer; }
+.burger span { display: block; width: 26px; height: 2px; background: currentColor; transition: transform 0.4s var(--spring), opacity 0.2s; }
+.bar.open .burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.bar.open .burger span:nth-child(2) { opacity: 0; }
+.bar.open .burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.menu { display: none; position: absolute; left: 0; right: 0; top: 100%; background: rgba(21, 27, 37, 0.97); padding: 6px var(--gut-r) 22px var(--gut); }
+.bar.open .menu { display: block; }
+.menu a:not(.btn) { display: block; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-decoration: none; font-weight: 500; }
+.menu .btn { margin-top: 16px; display: flex; }
+.roll { position: relative; display: inline-block; overflow: hidden; vertical-align: top; }
+.roll > span { display: block; transition: transform 0.55s var(--ease); }
+.roll > span + span { position: absolute; left: 0; top: 0; transform: translateY(105%); color: var(--orange-light); }
+a:hover > .roll > span:first-child, a:focus-visible > .roll > span:first-child { transform: translateY(-105%); }
+a:hover > .roll > span + span, a:focus-visible > .roll > span + span { transform: none; }
+@media (min-width: 1100px) {
+  .burger { display: none; }
+  .bar.open .menu, .menu { display: flex; align-items: center; gap: 30px; position: static; background: none; padding: 0; }
+  .menu a:not(.btn) { padding: 6px 0; border: 0; font-size: 0.97rem; color: rgba(255, 255, 255, 0.9); }
+  .menu .btn { margin: 0; min-height: 48px; padding: 12px 22px; font-size: 0.95rem; }
+}
+
+/* ===================== HERO ===================== */
+.hero { position: relative; overflow: hidden; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; background: var(--navy); color: var(--white); }
+.hero-media { position: absolute; inset: 0; z-index: -2; will-change: transform; }
+.hero-media img, .hero-media canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-media img { object-fit: cover; object-position: 30% 55%; }
+.hero-media canvas { opacity: 0; transition: opacity 0.8s ease; }
+.hero-media canvas.ready { opacity: 1; }
+.hero-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(21, 27, 37, 0.7) 0%, rgba(21, 27, 37, 0.25) 34%, rgba(21, 27, 37, 0.5) 62%, rgba(14, 19, 27, 0.92) 100%), linear-gradient(90deg, rgba(21, 27, 37, 0.55) 0%, rgba(21, 27, 37, 0) 70%); }
+.hero-in { position: relative; width: 100%; padding-top: calc(118px + env(safe-area-inset-top, 0px)); padding-bottom: 32px; }
+.hero-copy { max-width: 860px; display: grid; gap: 20px; justify-items: start; will-change: transform, opacity; }
+.hero .eyebrow { color: var(--orange-light); }
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.4rem, min(8.6vw, 8.4vh), 5.2rem); line-height: 0.98; letter-spacing: -0.015em; text-wrap: balance; }
+h1 em .wi { background: linear-gradient(100deg, #EE8A3E 15%, #FFDDBF 45%, #EE8A3E 75%); background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: shine 6s linear infinite; }
+@keyframes shine { to { background-position: -240% 0; } }
+.rotator { font: italic 400 clamp(1.5rem, 5.4vw, 2.2rem)/1.2 var(--serif); color: rgba(255, 255, 255, 0.94); display: flex; flex-wrap: wrap; gap: 0 0.3em; }
+.rot { position: relative; display: inline-grid; overflow: hidden; height: 1.25em; vertical-align: bottom; color: var(--orange-light); font-weight: 500; }
+.rot > span { grid-area: 1 / 1; white-space: nowrap; will-change: transform; }
+.hero-lead { font-size: 1.18rem; color: rgba(255, 255, 255, 0.88); max-width: 33em; }
+.strip { display: grid; gap: 1px; margin-top: clamp(32px, 5vh, 64px); background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.18); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.strip a { position: relative; overflow: hidden; background: rgba(21, 27, 37, 0.55); padding: 18px 22px; text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: background 0.4s; }
+.strip a::before { content: ""; position: absolute; inset: 0; background: var(--orange); transform: scaleY(0); transform-origin: 50% 100%; transition: transform 0.55s var(--ease); z-index: 0; }
+.strip a:hover::before { transform: none; }
+.strip a > * { position: relative; z-index: 1; }
+.strip small { display: block; font: 600 0.68rem/1.4 var(--sans); letter-spacing: 0.24em; text-transform: uppercase; color: var(--orange-light); transition: color 0.3s; }
+.strip a:hover small { color: var(--white); }
+.strip b { font: 500 1.4rem/1.15 var(--serif); }
+.strip .arr { width: 22px; height: 22px; flex: none; transition: transform 0.5s var(--spring); }
+.strip a:hover .arr { transform: translateX(4px) rotate(-45deg); }
+.hint-ripple { position: absolute; right: max(28px, env(safe-area-inset-right, 0px)); top: 36%; z-index: 2; display: none; flex-direction: column; align-items: center; gap: 14px; color: rgba(255, 255, 255, 0.8); font: 600 0.64rem/1 var(--sans); letter-spacing: 0.32em; text-transform: uppercase; }
+.hint-ripple span { writing-mode: vertical-rl; }
+.hint-ripple i { position: relative; width: 1px; height: 76px; overflow: hidden; background: rgba(255, 255, 255, 0.22); }
+.hint-ripple i::after { content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 40%; background: var(--orange-light); animation: cue 2.2s cubic-bezier(0.7, 0, 0.3, 1) infinite; }
+@keyframes cue { from { transform: translateY(-100%); } to { transform: translateY(260%); } }
+@media (min-width: 800px) { .strip { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .hint-ripple { display: flex; } }
+
+/* ===================== FASCIA SCORREVOLE ===================== */
+.marq { background: var(--orange); color: var(--navy); overflow: hidden; }
+.marq-row { overflow: hidden; }
+.marq-track { display: flex; width: max-content; will-change: transform; }
+.marq-row.rev { border-top: 1px solid rgba(21, 27, 37, 0.25); }
+.marq-group { display: flex; align-items: center; flex: none; }
+.marq-group span { font: italic 500 clamp(1.7rem, 4.6vw, 2.9rem)/1 var(--serif); padding: 18px 0; white-space: nowrap; }
+.marq-row.rev .marq-group span { color: transparent; -webkit-text-stroke: 1px var(--navy); }
+.marq-group i { font-style: normal; padding: 0 26px; font-size: 1rem; }
+
+/* ===================== MANIFESTO ===================== */
+.mani { background: var(--cream); padding-block: clamp(110px, 14vw, 180px); }
+.mani-text { font: 400 clamp(1.9rem, 4.6vw, 4rem)/1.16 var(--serif); letter-spacing: -0.012em; max-width: 21em; color: var(--ink); }
+.mani-text .mw { display: inline; }
+.mani-sig { display: flex; align-items: center; gap: 16px; margin-top: 44px; color: var(--gray); font-size: 1rem; }
+.mani-sig .mark { --roof: var(--orange); width: 44px; height: 44px; color: var(--navy); }
+.mani-sig b { display: block; font: 500 1.35rem/1.1 var(--serif); color: var(--ink); }
+
+/* ===================== OPERE (galleria orizzontale) ===================== */
+.show { position: relative; overflow: hidden; background: var(--navy-2); color: var(--white); padding-block: 110px 96px; }
+.bgword { position: absolute; left: 0; bottom: 3vh; z-index: 0; font: 500 clamp(7rem, 30vw, 26rem)/0.8 var(--serif); color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07); white-space: nowrap; pointer-events: none; user-select: none; will-change: transform; }
+.show-top { position: relative; z-index: 1; display: grid; gap: 20px; justify-items: start; }
+.show .eyebrow { color: var(--orange-light); }
+.show .h2 em { color: var(--orange-light); }
+.show-lead { color: rgba(255, 255, 255, 0.72); max-width: 34em; font-size: 1.1rem; }
+.rail-wrap { position: relative; z-index: 1; margin-top: 44px; }
+.rail { display: flex; gap: 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding: 6px var(--gut-r) 30px var(--gut); scroll-padding-left: var(--gut); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.rail::-webkit-scrollbar { display: none; }
+.piece { flex: 0 0 auto; width: min(80vw, 420px); scroll-snap-align: start; display: grid; gap: 18px; align-content: start; }
+.piece-img { position: relative; display: block; width: 100%; padding: 0; border: 0; aspect-ratio: 4 / 5; overflow: hidden; background: #0A0E14; cursor: zoom-in; transform-style: preserve-3d; will-change: transform; }
+.piece-img img { position: absolute; inset: -6% -10%; width: 120%; height: 112%; max-width: none; object-fit: cover; will-change: transform; transition: filter 0.6s; }
+.piece-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 19, 27, 0.35) 0%, rgba(14, 19, 27, 0) 30%, rgba(14, 19, 27, 0) 70%, rgba(14, 19, 27, 0.5) 100%); pointer-events: none; }
+.piece-img .glare { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.4s; background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.22), transparent 55%); }
+.piece-img:hover .glare { opacity: 1; }
+.piece-n { position: absolute; left: 18px; top: 10px; z-index: 2; font: italic 400 3.4rem/1 var(--serif); color: var(--white); }
+.piece-zoom { position: absolute; right: 16px; bottom: 16px; z-index: 2; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 50%; background: rgba(14, 19, 27, 0.35); color: var(--white); transition: background 0.3s, border-color 0.3s, transform 0.5s var(--spring); }
+.piece-zoom svg { width: 20px; height: 20px; }
+.piece-img:hover .piece-zoom { background: var(--orange); border-color: var(--orange); transform: scale(1.12) rotate(90deg); }
+.piece small { display: block; font: 600 0.7rem/1.4 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-light); margin-bottom: 4px; }
+.piece h3 { font: 500 1.7rem/1.12 var(--serif); }
+.piece-end { flex: 0 0 auto; width: min(80vw, 420px); aspect-ratio: 4 / 5; align-self: start; scroll-snap-align: start; display: grid; align-content: space-between; gap: 24px; padding: 30px 28px; background: var(--orange); color: var(--white); text-decoration: none; position: relative; overflow: hidden; transition: background 0.4s; }
+.piece-end::before { content: ""; position: absolute; inset: auto -30% -40% auto; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.28), transparent); transition: transform 0.9s var(--ease); }
+.piece-end:hover { background: var(--orange-deep); }
+.piece-end:hover::before { transform: scale(1.5) translate(-10%, -10%); }
+.piece-end .mark { --roof: var(--white); width: 58px; height: 58px; color: var(--navy); position: relative; }
+.piece-end b { position: relative; font: italic 500 clamp(2rem, 3vw, 2.9rem)/1.04 var(--serif); }
+.piece-end span { position: relative; display: inline-flex; align-items: center; gap: 12px; font: 600 0.95rem/1.2 var(--sans); }
+.rail-ctl { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; margin-top: 6px; }
+.rail-bar { flex: 1 1 auto; min-width: 80px; height: 2px; background: rgba(255, 255, 255, 0.28); position: relative; overflow: hidden; }
+.rail-bar i { position: absolute; inset: 0; background: var(--orange-light); transform: scaleX(0.12); transform-origin: 0 50%; }
+.rail-count { font: 400 1.4rem/1 var(--serif); font-variant-numeric: tabular-nums; color: rgba(255, 255, 255, 0.7); }
+.rail-count b { color: var(--white); font-weight: 500; }
+.show-cta { position: relative; z-index: 1; margin-top: 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+.show-cta p { font: italic 400 clamp(1.6rem, 5vw, 2.3rem)/1.15 var(--serif); max-width: 16em; }
+@media (min-width: 900px) { .piece, .piece-end { width: min(32vw, 450px); } }
+/* Desktop: la galleria resta ferma e scorre in orizzontale (GSAP ScrollTrigger pin) */
+html.pin .show { padding-block: 0; }
+html.pin .show-pin { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 70px; }
+html.pin .show-top { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 12px 48px; }
+html.pin .show-top > * { grid-column: 1; }
+html.pin .show .h2 { font-size: clamp(2.4rem, 4.2vw, 4.2rem); }
+html.pin .rail { overflow: visible; scroll-snap-type: none; padding-bottom: 14px; }
+html.pin .piece, html.pin .piece-end { width: calc(clamp(250px, 100vh - 420px, 600px) * 0.8); }
+html.pin .show-cta { margin: 0; padding-block: 64px 96px; }
+
+/* ===================== CHI SIAMO ===================== */
+.about-grid { display: grid; gap: 64px; }
+.about-copy { display: grid; gap: 24px; align-content: start; justify-items: start; }
+.pillars { display: grid; margin-top: 8px; width: 100%; }
+.pillars li { display: grid; gap: 4px; padding: 20px 0; border-top: 1px solid var(--line-dark); }
+.pillars li:last-child { border-bottom: 1px solid var(--line-dark); }
+.pillars h3 { font: 500 1.55rem/1.15 var(--serif); }
+.pillars p { color: var(--gray); }
+.about-media { position: relative; isolation: isolate; padding-bottom: 64px; }
+.about-block { position: absolute; z-index: -1; right: -12px; top: -12px; width: 46%; height: 46%; background: var(--orange); transform-origin: 100% 0; }
+.about-main { width: 86%; margin-left: auto; aspect-ratio: 5 / 4; overflow: hidden; }
+.about-sub { position: absolute; left: 0; bottom: 0; width: 50%; aspect-ratio: 1 / 1; overflow: hidden; border: 8px solid var(--cream); }
+.about-main img, .about-sub img { width: 100%; height: 118%; object-fit: cover; will-change: transform; }
+@media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; } }
+
+/* ===================== SERVIZI ===================== */
+.services { background: var(--sand); }
+.cards { display: grid; gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); perspective: 1200px; }
+.card { --cx: 50%; --cy: 50%; position: relative; overflow: hidden; background: var(--card); padding: 40px 30px 36px; display: grid; gap: 14px; align-content: start; transition: background-color 0.5s var(--ease), color 0.5s; will-change: transform; }
+.card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.4s; background: radial-gradient(420px circle at var(--cx) var(--cy), rgba(238, 138, 62, 0.3), transparent 60%); }
+.card:hover::before { opacity: 1; }
+.card > * { position: relative; }
+.card svg.ic { width: 46px; height: 46px; fill: none; stroke: var(--orange); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.6s var(--spring), stroke 0.45s; }
+.card h3 { font: 500 1.85rem/1.12 var(--serif); }
+.card p { color: var(--gray); transition: color 0.45s; }
+.card button { margin-top: 10px; justify-self: start; display: inline-flex; align-items: center; gap: 10px; background: none; border: 0; padding: 0; font: 600 0.78rem/1.2 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-text); cursor: pointer; transition: color 0.45s; }
+.card button .arr { width: 18px; height: 18px; transition: transform 0.45s var(--spring); }
+.card:hover { background: var(--navy); color: var(--white); }
+.card:hover p { color: rgba(255, 255, 255, 0.72); }
+.card:hover svg.ic { stroke: var(--orange-light); transform: translateY(-4px) scale(1.08) rotate(-4deg); }
+.card:hover button { color: var(--orange-light); }
+.card:hover button .arr { transform: translateX(5px); }
+@media (min-width: 700px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+/* ===================== METODO ===================== */
+.method { background: var(--cream); }
+.steps-wrap { position: relative; }
+.steps { position: relative; display: grid; counter-reset: s; }
+.steps li { position: relative; counter-increment: s; display: grid; grid-template-columns: 4rem 1fr; gap: 2px 14px; padding: 24px 0; align-content: start; }
+.steps li::after { content: ""; position: absolute; left: 0; top: 0; height: 1px; width: 100%; background: var(--line-dark); }
+.steps li::before { content: counter(s); grid-row: span 2; font: italic 400 3.4rem/0.95 var(--serif); color: var(--line-dark); transition: color 0.6s, transform 0.6s var(--spring); }
+.steps li.lit::before { color: var(--orange); transform: translateY(-4px); }
+.steps h3 { font: 500 1.7rem/1.15 var(--serif); grid-column: 2; }
+.steps p { color: var(--gray); grid-column: 2; }
+.steps-line { position: absolute; z-index: 1; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--orange), var(--orange-light)); transform: scaleX(0); transform-origin: 0 50%; }
+@media (min-width: 800px) {
+  .steps { grid-template-columns: repeat(5, 1fr); column-gap: 28px; }
+  .steps li { grid-template-columns: 1fr; padding-top: 28px; }
+  .steps li::before { grid-row: auto; margin-bottom: 12px; font-size: 4.2rem; }
+  .steps h3, .steps p { grid-column: 1; }
+}
+@media (max-width: 799px) { .steps-line { display: none; } }
+
+/* ===================== PERCHÉ NOI ===================== */
+.why { background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+.why .eyebrow { color: var(--orange-light); }
+.why .h2 em { color: var(--orange-light); }
+.why-grid { display: grid; position: relative; z-index: 1; }
+.why-grid li { padding-block: 30px; border-top: 1px solid rgba(255, 255, 255, 0.16); display: grid; gap: 10px; align-content: start; }
+.why-grid svg { width: 40px; height: 40px; fill: none; stroke: var(--orange-light); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.why-grid h3 { font: 500 1.8rem/1.15 var(--serif); }
+.why-grid p { color: rgba(255, 255, 255, 0.72); max-width: 30em; }
+@media (min-width: 700px) { .why-grid { grid-template-columns: 1fr 1fr; column-gap: 56px; } }
+
+/* ===================== INVITO (sfondo shader "lava") ===================== */
+.cta-band { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(120deg, #B9520F, #D96A1A, #E58A3C); color: var(--white); padding-block: clamp(96px, 12vw, 150px); }
+.cta-band canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; }
+.cta-in { display: grid; gap: 30px; justify-items: start; }
+.cta-band h2 { font: 500 clamp(2.4rem, 8vw, 4.8rem)/1.02 var(--serif); letter-spacing: -0.01em; max-width: 13em; text-wrap: balance; }
+.cta-band p { font-size: 1.15rem; max-width: 30em; color: rgba(255, 255, 255, 0.95); }
+
+/* ===================== CONTATTI ===================== */
+.contact-grid { display: grid; gap: 52px; }
+.contact-copy { display: grid; gap: 24px; align-content: start; justify-items: start; }
+.details { display: grid; border: 1px solid var(--line-dark); background: var(--card); width: 100%; }
+.details div { padding: 20px 24px; border-top: 1px solid var(--line); display: grid; gap: 4px; }
+.details div:first-child { border-top: 0; }
+.details dt { font: 600 0.72rem/1.4 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-text); }
+.details dd { font-size: 1.15rem; font-weight: 500; overflow-wrap: anywhere; }
+.details a { text-underline-offset: 4px; }
+.numrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.copy-btn { font: 600 0.74rem/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 12px; background: none; border: 1px solid var(--line-dark); color: var(--ink); cursor: pointer; }
+.copy-btn:hover { border-color: var(--ink); }
+.form { background: var(--navy); color: var(--white); padding: 34px 26px 30px; display: grid; gap: 22px; align-content: start; }
+.form h3 { font: 500 2rem/1.1 var(--serif); }
+.form > p { color: rgba(255, 255, 255, 0.72); font-size: 0.98rem; }
+.field { position: relative; display: grid; gap: 6px; }
+.field label { font: 600 0.7rem/1.4 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-light); }
+.field input, .field select, .field textarea { width: 100%; font: 400 16px/1.4 var(--sans); color: var(--white); background: rgba(255, 255, 255, 0.06); border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.35); padding: 13px 12px; border-radius: 0; transition: background 0.3s; }
+.field::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--orange-light); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.5s var(--ease); }
+.field:focus-within::after { transform: none; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; background: rgba(255, 255, 255, 0.1); }
+.field select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, #fff 50%), linear-gradient(135deg, #fff 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+.field select option { color: var(--navy); }
+.field textarea { min-height: 96px; resize: vertical; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
+.form .btn { width: 100%; }
+.form small { color: rgba(255, 255, 255, 0.6); font-size: 0.82rem; line-height: 1.5; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } .form { padding: 44px 40px 38px; } }
+
+/* ===================== FOOTER ===================== */
+.foot { background: var(--navy); color: rgba(255, 255, 255, 0.78); overflow: hidden; }
+.foot-grid { display: grid; gap: 44px; padding-block: 76px 40px; }
+.foot-brand { display: flex; align-items: center; gap: 16px; font: 500 2.1rem/1.1 var(--serif); color: var(--white); margin-bottom: 18px; }
+.foot-brand .mark { width: 56px; height: 56px; }
+.foot-legal { line-height: 1.85; }
+.foot-nav { display: grid; gap: 14px; align-content: start; }
+.foot-nav a, .linkbtn { text-decoration: none; }
+.foot-nav a:hover, .foot-nav .linkbtn:hover { color: var(--white); text-decoration: underline; text-underline-offset: 4px; }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.wordmark { font: 500 clamp(2.4rem, 12.5vw, 12.5rem)/0.86 var(--serif); color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
+  background: linear-gradient(90deg, var(--orange-light), var(--orange)) no-repeat; background-size: 0% 100%; -webkit-background-clip: text; background-clip: text;
+  white-space: nowrap; text-align: center; user-select: none; padding-top: 24px; }
+.copy { border-top: 1px solid rgba(255, 255, 255, 0.12); padding-block: 22px 120px; font-size: 0.95rem; color: rgba(255, 255, 255, 0.55); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 28px; }
+.copy a { text-decoration: none; }
+.copy a:hover { color: var(--white); }
+@media (min-width: 900px) { .foot-grid { grid-template-columns: 1.6fr 1fr; } }
+
+/* ===================== LIGHTBOX ===================== */
+.lb { position: fixed; inset: 0; z-index: 90; background: rgba(10, 14, 20, 0.96); display: grid; grid-template-rows: minmax(0, 1fr) auto;
+  padding: max(14px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) max(14px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
+.lb-stage { min-height: 0; display: grid; place-items: center; padding: 56px 0 10px; }
+.lb-stage img { max-width: 100%; max-height: calc(100vh - 190px); max-height: calc(100dvh - 190px); width: auto; height: auto; object-fit: contain; }
+.lb-cap { color: var(--white); text-align: center; padding: 6px 60px 12px; }
+.lb-cap small { display: block; font: 600 0.7rem/1.4 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-light); }
+.lb-cap strong { font: 500 1.5rem/1.2 var(--serif); }
+.lb-btn { position: absolute; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 50%; background: rgba(21, 27, 37, 0.6); color: var(--white); cursor: pointer; display: grid; place-items: center; transition: background 0.3s, border-color 0.3s, transform 0.4s var(--spring); }
+.lb-btn:hover { background: var(--orange); border-color: var(--orange); transform: scale(1.08); }
+.lb-btn svg { width: 22px; height: 22px; }
+.lb-x { top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
+.lb-p { left: max(10px, env(safe-area-inset-left, 0px)); top: 50%; margin-top: -24px; }
+.lb-n { right: max(10px, env(safe-area-inset-right, 0px)); top: 50%; margin-top: -24px; }
+
+/* ===================== CHATBOT ===================== */
+.fab { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 60; width: 64px; height: 64px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--wa); color: var(--white); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3); cursor: pointer; }
+.fab .ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--wa); pointer-events: none; }
+.fab svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fab .ai-badge { position: absolute; top: -4px; right: -4px; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px; background: var(--orange); color: var(--white); font: 700 0.62rem/22px var(--sans); letter-spacing: 0.04em; box-shadow: 0 0 0 2px var(--cream); }
+.teaser { position: fixed; right: calc(max(16px, env(safe-area-inset-right, 0px)) + 78px); bottom: calc(30px + env(safe-area-inset-bottom, 0px)); z-index: 59; background: var(--white); color: var(--ink); font: 600 0.9rem/1.2 var(--sans); padding: 11px 16px; border-radius: 999px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22); pointer-events: none; opacity: 0; }
+@media (max-width: 599px) { .teaser { display: none; } }
+.fab-call { position: fixed; right: max(22px, env(safe-area-inset-right, 0px)); bottom: calc(92px + env(safe-area-inset-bottom, 0px)); z-index: 60; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: var(--white); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3); }
+.fab-call svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.panel { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(92px + env(safe-area-inset-bottom, 0px)); z-index: 61; width: min(400px, calc(100% - 32px)); max-height: calc(100vh - 120px); max-height: calc(100dvh - 120px); display: flex; flex-direction: column; background: var(--white); border-radius: 20px; box-shadow: 0 24px 64px rgba(0, 0, 0, 0.38); overflow: hidden; transform-origin: 100% 100%; }
+.panel:not([hidden]) ~ .fab-call { display: none; }
+.panel-head { display: flex; align-items: center; gap: 12px; padding: 14px 14px 12px 16px; background: var(--navy); color: var(--white); }
+.panel-av { width: 40px; height: 40px; flex: none; display: grid; place-items: center; background: rgba(255, 255, 255, 0.08); border-radius: 50%; }
+.panel-av .mark { width: 26px; height: 26px; }
+.panel-head > div { flex: 1 1 auto; min-width: 0; }
+.panel-head strong { display: block; font: 500 1.4rem/1.1 var(--serif); }
+.panel-head span { font-size: 0.8rem; color: rgba(255, 255, 255, 0.72); }
+.panel-x { width: 40px; height: 40px; border: 0; background: none; color: var(--white); font-size: 1.7rem; line-height: 1; cursor: pointer; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 0 12px 12px; background: var(--navy); }
+.tab { position: relative; min-height: 40px; border: 0; border-radius: 10px; background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.78); font: 600 0.84rem/1.1 var(--sans); cursor: pointer; transition: background 0.3s, color 0.3s; }
+.tab[aria-selected="true"] { background: var(--white); color: var(--navy); }
+.tab .spark { color: var(--orange); }
+.steps-bar { display: flex; gap: 4px; padding: 0 16px 10px; background: var(--navy); }
+.steps-bar i { flex: 1; height: 3px; background: rgba(255, 255, 255, 0.25); border-radius: 2px; transition: background 0.4s; }
+.steps-bar i.on { background: var(--orange-light); }
+.panel-act { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 16px; background: var(--white); border-bottom: 1px solid var(--line); }
+.panel-act a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: 10px; font: 700 0.86rem/1.1 var(--sans); text-decoration: none; text-align: center; transition: transform 0.4s var(--spring), filter 0.3s; }
+.panel-act a:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.panel-act .a-wa { background: var(--wa-dark); color: var(--white); }
+.panel-act .a-call { background: var(--navy); color: var(--white); }
+.panel-act svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.log { flex: 1 1 auto; min-height: 180px; overflow-y: auto; padding: 16px; background: #F4F0EA; display: flex; flex-direction: column; gap: 10px; overscroll-behavior: contain; }
+.log:focus-visible { outline: 3px solid var(--orange); outline-offset: -3px; }
+.msg { max-width: 88%; padding: 10px 14px; border-radius: 14px; font-size: 0.97rem; line-height: 1.45; overflow-wrap: anywhere; white-space: pre-line; transform-origin: 0 100%; }
+.msg.bot { align-self: flex-start; background: var(--white); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.msg.me { align-self: flex-end; background: #D9F2E1; border-bottom-right-radius: 4px; transform-origin: 100% 100%; }
+.msg.ai { align-self: flex-start; background: linear-gradient(var(--white), var(--white)) padding-box, linear-gradient(120deg, var(--orange-light), #F7C9A0, var(--orange)) border-box; border: 1px solid transparent; border-bottom-left-radius: 4px; }
+.msg.ai .who { display: block; font: 700 0.66rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-text); margin-bottom: 6px; }
+.msg.sum { max-width: 100%; background: var(--white); border: 1px solid var(--line-dark); border-left: 4px solid var(--wa-dark); border-radius: 8px; font-size: 0.92rem; }
+.thinking { align-self: flex-start; padding: 10px 14px; border-radius: 14px; border-bottom-left-radius: 4px; background: var(--white); border: 1px solid var(--line); font: 600 0.85rem/1.2 var(--sans);
+  background-image: linear-gradient(100deg, var(--gray) 30%, var(--orange-light) 50%, var(--gray) 70%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 1.6s linear infinite; }
+@keyframes shimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+.ctl { padding: 12px 16px 14px; border-top: 1px solid var(--line); background: var(--white); display: grid; gap: 10px; }
+.ctl:empty { display: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.qr { font: 600 0.9rem/1.2 var(--sans); min-height: 42px; padding: 9px 15px; background: var(--white); color: var(--wa-dark); border: 1.5px solid var(--wa-dark); border-radius: 999px; cursor: pointer; transition: background 0.2s, transform 0.4s var(--spring); }
+.qr:hover { background: #E9F7EE; transform: translateY(-2px); }
+.qr.ai-q { color: var(--orange-text); border-color: rgba(207, 95, 20, 0.5); }
+.qr.ai-q:hover { background: #FBEEE4; }
+.ask { display: grid; gap: 8px; }
+.ask label { font: 600 0.82rem/1.3 var(--sans); color: var(--ink); }
+.ask-row { display: flex; gap: 8px; }
+.ask input { flex: 1 1 auto; min-width: 0; min-height: 44px; font: 400 16px/1.3 var(--sans); padding: 10px 12px; border: 1.5px solid var(--line-dark); border-radius: 10px; background: var(--white); color: var(--ink); }
+.ask input[aria-invalid="true"] { border-color: #B3261E; }
+.ask .go { font: 600 0.95rem/1 var(--sans); min-height: 44px; padding: 0 18px; background: var(--wa-dark); color: var(--white); border: 0; border-radius: 10px; cursor: pointer; }
+.ask .go.ai-go { background: var(--orange); }
+.ask .skip { justify-self: start; min-height: 44px; padding: 0 4px; background: none; border: 0; color: var(--gray); font: 500 0.9rem var(--sans); text-decoration: underline; cursor: pointer; }
+.err { color: #B3261E; font: 600 0.85rem/1.3 var(--sans); }
+.cta { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; text-align: center; padding: 12px 16px; background: var(--wa-dark); color: var(--white); font-weight: 700; text-decoration: none; border-radius: 10px; }
+.cta svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.wa-sec { min-height: 44px; padding: 0 12px; background: var(--white); color: var(--ink); border: 1.5px solid var(--line-dark); border-radius: 10px; font: 600 0.9rem var(--sans); cursor: pointer; }
+.hint { font-size: 0.8rem; line-height: 1.4; color: var(--gray); text-align: center; }
+.direct { font-size: 0.82rem; text-align: center; color: var(--gray); padding: 0 16px 12px; background: var(--white); }
+.inline-legal { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ===================== INFORMATIVE ===================== */
+.legal { position: fixed; inset: 0; z-index: 95; background: rgba(10, 14, 20, 0.82); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: grid; place-items: center;
+  padding: max(14px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) max(14px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
+.legal-card { width: min(780px, 100%); max-height: 100%; overflow-y: auto; overscroll-behavior: contain; background: var(--cream); color: var(--ink); padding: 0 clamp(20px, 5vw, 48px) 44px; }
+.legal-head { position: sticky; top: 0; z-index: 1; background: var(--cream); display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0 14px; border-bottom: 1px solid var(--line-dark); }
+.legal-head h2 { font: 500 clamp(1.8rem, 6vw, 2.5rem)/1.1 var(--serif); }
+.legal-x { width: 44px; height: 44px; flex: none; border: 1px solid var(--line-dark); background: none; color: var(--ink); font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.legal-body { padding-top: 22px; display: grid; gap: 14px; font-size: 1rem; }
+.legal-body h3 { font: 500 1.5rem/1.2 var(--serif); margin-top: 14px; }
+.legal-body p, .legal-body li { color: #3B4047; }
+.legal-body ul { list-style: disc; padding-left: 1.3em; display: grid; gap: 8px; }
+.legal-body a { color: var(--orange-text); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.legal-body .meta { font-size: 0.88rem; color: var(--gray); }
+
+/* ===================== CURSORE ===================== */
+.cur, .cur-d { position: fixed; left: 0; top: 0; z-index: 210; pointer-events: none; opacity: 0; }
+.cur { width: 44px; height: 44px; margin: -22px 0 0 -22px; border: 1.5px solid var(--orange-light); border-radius: 50%; display: grid; place-items: center; font: 700 0.6rem/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); white-space: nowrap;
+  transition: width 0.45s var(--spring), height 0.45s var(--spring), margin 0.45s var(--spring), background 0.3s, border-color 0.3s, opacity 0.3s; }
+.cur-d { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--orange-light); transition: opacity 0.3s; }
+html.cc .cur, html.cc .cur-d { opacity: 1; }
+.cur.h { width: 70px; height: 70px; margin: -35px 0 0 -35px; background: rgba(238, 138, 62, 0.16); }
+.cur.t { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: var(--orange); border-color: var(--orange); }
+html.cc, html.cc * { cursor: none !important; }
+html.cc input, html.cc textarea, html.cc select { cursor: text !important; }
+html.cc .panel *, html.cc .legal *, html.cc .lb * { cursor: auto !important; }
+html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .cur, .cur-d, .hint-ripple { display: none; }
+  h1 em .wi { background: none; -webkit-text-fill-color: currentColor; color: var(--orange-light); }
+  .wordmark { background-size: 100% 100%; }
+}
+</style>
+<script>
+/* Prima di disegnare la pagina: attivo l'intro e blocco lo scroll (rete di sicurezza: si sblocca comunque dopo 9 s) */
+(function () {
+  var R = document.documentElement;
+  try { if (history.scrollRestoration) history.scrollRestoration = "manual"; } catch (e) {}
+  try { if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return; } catch (e) {}
+  R.classList.add("intro-on", "lock");
+  window.scrollTo(0, 0);
+  setTimeout(function () {
+    if (!R.classList.contains("intro-on")) return;
+    R.classList.remove("lock", "intro-on");
+    var i = document.getElementById("intro"); if (i) i.remove();
+  }, 9000);
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="lg" viewBox="0 0 64 64"><path d="M6 30 32 9l26 21" fill="none" style="stroke:var(--roof,#EE8A3E)" stroke-width="3.6" stroke-linecap="square"/><g fill="currentColor"><rect x="18" y="51" width="16" height="6"/><rect x="35.5" y="51" width="10.5" height="6"/><rect x="18" y="43" width="7" height="6"/><rect x="26.5" y="43" width="12.5" height="6"/><rect x="18" y="35" width="12" height="6"/><rect x="31.5" y="35" width="14.5" height="6"/></g></symbol>
+</svg>
+
+<!-- ============ INTRO 3D ============ -->
+<div class="intro" id="intro" aria-hidden="true">
+  <canvas id="introGl"></canvas>
+  <div class="intro-ui">
+    <span class="intro-name"><span class="wd"><span class="ch">R</span><span class="ch">E</span><span class="ch">A</span><span class="ch">L</span></span><span class="wd"><span class="ch o">E</span></span><span class="wd"><span class="ch">G</span><span class="ch">R</span><span class="ch">O</span><span class="ch">U</span><span class="ch">P</span></span></span>
+    <span class="intro-sub">Costruzioni e ristrutturazioni</span>
+  </div>
+  <i class="intro-line" id="introLine"></i>
+</div>
+
+
+<header class="bar" id="bar">
+  <div class="in bar-in">
+    <a class="brand" href="#home" aria-label="Real E Group, inizio pagina">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>
+      <span class="brand-name">Real E Group<small>Costruzioni · Alassio</small></span>
+    </a>
+    <button class="burger" id="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu" aria-label="Principale">
+      <a href="#lavori">Le Opere</a>
+      <a href="#chi-siamo">Chi Siamo</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#perche-noi">Perché Noi</a>
+      <a href="#contatti">Contatti</a>
+      <a class="btn btn-glow magnetic" href="#contatti" data-open-chat>Richiedi Sopralluogo</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-media" id="heroMedia">
+      <img id="heroImg" src="img/pool-1920.jpg"
+        srcset="img/pool-1280.jpg 1280w, img/pool-1920.jpg 1920w, img/pool-2560.jpg 2560w, img/pool-3840.jpg 3840w, img/pool-5120.jpg 5120w, img/pool-7680.jpg 7680w"
+        sizes="(max-aspect-ratio: 4/3) 134vh, 100vw" width="7680" height="5760" alt="Piscina a sfioro con vista mare realizzata da Real E Group" fetchpriority="high">
+      <canvas id="heroGl" aria-hidden="true"></canvas>
+    </div>
+    <div class="hero-shade"></div>
+    <div class="in hero-in">
+      <div class="hero-copy" id="heroCopy">
+        <p class="eyebrow h-rise"><span>Alassio · Riviera di Ponente</span></p>
+        <h1 id="heroTitle">Real E Group: Costruzioni e Ristrutturazioni <em>di Pregio</em> ad Alassio</h1>
+        <p class="rotator h-rise"><span class="sr">Costruiamo ristrutturazioni chiavi in mano, muri in pietra, ville di pregio, facciate e tetti, finiture su misura.</span><span aria-hidden="true">Costruiamo</span><span class="rot" id="rot" aria-hidden="true"><span>ristrutturazioni chiavi in mano</span><span>muri in pietra</span><span>ville di pregio</span><span>facciate e tetti</span><span>finiture su misura</span></span></p>
+        <p class="hero-lead h-rise">Dalle ristrutturazioni chiavi in mano alle opere tradizionali in pietra. Esperienza, sicurezza e qualità superiore per la tua casa.</p>
+        <div class="btns h-rise">
+          <a class="btn btn-line magnetic" href="#lavori">Guarda le Opere</a>
+          <a class="btn btn-line magnetic" href="tel:+393933518858">Chiama +39 393 351 8858</a>
+          <a class="btn btn-glow magnetic" href="#contatti" data-open-chat>Richiedi Sopralluogo <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <nav class="strip h-rise" aria-label="Specialità">
+        <a href="#lavori"><span><small>Specialità</small><b>Ristrutturazioni chiavi in mano</b></span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#lavori"><span><small>Specialità</small><b>Muri in pietra</b></span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#lavori"><span><small>Specialità</small><b>Ville e case di pregio</b></span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ FASCIA ============ -->
+  <div class="marq" aria-hidden="true">
+    <div class="marq-row"><div class="marq-track"><div class="marq-group"><span>Costruzioni</span><i>◆</i><span>Ristrutturazioni</span><i>◆</i><span>Muri in pietra</span><i>◆</i><span>Ville di pregio</span><i>◆</i><span>Chiavi in mano</span><i>◆</i></div></div></div>
+    <div class="marq-row rev"><div class="marq-track"><div class="marq-group"><span>Alassio</span><i>◆</i><span>Riviera di Ponente</span><i>◆</i><span>Pietra locale</span><i>◆</i><span>Cura dei dettagli</span><i>◆</i><span>Solidità</span><i>◆</i></div></div></div>
+  </div>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section class="mani" id="manifesto" aria-label="Il nostro modo di costruire">
+    <div class="in">
+      <p class="mani-text" id="maniText">Costruiamo con la pietra di Liguria e con il mestiere dei maestri muratori. Dal primo sopralluogo alla consegna delle chiavi, un solo referente segue il tuo cantiere, perché una casa ben fatta resta per generazioni.</p>
+      <div class="mani-sig" data-r><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg><span><b>Real E Group</b>Impresa edile ad Alassio</span></div>
+    </div>
+  </section>
+
+  <!-- ============ OPERE ============ -->
+  <section class="show" id="lavori">
+    <div class="show-pin" id="showPin">
+      <div class="bgword" id="bgword" aria-hidden="true">Opere realizzate</div>
+      <div class="in show-top">
+        <p class="eyebrow"><span data-split>Le nostre opere</span></p>
+        <h2 class="h2" data-split>Le opere firmate <em>Real E Group.</em></h2>
+        <p class="show-lead" data-r>Una selezione dei lavori realizzati sulla Riviera. Scorri le schede e tocca una foto per ingrandirla.</p>
+      </div>
+      <div class="rail-wrap">
+        <div class="rail" id="rail" tabindex="0" role="region" aria-label="Galleria delle opere">
+          <figure class="piece" data-cat="Ville &amp; Case">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Piscina a sfioro vista mare">
+              <img src="img/pool-1920.jpg" srcset="img/pool-1280.jpg 1280w, img/pool-1920.jpg 1920w, img/pool-2560.jpg 2560w, img/pool-3840.jpg 3840w, img/pool-5120.jpg 5120w, img/pool-7680.jpg 7680w" sizes="(min-width: 900px) 42vw, 100vw" width="1920" height="1440" alt="Piscina a sfioro con vista mare al tramonto" style="object-position:36% 50%" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">01</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Ville &amp; Case</small><h3>Piscina a sfioro vista mare</h3></figcaption>
+          </figure>
+          <figure class="piece" data-cat="Ristrutturazioni Chiavi in Mano">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Soggiorno con soffitto decorato">
+              <img src="img/living-1440.jpg" srcset="img/living-960.jpg 960w, img/living-1440.jpg 1440w, img/living-1920.jpg 1920w, img/living-2880.jpg 2880w, img/living-3840.jpg 3840w, img/living-5760.jpg 5760w" sizes="(min-width: 900px) 42vw, 100vw" width="1440" height="1920" alt="Soggiorno con soffitto decorato e cucina a vista" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">02</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Ristrutturazioni Chiavi in Mano</small><h3>Soggiorno con soffitto decorato</h3></figcaption>
+          </figure>
+          <figure class="piece" data-cat="Muri in Pietra">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Scala e muro in pietra locale">
+              <img src="img/stairs-1920.jpg" srcset="img/stairs-1280.jpg 1280w, img/stairs-1920.jpg 1920w, img/stairs-2560.jpg 2560w, img/stairs-3840.jpg 3840w, img/stairs-5120.jpg 5120w, img/stairs-7680.jpg 7680w" sizes="(min-width: 900px) 42vw, 100vw" width="1920" height="1256" alt="Scala in pietra locale con muro a secco" style="object-position:62% 50%" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">03</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Muri in Pietra</small><h3>Scala e muro in pietra locale</h3></figcaption>
+          </figure>
+          <figure class="piece" data-cat="Ristrutturazioni Chiavi in Mano">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Corridoio con luce lineare">
+              <img src="img/corridor-1440.jpg" srcset="img/corridor-960.jpg 960w, img/corridor-1440.jpg 1440w, img/corridor-1920.jpg 1920w, img/corridor-2880.jpg 2880w, img/corridor-3840.jpg 3840w, img/corridor-5760.jpg 5760w" sizes="(min-width: 900px) 42vw, 100vw" width="1440" height="1920" alt="Corridoio ristrutturato con illuminazione lineare e parquet" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">04</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Ristrutturazioni Chiavi in Mano</small><h3>Corridoio con luce lineare</h3></figcaption>
+          </figure>
+          <figure class="piece" data-cat="Ville &amp; Case">
+            <button class="piece-img" type="button" aria-label="Ingrandisci: Giardino con percorsi in pietra">
+              <img src="img/garden-1920.jpg" srcset="img/garden-1280.jpg 1280w, img/garden-1920.jpg 1920w, img/garden-2560.jpg 2560w, img/garden-3840.jpg 3840w, img/garden-5120.jpg 5120w, img/garden-7680.jpg 7680w" sizes="(min-width: 900px) 42vw, 100vw" width="1920" height="1440" alt="Giardino con gazebo e percorso in pietra sul mare" style="object-position:42% 50%" loading="lazy" draggable="false">
+              <i class="glare"></i><span class="piece-n" aria-hidden="true">05</span>
+              <span class="piece-zoom" aria-hidden="true"><svg class="arr" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+            </button>
+            <figcaption><small>Ville &amp; Case</small><h3>Giardino con percorsi in pietra</h3></figcaption>
+          </figure>
+          <a class="piece-end" href="#contatti" data-open-chat>
+            <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>
+            <b>Il prossimo cantiere può essere il tuo.</b>
+            <span>Richiedi un sopralluogo <svg class="arr" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+      <div class="in rail-ctl">
+        <div class="rail-bar" aria-hidden="true"><i id="railFill"></i></div>
+        <span class="rail-count" aria-hidden="true"><b id="railNow">01</b> / 05</span>
+      </div>
+    </div>
+    <div class="in show-cta" data-r>
+      <p>Ti piace il risultato? Costruiamo il tuo.</p>
+      <a class="btn btn-glow magnetic" href="#contatti" data-open-chat data-job="Ristrutturazione chiavi in mano">Richiedi un sopralluogo <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+
+  <!-- ============ CHI SIAMO ============ -->
+  <section class="sec" id="chi-siamo">
+    <div class="in about-grid">
+      <div class="about-copy">
+        <p class="eyebrow"><span data-split>Chi siamo</span></p>
+        <h2 class="h2" data-split>Solidità, cura dei dettagli ed eccellenza <em>artigianale.</em></h2>
+        <p class="lead" data-r>Real E Group è un'impresa edile radicata ad Alassio. Seguiamo ville, abitazioni di pregio e opere tradizionali in pietra della Liguria, unendo tecniche moderne e il sapere dei maestri muratori del territorio.</p>
+        <ul class="pillars" data-r>
+          <li><h3>Solidità</h3><p>Strutture pensate per durare, nel tempo e con il clima ligure.</p></li>
+          <li><h3>Cura dei dettagli</h3><p>Finiture e materiali scelti con attenzione, dal cantiere alla consegna.</p></li>
+          <li><h3>Eccellenza artigianale</h3><p>La pietra locale lavorata con le tecniche dei maestri muratori.</p></li>
+        </ul>
+      </div>
+      <div class="about-media" id="aboutMedia">
+        <div class="about-block" aria-hidden="true"></div>
+        <div class="about-main"><img data-par="-12" src="img/stairs-1920.jpg" srcset="img/stairs-1280.jpg 1280w, img/stairs-1920.jpg 1920w, img/stairs-2560.jpg 2560w, img/stairs-3840.jpg 3840w, img/stairs-5120.jpg 5120w, img/stairs-7680.jpg 7680w" sizes="(min-width: 900px) 45vw, 90vw" width="1920" height="1256" alt="Scala in pietra locale con muro a secco" loading="lazy"></div>
+        <div class="about-sub"><img data-par="-18" src="img/garden-1920.jpg" srcset="img/garden-1280.jpg 1280w, img/garden-1920.jpg 1920w, img/garden-2560.jpg 2560w, img/garden-3840.jpg 3840w, img/garden-5120.jpg 5120w, img/garden-7680.jpg 7680w" sizes="(min-width: 900px) 25vw, 50vw" width="1920" height="1440" alt="Giardino con gazebo e percorso in pietra sul mare" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVIZI ============ -->
+  <section class="sec services" id="servizi">
+    <div class="in">
+      <div class="sec-head">
+        <p class="eyebrow"><span data-split>Servizi</span></p>
+        <h2 class="h2" data-split>Ogni fase del costruire, con un <em>solo partner.</em></h2>
+      </div>
+      <div class="cards">
+        <article class="card tilt" data-r>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+          <h3>Costruzioni Civili e Residenziali</h3>
+          <p>Realizzazione di case, ville, condomini e complessi abitativi.</p>
+          <button type="button" data-open-chat data-job="Costruzione civile o residenziale">Richiedi info <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+        <article class="card tilt" data-r>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+          <h3>Edilizia Industriale e Commerciale</h3>
+          <p>Capannoni, centri logistici, uffici e negozi.</p>
+          <button type="button" data-open-chat data-job="Edilizia industriale o commerciale">Richiedi info <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+        <article class="card tilt" data-r>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+          <h3>Ristrutturazioni Chiavi in Mano</h3>
+          <p>Riqualificazione energetica, tetti, facciate e gestione integrata fino alla consegna delle chiavi.</p>
+          <button type="button" data-open-chat data-job="Ristrutturazione chiavi in mano">Richiedi info <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+        <article class="card tilt" data-r>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+          <h3>Muri in Pietra</h3>
+          <p>Muratura tradizionale in pietra locale, contenimenti e terrazzamenti liguri.</p>
+          <button type="button" data-open-chat data-job="Muro in pietra">Richiedi info <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+        <article class="card tilt" data-r>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+          <h3>Opere Pubbliche e Infrastrutture</h3>
+          <p>Ingegneria civile, strade, ponti e opere di scavo.</p>
+          <button type="button" data-open-chat data-job="Opera pubblica o infrastruttura">Richiedi info <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+        <article class="card tilt" data-r>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+          <h3>Strutture e Finiture di Pregio</h3>
+          <p>Strutture portanti e finiture di pregio: pavimenti, rivestimenti, cartongesso.</p>
+          <button type="button" data-open-chat data-job="Strutture e finiture di pregio">Richiedi info <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ METODO ============ -->
+  <section class="sec method" id="metodo">
+    <div class="in">
+      <div class="sec-head">
+        <p class="eyebrow"><span data-split>Metodo</span></p>
+        <h2 class="h2" data-split>Come lavoriamo, in <em>cinque passi.</em></h2>
+      </div>
+      <div class="steps-wrap"><i class="steps-line" id="stepsLine" aria-hidden="true"></i>
+      <ol class="steps" id="steps">
+        <li data-r><h3>Sopralluogo</h3><p>Vediamo il posto con te e ascoltiamo che cosa ti serve.</p></li>
+        <li data-r><h3>Preventivo scritto</h3><p>Voci chiare, materiali indicati, tempi stimati.</p></li>
+        <li data-r><h3>Pratiche e programma</h3><p>Permessi, ordine dei lavori e date concordate prima di iniziare.</p></li>
+        <li data-r><h3>Cantiere</h3><p>Un referente fisso, sempre raggiungibile, che coordina squadre e fornitori.</p></li>
+        <li data-r><h3>Consegna</h3><p>Controllo finale insieme e consegna dei lavori finiti.</p></li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- ============ PERCHÉ NOI ============ -->
+  <section class="sec why" id="perche-noi">
+    <div class="in">
+      <div class="sec-head">
+        <p class="eyebrow"><span data-split>Perché noi</span></p>
+        <h2 class="h2" data-split>Affidabilità che si vede <em>in cantiere.</em></h2>
+      </div>
+      <ul class="why-grid">
+        <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 11 2 2 4-4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><h3>Un solo referente</h3><p>Dal sopralluogo alla consegna delle chiavi parli sempre con la stessa persona.</p></li>
+        <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></svg><h3>Cantiere sicuro e ordinato</h3><p>Squadre coordinate, sicurezza rispettata e spazi di lavoro tenuti in ordine.</p></li>
+        <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg><h3>Pietra e saperi del territorio</h3><p>Muratura tradizionale ligure unita a tecniche e materiali moderni.</p></li>
+        <li data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><h3>Preventivi chiari</h3><p>Voci dettagliate e tempi concordati prima di aprire il cantiere.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ INVITO ============ -->
+  <section class="cta-band" id="invito">
+    <canvas id="ctaGl" aria-hidden="true"></canvas>
+    <div class="in cta-in">
+      <h2 data-split>Hai un progetto in <em>mente?</em> Parliamone.</h2>
+      <p data-r>Scrivici su WhatsApp o chiedi al nostro assistente: ti rispondiamo per organizzare il sopralluogo e capire insieme da dove partire.</p>
+      <div class="btns" data-r>
+        <a class="btn btn-light magnetic" href="#contatti" data-open-chat>Scrivici su WhatsApp <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line magnetic" href="#contatti" data-open-ai>Chiedi all'assistente AI</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATTI ============ -->
+  <section class="sec" id="contatti">
+    <div class="in contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow"><span data-split>Contatti</span></p>
+        <h2 class="h2" data-split>Parliamo del tuo <em>progetto.</em></h2>
+        <p class="lead" data-r>Raccontaci cosa vuoi realizzare: organizziamo un sopralluogo e ti proponiamo una soluzione su misura.</p>
+        <dl class="details" data-r>
+          <div><dt>Sede</dt><dd>Regione Serre, 7 – 17021 Alassio (SV)</dd></div>
+          <div><dt>Telefono e WhatsApp</dt><dd class="numrow"><span id="numtxt">+39 393 351 8858</span><button class="copy-btn" id="copy" type="button">Copia</button></dd></div>
+          <div><dt>Mappa</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Regione+Serre+7+17021+Alassio" target="_blank" rel="noopener">Apri in Google Maps</a></dd></div>
+        </dl>
+      </div>
+      <form class="form" id="form" data-r autocomplete="on" novalidate>
+        <h3>Richiedi un sopralluogo</h3>
+        <p>Compila i campi: il messaggio si prepara da solo e lo invii dal tuo WhatsApp.</p>
+        <div class="field"><label for="f-name">Nome e cognome</label><input id="f-name" name="name" type="text" placeholder="Il tuo nome" autocomplete="name"></div>
+        <div class="field"><label for="f-job">Lavoro</label>
+          <select id="f-job" name="job"><option>Ristrutturazione chiavi in mano</option><option>Villa o casa nuova</option><option>Muro in pietra</option><option>Facciata o tetto</option><option>Altro</option></select></div>
+        <div class="field"><label for="f-place">Dove si trova l'immobile</label><input id="f-place" name="place" type="text" placeholder="Es. Alassio, via…"></div>
+        <div class="field"><label for="f-msg">Note (facoltativo)</label><textarea id="f-msg" name="msg" placeholder="Raccontaci in breve il lavoro"></textarea></div>
+        <a class="btn" href="tel:+393933518858">Chiama ora +39 393 351 8858</a>
+        <a class="btn btn-wa" id="wa-send" href="https://wa.me/393933518858" target="_blank" rel="noopener">Invia su WhatsApp <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <small>Si apre WhatsApp con il messaggio già scritto: premi invio per mandarlo. Leggi l'<button class="inline-legal" type="button" data-legal="privacy">informativa privacy</button>.</small>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>Real E Group</p>
+        <p class="foot-legal">REAL&amp;GROUP COSTRUZIONI S.R.L.S.<br>Regione Serre, 7 – 17021 Alassio (SV)<br>P.IVA / C.F. 01918290097<br>Codice REA: SV 244252<br>Camera di Commercio: Savona (SV)<br>Codice ATECO: 43.91.00 – Lavori di muratura e altre opere<span id="legalExtra"></span></p>
+      </div>
+      <nav class="foot-nav" aria-label="Piè di pagina">
+        <a href="#home">Home</a><a href="#lavori">Le Opere</a><a href="#chi-siamo">Chi Siamo</a><a href="#servizi">Servizi</a><a href="#perche-noi">Perché Noi</a><a href="#contatti">Contatti</a>
+        <button class="linkbtn" type="button" data-legal="privacy">Privacy Policy</button>
+        <button class="linkbtn" type="button" data-legal="cookie">Cookie Policy</button>
+      </nav>
+    </div>
+    <div class="wordmark" id="wordmark" aria-hidden="true">Real E Group</div>
+    <div class="copy"><span>© 2026 Real E Group. Tutti i diritti riservati.</span><a href="#home">Torna su ↑</a></div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" data-lenis-prevent role="dialog" aria-modal="true" aria-label="Galleria opere" hidden>
+  <button class="lb-btn lb-x" id="lb-x" type="button" aria-label="Chiudi"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="lb-btn lb-p" id="lb-p" type="button" aria-label="Foto precedente"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lb-btn lb-n" id="lb-n" type="button" aria-label="Foto successiva"><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="lb-stage" id="lb-stage"><img id="lb-img" src="" alt=""></div>
+  <div class="lb-cap"><small id="lb-cat"></small><strong id="lb-title"></strong></div>
+</div>
+
+<!-- Informative -->
+<div class="legal" id="legal" role="dialog" aria-modal="true" aria-labelledby="legal-title" hidden>
+  <div class="legal-card" id="legal-scroll" data-lenis-prevent>
+    <div class="legal-head"><h2 id="legal-title"></h2><button class="legal-x" id="legal-x" type="button" aria-label="Chiudi">&times;</button></div>
+    <div class="legal-body" id="legal-body"></div>
+  </div>
+</div>
+
+<template id="t-privacy">
+  <p class="meta">Informativa ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 (GDPR) e del D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018. Ultimo aggiornamento: 17 ottobre 2026.</p>
+  <h3>1. Titolare del trattamento</h3>
+  <p>REAL&amp;GROUP COSTRUZIONI S.R.L.S., Regione Serre, 7 – 17021 Alassio (SV), P.IVA / C.F. 01918290097, REA SV 244252 (di seguito "Real E Group" o "noi"). Contatti per la privacy: WhatsApp e telefono +39 393 351 8858 o posta all'indirizzo della sede. Non abbiamo nominato un Responsabile della protezione dei dati (DPO), perché non obbligatorio per la nostra attività.</p>
+  <h3>2. Quali dati trattiamo, perché e su quale base giuridica</h3>
+  <ul>
+    <li><strong>Richieste di contatto e di sopralluogo.</strong> Nome e cognome, telefono, tipo di lavoro, località dell'immobile e contenuto dei messaggi che ci invii su WhatsApp o per telefono. Finalità: risponderti, organizzare il sopralluogo, preparare il preventivo. Base giuridica: misure precontrattuali su tua richiesta (art. 6.1.b GDPR).</li>
+    <li><strong>Domande all'assistente AI.</strong> Il testo delle domande che scrivi nella sezione "Chiedi all'AI" e le risposte della stessa conversazione. Finalità: generare la risposta. Base giuridica: la tua richiesta (art. 6.1.b) e il nostro legittimo interesse a offrire informazioni rapide sul sito (art. 6.1.f). Non scrivere nelle domande dati personali o informazioni riservate.</li>
+    <li><strong>Dati tecnici di navigazione.</strong> Indirizzo IP, data e ora, pagina richiesta, browser e dispositivo, registrati automaticamente dal server che ospita il sito. Finalità: far funzionare il sito, proteggerlo da abusi e attacchi. Base giuridica: legittimo interesse (art. 6.1.f).</li>
+    <li><strong>Obblighi di legge.</strong> Dati necessari ad adempimenti fiscali, contabili o amministrativi, se il contatto porta a un contratto (art. 6.1.c).</li>
+  </ul>
+  <p>Non trattiamo categorie particolari di dati (art. 9), non facciamo profilazione né decisioni basate unicamente su trattamenti automatizzati (art. 22). Il sito non usa strumenti di statistica, pubblicità o tracciamento.</p>
+  <h3>3. Come funzionano modulo, assistente guidato e assistente AI</h3>
+  <p>Il modulo "Richiedi un sopralluogo" e l'assistente guidato non inviano dati ai nostri server: il messaggio viene preparato nel tuo browser e parte solo quando premi il pulsante che apre WhatsApp. Da quel momento si applica l'informativa di WhatsApp Ireland Ltd (gruppo Meta): <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">whatsapp.com/legal/privacy-policy-eea</a>.</p>
+  <p>L'assistente del sito è un sistema automatico che risponde con la ricerca nelle informazioni pubblicate: funziona interamente nel tuo browser, non invia le domande a nessun server e non le conserva. Le risposte hanno valore solo informativo: per preventivi, tempi e condizioni fa fede solo quanto concordato direttamente con noi.</p>
+  <h3>4. Destinatari e responsabili del trattamento</h3>
+  <ul>
+    <li><strong>Vercel Inc.</strong> (hosting del sito e della funzione dell'assistente).</li>
+    <li>Consulenti e professionisti che ci assistono (ad esempio il commercialista) e autorità, quando la legge lo richiede.</li>
+  </ul>
+  <p>I dati sono accessibili solo a persone autorizzate di Real E Group. Non vendiamo né cediamo i tuoi dati a terzi per finalità di marketing.</p>
+  <h3>5. Trasferimenti fuori dallo Spazio economico europeo</h3>
+  <p>Vercel può trattare dati negli Stati Uniti. Il trasferimento avviene sulla base della decisione di adeguatezza della Commissione europea per l'EU-U.S. Data Privacy Framework, per le società certificate, e/o delle clausole contrattuali standard approvate dalla Commissione (art. 46 GDPR). Lo stesso vale per WhatsApp (gruppo Meta).</p>
+  <h3>6. Per quanto tempo conserviamo i dati</h3>
+  <ul>
+    <li>Richieste di contatto senza seguito: fino a 24 mesi dall'ultimo contatto.</li>
+    <li>Rapporti contrattuali: per la durata del rapporto e poi per i termini di legge (10 anni per la documentazione contabile e fiscale, art. 2220 c.c.).</li>
+    <li>Dati tecnici di navigazione: per il periodo limitato previsto dal fornitore di hosting per sicurezza e diagnostica.</li>
+    <li>Domande all'assistente AI: non conservate da noi; il fornitore le conserva per il periodo limitato indicato nelle sue condizioni.</li>
+  </ul>
+  <h3>7. I tuoi diritti</h3>
+  <p>Puoi chiedere in ogni momento l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità e opporti ai trattamenti basati sul legittimo interesse (artt. 15–22 GDPR), scrivendoci ai contatti del punto 1. Rispondiamo entro un mese. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali, Piazza Venezia 11, 00187 Roma: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>.</p>
+  <h3>8. Conferimento dei dati</h3>
+  <p>Fornire i dati è facoltativo, ma senza nome, recapito e descrizione del lavoro non possiamo rispondere alla tua richiesta.</p>
+  <h3>9. Minori</h3>
+  <p>Il sito è rivolto a persone maggiorenni. Non raccogliamo consapevolmente dati di minori di 14 anni.</p>
+  <h3>10. Cookie</h3>
+  <p>Il sito non usa cookie. Dettagli nella <button class="inline-legal" type="button" data-legal="cookie">Cookie Policy</button>.</p>
+  <h3>11. Modifiche</h3>
+  <p>Possiamo aggiornare questa informativa. La versione in vigore è sempre quella pubblicata in questa pagina, con la data dell'ultimo aggiornamento.</p>
+</template>
+
+<template id="t-cookie">
+  <p class="meta">Informativa ai sensi dell'art. 122 del D.Lgs. 196/2003 e delle Linee guida del Garante sui cookie (provvedimento del 10 giugno 2021). Ultimo aggiornamento: 17 ottobre 2026.</p>
+  <h3>Questo sito non usa cookie</h3>
+  <p>Il sito non installa cookie, né tecnici né di profilazione o statistica, e non salva informazioni nel tuo dispositivo (nessun localStorage o strumento simile). Per questo non mostra un banner di consenso.</p>
+  <h3>Nessuna risorsa da server di terzi</h3>
+  <p>Caratteri tipografici, librerie grafiche e immagini sono ospitati sullo stesso server del sito: il tuo browser non contatta Google Fonts, CDN esterni o servizi di tracciamento durante la navigazione.</p>
+  <h3>Collegamenti esterni</h3>
+  <p>Se premi un pulsante che apre WhatsApp o Google Maps lasci questo sito e si applicano le regole sui cookie e sulla privacy di quei servizi: <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">WhatsApp</a>, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>.</p>
+  <h3>Come gestire i cookie dal browser</h3>
+  <p>Puoi sempre consultare, bloccare o cancellare i cookie dalle impostazioni del tuo browser (Chrome, Safari, Firefox, Edge).</p>
+  <h3>Altre informazioni</h3>
+  <p>Per sapere come trattiamo i dati personali leggi la <button class="inline-legal" type="button" data-legal="privacy">Privacy Policy</button>. Se in futuro aggiungeremo strumenti di analisi o di marketing, aggiorneremo questa pagina e chiederemo il tuo consenso prima di attivarli.</p>
+</template>
+
+<!-- ============ CHATBOT ============ -->
+<span class="teaser animate-tease" id="teaser" aria-hidden="true">Domande? Chiedi all'assistente</span>
+<button class="fab" id="wa-fab" type="button" aria-label="Apri l'assistente: sopralluogo su WhatsApp e domande sull'azienda" aria-expanded="false" aria-controls="wa-panel" aria-haspopup="dialog">
+  <i class="ring animate-ring"></i>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.5A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+  <span class="ai-badge" aria-hidden="true">AI</span>
+</button>
+
+<section class="panel" id="wa-panel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-describedby="wa-desc" hidden>
+  <div class="panel-head">
+    <span class="panel-av" aria-hidden="true"><svg class="mark" viewBox="0 0 64 64"><use href="#lg"/></svg></span>
+    <div><strong id="wa-title">Real E Group</strong><span id="wa-desc">Sopralluogo su WhatsApp o domande sull'azienda</span></div>
+    <button class="panel-x" id="wa-close" type="button" aria-label="Chiudi la chat">&times;</button>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Modalità assistente">
+    <button class="tab" id="tab-guide" role="tab" type="button" aria-selected="true" aria-controls="wa-log">Richiedi sopralluogo</button>
+    <button class="tab" id="tab-ai" role="tab" type="button" aria-selected="false" aria-controls="wa-log"><span class="spark" aria-hidden="true">✦</span> Chiedi all'AI</button>
+  </div>
+  <div class="steps-bar" id="wa-steps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="panel-act">
+    <a class="a-wa" href="https://wa.me/393933518858" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.5A8.4 8.4 0 1 1 21 11.5Z"/></svg>WhatsApp diretto<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+    <a class="a-call" href="tel:+393933518858"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>+39 393 351 8858</a>
+  </div>
+  <div class="log" id="wa-log" data-lenis-prevent role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversazione con l'assistente" tabindex="0"></div>
+  <div class="ctl" id="wa-ctl"></div>
+  <p class="direct" id="wa-direct">Preferisci scrivere subito? <a href="https://wa.me/393933518858" target="_blank" rel="noopener">Apri WhatsApp</a> · <button class="inline-legal" type="button" data-legal="privacy">Privacy</button><br>Le risposte sono automatiche e hanno valore informativo.</p>
+</section>
+<a class="fab-call" id="fab-call" href="tel:+393933518858" aria-label="Chiama ora il +39 393 351 8858"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></a>
+
+<!-- ============ LIBRERIE (ospitate sul sito) ============ -->
+<script src="vendor/three.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+
+<script>
+/* =========================================================================
+   CONFIGURAZIONE — i parametri principali da personalizzare
+   ========================================================================= */
+var SITE = {
+  /* Dati obbligatori per legge (art. 2250 c.c. e D.Lgs. 70/2003): compilali e compariranno nel piè di pagina. */
+  EMAIL: "",                       // es. "info@realegroup.it" — obbligatoria (D.Lgs. 70/2003, art. 7)
+  PEC: "",                         // es. "realegroup@pec.it" — facoltativa ma consigliata
+  CAPITALE: "",                    // es. "€ 1.000,00 i.v." — obbligatorio per le società (art. 2250 c.c.)
+  WA_NUMBER: "393933518858",       // numero WhatsApp (solo cifre, con prefisso)
+  INTRO_HOLD: 2.6,                 // secondi in cui il logo 3D resta in scena prima dell'uscita
+  RIPPLE_STRENGTH: 1.0,            // intensità delle onde sull'acqua dell'hero (0 = spente)
+  SMOOTH_LERP: 0.085,              // morbidezza dello scroll Lenis (più basso = più fluido)
+  MAGNET: 0.3,                     // forza dei pulsanti magnetici
+  TILT: 8,                         // gradi massimi di inclinazione 3D delle schede
+};
+</script>
+
+<script>
+/* =========================================================================
+   SCHEDA AZIENDA — l'unica fonte da cui l'assistente AI può rispondere
+   ========================================================================= */
+var COMPANY_KB = [
+  "AZIENDA: Real E Group è il nome commerciale di REAL&GROUP COSTRUZIONI S.R.L.S., impresa edile radicata ad Alassio (SV), in Liguria. Lavora ad Alassio e lungo la Riviera di Ponente.",
+  "SEDE: Regione Serre, 7 – 17021 Alassio (SV). Mappa: Google Maps 'Regione Serre 7 17021 Alassio'.",
+  "CONTATTI: telefono e WhatsApp +39 393 351 8858. Si può richiedere un sopralluogo dal sito: il modulo o l'assistente preparano un messaggio WhatsApp che il cliente invia.",
+  "DATI SOCIETARI: P.IVA / C.F. 01918290097; Codice REA SV 244252; Camera di Commercio di Savona; Codice ATECO 43.91.00 – Lavori di muratura e altre opere.",
+  "CHI SIAMO: segue ville, abitazioni di pregio e opere tradizionali in pietra della Liguria, unendo tecniche moderne e il sapere dei maestri muratori del territorio. Valori: solidità (strutture pensate per durare, anche con il clima ligure), cura dei dettagli (finiture e materiali scelti con attenzione dal cantiere alla consegna), eccellenza artigianale (pietra locale lavorata con le tecniche dei maestri muratori).",
+  "MANIFESTO: costruiamo con la pietra di Liguria e con il mestiere dei maestri muratori; dal primo sopralluogo alla consegna delle chiavi un solo referente segue il cantiere, perché una casa ben fatta resta per generazioni.",
+  "SERVIZIO – Costruzioni civili e residenziali: realizzazione di case, ville, condomini e complessi abitativi.",
+  "SERVIZIO – Edilizia industriale e commerciale: capannoni, centri logistici, uffici e negozi.",
+  "SERVIZIO – Ristrutturazioni chiavi in mano: riqualificazione energetica, tetti, facciate e gestione integrata fino alla consegna delle chiavi.",
+  "SERVIZIO – Muri in pietra: muratura tradizionale in pietra locale, muri di contenimento e terrazzamenti liguri.",
+  "SERVIZIO – Opere pubbliche e infrastrutture: ingegneria civile, strade, ponti e opere di scavo.",
+  "SERVIZIO – Strutture e finiture di pregio: strutture portanti e finiture come pavimenti, rivestimenti, cartongesso.",
+  "METODO in 5 passi: 1) Sopralluogo: si vede il posto con il cliente e si ascolta cosa serve. 2) Preventivo scritto: voci chiare, materiali indicati, tempi stimati. 3) Pratiche e programma: permessi, ordine dei lavori e date concordate prima di iniziare. 4) Cantiere: un referente fisso, sempre raggiungibile, coordina squadre e fornitori. 5) Consegna: controllo finale insieme e consegna dei lavori finiti.",
+  "PERCHÉ SCEGLIERLI: un solo referente dal sopralluogo alla consegna; cantiere sicuro e ordinato con squadre coordinate; pietra e saperi del territorio uniti a tecniche e materiali moderni; preventivi chiari con voci dettagliate e tempi concordati prima di aprire il cantiere.",
+  "OPERE MOSTRATE NEL SITO: piscina a sfioro vista mare (ville e case); soggiorno con soffitto decorato (ristrutturazione chiavi in mano); scala e muro in pietra locale (muri in pietra); corridoio con luce lineare (ristrutturazione chiavi in mano); giardino con percorsi in pietra (ville e case).",
+  "PRIVACY: il modulo e l'assistente non inviano dati ai server dell'impresa, il messaggio parte solo da WhatsApp. Il sito non usa cookie propri né cookie di profilazione o statistica.",
+  "NON PRESENTI NEL SITO: prezzi, costi al metro quadro, tempi esatti di realizzazione, orari d'ufficio, certificazioni, garanzie specifiche, nomi del personale, anni di attività, numero di cantieri. Per queste informazioni bisogna contattare l'impresa.",
+];
+</script>
+
+<script>
+/* =========================================================================
+   APPLICAZIONE
+   ========================================================================= */
+(function () {
+  "use strict";
+  var D = document, W = window, R = D.documentElement;
+  var reduced = !!(W.matchMedia && W.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var fine = !!(W.matchMedia && W.matchMedia("(hover: hover) and (pointer: fine)").matches);
+  var hasGsap = !!W.gsap, M = W.Motion || null;
+  function $(s, r) { return (r || D).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function waLink(t) { return "https://wa.me/" + SITE.WA_NUMBER + (t ? "?text=" + encodeURIComponent(t) : ""); }
+  if (hasGsap && W.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+  /* Molla stile Framer Motion: usa Motion se c'è, altrimenti GSAP */
+  function spring(el, props, opts) {
+    opts = opts || {};
+    if (M && M.animate) {
+      try { return M.animate(el, props, { type: "spring", stiffness: opts.stiffness || 260, damping: opts.damping || 18, mass: opts.mass || 1 }); } catch (e) {}
+    }
+    if (hasGsap) return gsap.to(el, Object.assign({ duration: opts.duration || 0.8, ease: opts.ease || "elastic.out(1, 0.45)", overwrite: "auto" }, props));
+  }
+
+  /* ---------------------------------------------------------------
+     Scroll fluido: Lenis + GSAP ScrollTrigger
+     --------------------------------------------------------------- */
+  var lenis = null;
+  if (W.Lenis && !reduced) {
+    try {
+      lenis = new W.Lenis({ lerp: SITE.SMOOTH_LERP, smoothWheel: true, wheelMultiplier: 1 });
+      if (hasGsap) {
+        lenis.on("scroll", function () { if (W.ScrollTrigger) ScrollTrigger.update(); });
+        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
+      }
+    } catch (e) { lenis = null; }
+  }
+  function goTo(target, opts) {
+    var y = typeof target === "number" ? target : (target.getBoundingClientRect().top + W.pageYOffset - 78);
+    if (lenis) lenis.scrollTo(y, Object.assign({ duration: 1.5 }, opts || {}));
+    else W.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+  }
+  D.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button) return;
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute("href").slice(1), t = id ? D.getElementById(id) : null;
+    if (!t) return;
+    e.preventDefault();
+    goTo(id === "home" ? 0 : t);
+  });
+
+  /* ---------------------------------------------------------------
+     Preparazione testi: parole in maschera, lettere del manifesto
+     --------------------------------------------------------------- */
+  function split(el) {
+    var label = el.textContent.replace(/\s+/g, " ").trim();
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = D.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (p) {
+            if (!p) return;
+            if (/^\s+$/.test(p)) { frag.appendChild(D.createTextNode(" ")); return; }
+            var w = D.createElement("span"); w.className = "w"; w.setAttribute("aria-hidden", "true");
+            var i = D.createElement("span"); i.className = "wi"; i.textContent = p;
+            w.appendChild(i); frag.appendChild(w);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && !n.classList.contains("sr")) walk(n);
+      });
+    })(el);
+    var sr = D.createElement("span"); sr.className = "sr"; sr.textContent = label;
+    el.insertBefore(sr, el.firstChild);
+  }
+  $$("[data-split]").forEach(split);
+  split($("#heroTitle"));
+
+  /* ---------------------------------------------------------------
+     INTRO 3D: i conci del marchio cadono e formano la casa (Three.js)
+     --------------------------------------------------------------- */
+  var introOn = R.classList.contains("intro-on");
+  var intro = $("#intro");
+  var introDone = false;
+
+  function finishIntro() {
+    if (introDone) return; introDone = true;
+    if (introTl) introTl.kill();
+    var done = function () {
+      R.classList.remove("lock", "intro-on");
+      if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+      if (introScene && introScene.dispose) introScene.dispose();
+      if (lenis) lenis.start();
+      if (W.ScrollTrigger) ScrollTrigger.refresh();
+    };
+    heroIn(0.35);
+    if (hasGsap && intro) {
+      gsap.to(intro, { yPercent: -100, duration: 1.15, ease: "expo.inOut", onComplete: done });
+      gsap.to(".intro-ui", { y: -60, opacity: 0, duration: 0.6, ease: "power3.in" });
+    } else done();
+  }
+
+  var introScene = null, introTl = null;
+  function buildIntro3D() {
+    var canvas = $("#introGl");
+    if (!W.THREE || !canvas) return null;
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: "high-performance" }); } catch (e) { return null; }
+    renderer.setPixelRatio(Math.min(W.devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+
+    var scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x0E131B, 12, 26);
+    var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+    var group = new THREE.Group(); scene.add(group);
+
+    // Luci: cielo caldo, luce principale con ombre morbide, luce arancio dal tetto
+    scene.add(new THREE.HemisphereLight(0xFFF1E0, 0x0E131B, 0.55));
+    var key = new THREE.DirectionalLight(0xFFE6CC, 1.35);
+    key.position.set(-4, 7, 6); key.castShadow = true;
+    key.shadow.mapSize.set(1024, 1024); key.shadow.radius = 6; key.shadow.bias = -0.0005;
+    var sc = key.shadow.camera; sc.left = -5; sc.right = 5; sc.top = 5; sc.bottom = -5; sc.near = 1; sc.far = 25;
+    scene.add(key);
+    var rim = new THREE.DirectionalLight(0x8FB4FF, 0.35); rim.position.set(5, 2, -4); scene.add(rim);
+    var roofLight = new THREE.PointLight(0xEE8A3E, 0, 7, 2); roofLight.position.set(0, 2.2, 1.2); group.add(roofLight);
+
+    // Pavimento che riceve solo l'ombra (ambient occlusion morbida sotto i conci)
+    var floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: 0.38 }));
+    floor.rotation.x = -Math.PI / 2; floor.position.y = -0.12; floor.receiveShadow = true; scene.add(floor);
+    var aoTex = (function () {
+      var c = D.createElement("canvas"); c.width = c.height = 128; var g = c.getContext("2d");
+      var gr = g.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, "rgba(0,0,0,0.55)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+      g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c);
+    })();
+    var ao = new THREE.Mesh(new THREE.PlaneGeometry(5.5, 2.4), new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false, opacity: 0 }));
+    ao.rotation.x = -Math.PI / 2; ao.position.y = -0.1; scene.add(ao);
+
+    // Conci: coordinate prese dal marchio SVG (viewBox 64)
+    var S = 0.12, CX = 32, CY = 33;
+    var rects = [[18, 51, 16, 6], [35.5, 51, 10.5, 6], [18, 43, 7, 6], [26.5, 43, 12.5, 6], [18, 35, 12, 6], [31.5, 35, 14.5, 6]];
+    var stoneMat = new THREE.MeshStandardMaterial({ color: 0xF3ECE1, roughness: 0.62, metalness: 0.05 });
+    var blocks = rects.map(function (r, i) {
+      var w = r[2] * S - 0.03, h = r[3] * S - 0.03, d = 0.62;
+      var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), stoneMat.clone());
+      m.material.color.offsetHSL(0, 0, (i % 3 - 1) * 0.025);
+      var x = (r[0] + r[2] / 2 - CX) * S, y = (CY - (r[1] + r[3] / 2)) * S;
+      m.userData.home = new THREE.Vector3(x, y, 0);
+      m.position.set(x + (Math.random() - 0.5) * 2, y + 6 + i * 0.5, (Math.random() - 0.5) * 2);
+      m.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
+      m.castShadow = true; m.receiveShadow = true;
+      group.add(m); return m;
+    });
+    // Tetto: due travi arancio luminose + alone (bloom leggero)
+    var roofMat = new THREE.MeshStandardMaterial({ color: 0x6E2A06, emissive: 0xE2621A, emissiveIntensity: 0.95, roughness: 0.4, toneMapped: false });
+    function beam(x1, y1, x2, y2) {
+      var a = new THREE.Vector2((x1 - CX) * S, (CY - y1) * S), b = new THREE.Vector2((x2 - CX) * S, (CY - y2) * S);
+      var len = a.distanceTo(b);
+      var geo = new THREE.BoxGeometry(len, 0.13, 0.16); geo.translate(len / 2, 0, 0);
+      var m = new THREE.Mesh(geo, roofMat); m.position.set(a.x, a.y, 0.1);
+      m.rotation.z = Math.atan2(b.y - a.y, b.x - a.x); m.scale.x = 0.0001; m.castShadow = true;
+      group.add(m); return m;
+    }
+    var beams = [beam(32, 9, 6, 30), beam(32, 9, 58, 30)];
+    var glowTex = (function () {
+      var c = D.createElement("canvas"); c.width = c.height = 256; var g = c.getContext("2d");
+      var gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, "rgba(238,138,62,0.9)"); gr.addColorStop(0.35, "rgba(238,138,62,0.25)"); gr.addColorStop(1, "rgba(238,138,62,0)");
+      g.fillStyle = gr; g.fillRect(0, 0, 256, 256); return new THREE.CanvasTexture(c);
+    })();
+    var glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0 }));
+    glow.position.set(0, 1.9, -0.2); glow.scale.set(7, 3.6, 1); group.add(glow);
+    group.scale.setScalar(0.55); group.position.y = 1.5;
+
+    function size() {
+      var w = W.innerWidth, h = W.innerHeight;
+      renderer.setSize(w, h, false); camera.aspect = w / h;
+      camera.position.set(0, 1.1, w / h < 0.8 ? 18 : 11.5);
+      camera.updateProjectionMatrix();
+    }
+    size(); W.addEventListener("resize", size);
+
+    // parallasse del mouse sulla camera
+    var mx = 0, my = 0, cx = 0, cy = 0;
+    function onMove(e) { mx = (e.clientX / W.innerWidth - 0.5); my = (e.clientY / W.innerHeight - 0.5); }
+    W.addEventListener("pointermove", onMove, { passive: true });
+
+    var running = true, t0 = performance.now();
+    (function loop(now) {
+      if (!running) return;
+      var t = (now - t0) / 1000;
+      cx += (mx - cx) * 0.05; cy += (my - cy) * 0.05;
+      group.rotation.y = Math.sin(t * 0.4) * 0.12 + cx * 0.5;
+      group.rotation.x = cy * 0.18;
+      camera.lookAt(0, 0.7, 0);
+      renderer.render(scene, camera);
+      requestAnimationFrame(loop);
+    })(t0);
+
+    return {
+      blocks: blocks, beams: beams, glow: glow, roofLight: roofLight, ao: ao, camera: camera, group: group,
+      dispose: function () {
+        running = false; W.removeEventListener("resize", size); W.removeEventListener("pointermove", onMove);
+        scene.traverse(function (o) { if (o.geometry) o.geometry.dispose(); if (o.material) { if (o.material.map) o.material.map.dispose(); o.material.dispose(); } });
+        renderer.dispose();
+      },
+    };
+  }
+
+  function fallbackIntroSvg() {
+    var svg = '<svg class="intro-svg" viewBox="0 0 64 64" aria-hidden="true"><path class="roof" pathLength="1" d="M6 30 32 9l26 21"/>' +
+      [[18, 51, 16, 6], [35.5, 51, 10.5, 6], [18, 43, 7, 6], [26.5, 43, 12.5, 6], [18, 35, 12, 6], [31.5, 35, 14.5, 6]].map(function (r, i) {
+        return '<rect class="blk" style="--i:' + i + '" x="' + r[0] + '" y="' + r[1] + '" width="' + r[2] + '" height="' + r[3] + '"/>';
+      }).join("") + "</svg>";
+    intro.insertAdjacentHTML("afterbegin", svg);
+  }
+
+  function runIntro() {
+    if (!introOn || !intro) { heroIn(0.1); return; }
+    if (lenis) lenis.stop();
+    if (!hasGsap) { fallbackIntroSvg(); setTimeout(finishIntro, 2600); return; }
+
+    introScene = buildIntro3D();
+    if (!introScene) fallbackIntroSvg();
+
+    var tl = introTl = gsap.timeline({ onComplete: finishIntro });
+    tl.to("#introLine", { scaleX: 1, duration: 3.1, ease: "power2.inOut" }, 0);
+    if (introScene) {
+      introScene.blocks.forEach(function (b, i) {
+        var h = b.userData.home;
+        tl.to(b.position, { x: h.x, y: h.y, z: 0, duration: 1.1, ease: "bounce.out" }, 0.15 + i * 0.12)
+          .to(b.rotation, { x: 0, y: 0, z: 0, duration: 1.0, ease: "back.out(1.6)" }, 0.15 + i * 0.12);
+      });
+      tl.to(introScene.ao.material, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0.6);
+      introScene.beams.forEach(function (bm, i) { tl.to(bm.scale, { x: 1, duration: 0.9, ease: "expo.out" }, 1.1 + i * 0.12); });
+      tl.to(introScene.glow.material, { opacity: 0.9, duration: 1.2, ease: "power2.out" }, 1.2)
+        .to(introScene.roofLight, { intensity: 2.4, duration: 1.2, ease: "power2.out" }, 1.2)
+        .to(introScene.camera.position, { y: 0.6, duration: 3.2, ease: "power2.inOut" }, 0);
+    }
+    tl.to(".intro-name .ch", { yPercent: -110, duration: 0.9, ease: "expo.out", stagger: 0.045 }, 1.5)
+      .to(".intro-sub", { opacity: 1, duration: 1, ease: "expo.out" }, 1.9)
+      .to({}, { duration: Math.max(0, SITE.INTRO_HOLD - 2.4) });
+    if (introScene) tl.to(introScene.camera.position, { z: "-=4", duration: 0.9, ease: "power3.in" }, ">-0.1");
+  }
+
+  /* ---------------------------------------------------------------
+     HERO: entrata dei testi + parole che ruotano
+     --------------------------------------------------------------- */
+  var heroStarted = false;
+  function heroIn(delay) {
+    if (heroStarted) return; heroStarted = true;
+    if (!hasGsap || reduced) return;
+    var tl = gsap.timeline({ delay: delay || 0 });
+    tl.from("#heroMedia", { scale: 1.12, duration: 2.2, ease: "expo.out" }, 0)
+      .from("#heroTitle .wi", { yPercent: 115, rotate: 5, duration: 1.3, ease: "expo.out", stagger: 0.06 }, 0.15)
+      .from(".hero .h-rise", { y: 34, opacity: 0, duration: 1.1, ease: "expo.out", stagger: 0.1 }, 0.45)
+      .from("#bar", { yPercent: -100, opacity: 0, duration: 1, ease: "expo.out", clearProps: "transform,opacity" }, 0.5);
+  }
+  (function rotator() {
+    var items = $$("#rot > span");
+    if (!items.length) return;
+    if (!hasGsap || reduced) { items.forEach(function (s, i) { if (i) s.style.visibility = "hidden"; }); return; }
+    gsap.set(items, { yPercent: 110 }); gsap.set(items[0], { yPercent: 0 });
+    var i = 0;
+    setInterval(function () {
+      var cur = items[i]; i = (i + 1) % items.length; var nxt = items[i];
+      gsap.to(cur, { yPercent: -110, duration: 0.8, ease: "expo.inOut" });
+      gsap.fromTo(nxt, { yPercent: 110 }, { yPercent: 0, duration: 0.8, ease: "expo.inOut" });
+    }, 2600);
+  })();
+
+  /* ---------------------------------------------------------------
+     HERO WebGL: la foto 8K della piscina con onde d'acqua al mouse (GLSL)
+     --------------------------------------------------------------- */
+  (function heroWater() {
+    var canvas = $("#heroGl"), img = $("#heroImg"), hero = $("#home");
+    if (!W.THREE || !canvas || !img || reduced) return;
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true, powerPreference: "high-performance" }); } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(W.devicePixelRatio || 1, 1.75));
+    var scene = new THREE.Scene(), cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    var N = 14, drops = [];
+    for (var i = 0; i < N; i++) drops.push(new THREE.Vector4(0, 0, -100, 0));
+    var U = {
+      uTex: { value: null }, uRes: { value: new THREE.Vector2(1, 1) }, uImg: { value: new THREE.Vector2(4, 3) },
+      uTime: { value: 0 }, uDrops: { value: drops }, uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+      uScroll: { value: 0 }, uStrength: { value: SITE.RIPPLE_STRENGTH }, uPos: { value: new THREE.Vector2(0.3, 0.45) },
+    };
+    var mat = new THREE.ShaderMaterial({
+      uniforms: U, transparent: true,
+      vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+      fragmentShader: [
+        "precision highp float;",
+        "#define N 14",
+        "uniform sampler2D uTex; uniform vec2 uRes; uniform vec2 uImg; uniform float uTime; uniform vec4 uDrops[N];",
+        "uniform vec2 uMouse; uniform float uScroll; uniform float uStrength; uniform vec2 uPos; varying vec2 vUv;",
+        // UV "cover" come object-fit: cover con object-position
+        "vec2 coverUv(vec2 uv){ float rs = uRes.x/uRes.y, ri = uImg.x/uImg.y; vec2 s = rs > ri ? vec2(1.0, ri/rs) : vec2(rs/ri, 1.0);",
+        "  vec2 off = (1.0 - s) * vec2(uPos.x, 1.0 - uPos.y); return uv * s + off; }",
+        "float hash(vec2 p){ return fract(sin(dot(p, vec2(41.3, 289.1))) * 43758.5); }",
+        "float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);",
+        "  return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y); }",
+        "void main(){",
+        "  float zoom = 1.0 + uScroll * 0.12;",
+        "  vec2 uv = (vUv - 0.5) / zoom + 0.5;",
+        "  vec2 asp = vec2(uRes.x/uRes.y, 1.0);",
+        "  vec2 disp = vec2(0.0); float slope = 0.0;",
+        "  for(int i=0;i<N;i++){",
+        "    vec4 d = uDrops[i]; float age = uTime - d.z; if(age < 0.0 || age > 4.0) continue;",
+        "    vec2 dv = (uv - d.xy) * asp; float r = length(dv);",
+        "    float front = age * 0.32;",                                    // il fronte d'onda che si allarga
+        "    float env = exp(-age * 1.15) * smoothstep(front + 0.08, front - 0.02, r) * exp(-r * 2.2);",
+        "    float w = sin(r * 70.0 - age * 9.0) * env * d.w;",
+        "    disp += normalize(dv + 1e-5) * w; slope += cos(r * 70.0 - age * 9.0) * env * d.w;",
+        "  }",
+        // leggero luccichio continuo nella zona dell'acqua (parte bassa-centrale dell'immagine)
+        "  vec2 iuv = coverUv(uv);",
+        "  float ft = 1.0 - iuv.y; float water = smoothstep(0.38, 0.5, ft) * smoothstep(0.92, 0.8, ft) * smoothstep(0.12, 0.3, iuv.x);",
+        "  vec2 n2 = vec2(noise(iuv * 18.0 + uTime * 0.35), noise(iuv * 18.0 - uTime * 0.3 + 7.0)) - 0.5;",
+        "  disp += n2 * 0.0035 * water;",
+        "  disp *= 0.016 * uStrength;",
+        "  vec2 cuv = coverUv(uv + disp);",
+        "  float ca = length(disp) * 0.6;",                                // aberrazione cromatica proporzionale all'onda
+        "  vec3 col; col.r = texture2D(uTex, cuv + vec2(ca, 0.0)).r; col.g = texture2D(uTex, cuv).g; col.b = texture2D(uTex, cuv - vec2(ca, 0.0)).b;",
+        "  col += vec3(1.0, 0.86, 0.7) * pow(max(slope, 0.0), 2.0) * 0.18 * uStrength;",   // riflessi di luce sulle creste
+        "  vec2 m = (uv - uMouse) * asp; col += vec3(1.0, 0.75, 0.5) * 0.06 * exp(-dot(m, m) * 9.0);", // luce dinamica che segue il mouse
+        "  col *= 1.0 - uScroll * 0.35;",
+        "  gl_FragColor = vec4(col, 1.0);",
+        "}",
+      ].join("\n"),
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    function size() {
+      var r = hero.getBoundingClientRect();
+      renderer.setSize(r.width, r.height, false);
+      U.uRes.value.set(r.width, r.height);
+      var sq = r.width / r.height < 1;
+      U.uPos.value.set(sq ? 0.56 : 0.3, 0.55);
+    }
+    size(); W.addEventListener("resize", size);
+
+    // Texture: la versione più grande che la GPU supporta, fino all'8K
+    var maxTex = renderer.capabilities.maxTextureSize || 4096;
+    function pickSrc() {
+      var need = Math.max(W.innerWidth, W.innerHeight * 4 / 3) * Math.min(W.devicePixelRatio || 1, 2);
+      var list = [[1920, "img/pool-1920.jpg"], [2560, "img/pool-2560.jpg"], [3840, "img/pool-3840.jpg"], [5120, "img/pool-5120.jpg"], [7680, "img/pool-7680.jpg"]];
+      var pick = list[0];
+      for (var i = 0; i < list.length; i++) { if (list[i][0] <= maxTex) pick = list[i]; if (list[i][0] >= need && list[i][0] <= maxTex) { pick = list[i]; break; } }
+      return pick[1];
+    }
+    new THREE.TextureLoader().load(pickSrc(), function (tex) {
+      tex.minFilter = THREE.LinearFilter; tex.generateMipmaps = false;
+      U.uTex.value = tex; U.uImg.value.set(tex.image.width, tex.image.height);
+      canvas.classList.add("ready");
+    });
+
+    var di = 0, lastX = -1, lastY = -1, lastT = 0, visible = true;
+    function addDrop(x, y, s) { drops[di].set(x, y, U.uTime.value, s); di = (di + 1) % N; }
+    function local(e) { var r = hero.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height]; }
+    hero.addEventListener("pointermove", function (e) { var p = local(e); U.uMouse.value.set(p[0], p[1]); }, { passive: true });
+    if ("IntersectionObserver" in W) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(hero);
+
+    var last = performance.now();
+    (function loop(now) {
+      var dt = Math.min((now - last) / 1000, 0.05); last = now;
+      if (visible) {
+        U.uTime.value += dt;
+        U.uScroll.value = clamp(W.pageYOffset / (W.innerHeight || 1), 0, 1);
+        renderer.render(scene, cam);
+      }
+      requestAnimationFrame(loop);
+    })(last);
+  })();
+
+  /* ---------------------------------------------------------------
+     INVITO: sfondo "lava arancio" in GLSL che reagisce al mouse
+     --------------------------------------------------------------- */
+  (function lava() {
+    var canvas = $("#ctaGl"), sec = $("#invito");
+    if (!W.THREE || !canvas || reduced) return;
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: false }); } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(W.devicePixelRatio || 1, 1.25));
+    var scene = new THREE.Scene(), cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    var U = { uT: { value: 0 }, uR: { value: new THREE.Vector2(1, 1) }, uM: { value: new THREE.Vector2(0.5, 0.5) } };
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+      uniforms: U,
+      vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+      fragmentShader: [
+        "precision highp float; uniform float uT; uniform vec2 uR; uniform vec2 uM; varying vec2 vUv;",
+        "float h(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }",
+        "float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }",
+        "float fbm(vec2 p){ float v=0.0, a=0.5; for(int i=0;i<5;i++){ v+=a*n(p); p=p*2.03+vec2(1.7,9.2); a*=0.5; } return v; }",
+        "void main(){",
+        "  vec2 p = vUv * vec2(uR.x/uR.y, 1.0) * 2.2;",
+        "  vec2 m = (uM - 0.5) * 0.6;",
+        "  vec2 q = vec2(fbm(p + uT * 0.06), fbm(p + vec2(5.2, 1.3) - uT * 0.05));",
+        "  vec2 r = vec2(fbm(p + 3.0 * q + m + vec2(1.7, 9.2) + uT * 0.08), fbm(p + 3.0 * q - m + vec2(8.3, 2.8)));",
+        "  float f = fbm(p + 3.0 * r);",
+        "  vec3 c1 = vec3(0.62, 0.24, 0.04), c2 = vec3(0.85, 0.41, 0.10), c3 = vec3(0.98, 0.66, 0.38), c4 = vec3(0.10, 0.12, 0.17);",
+        "  vec3 col = mix(c1, c2, smoothstep(0.2, 0.7, f));",
+        "  col = mix(col, c3, smoothstep(0.55, 0.95, length(q)) * 0.55);",
+        "  col = mix(col, c4, smoothstep(0.75, 1.1, r.x) * 0.35);",
+        "  vec2 d = (vUv - uM) * vec2(uR.x/uR.y, 1.0); col += vec3(1.0, 0.8, 0.6) * 0.12 * exp(-dot(d, d) * 6.0);",
+        "  gl_FragColor = vec4(col * 0.92, 1.0);",
+        "}",
+      ].join("\n"),
+    })));
+    function size() { var r = sec.getBoundingClientRect(); renderer.setSize(r.width, r.height, false); U.uR.value.set(r.width, r.height); }
+    size(); W.addEventListener("resize", size);
+    var vis = false, tm = new THREE.Vector2(0.5, 0.5);
+    sec.addEventListener("pointermove", function (e) { var r = sec.getBoundingClientRect(); tm.set((e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height); }, { passive: true });
+    if ("IntersectionObserver" in W) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(sec); else vis = true;
+    var last = performance.now();
+    (function loop(now) {
+      var dt = Math.min((now - last) / 1000, 0.05); last = now;
+      if (vis) { U.uT.value += dt; U.uM.value.lerp(tm, 0.05); renderer.render(scene, cam); }
+      requestAnimationFrame(loop);
+    })(last);
+  })();
+
+  /* ---------------------------------------------------------------
+     SCROLL CINEMATOGRAFICO (GSAP ScrollTrigger)
+     --------------------------------------------------------------- */
+  var bar = $("#bar");
+  (function headerAndProgress() {
+    function onScroll() {
+      bar.classList.toggle("solid", W.pageYOffset > 24);
+    }
+    W.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  })();
+
+  /* Menu: testo che rotola + menu mobile */
+  $$(".menu a:not(.btn)").forEach(function (a) {
+    var t = a.textContent.trim(); a.textContent = "";
+    var r = D.createElement("span"); r.className = "roll";
+    var s1 = D.createElement("span"); s1.textContent = t;
+    var s2 = D.createElement("span"); s2.textContent = t; s2.setAttribute("aria-hidden", "true");
+    r.appendChild(s1); r.appendChild(s2); a.appendChild(r);
+  });
+  var burger = $("#burger"), menu = $("#menu");
+  function setMenu(open) {
+    bar.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Chiudi il menu" : "Apri il menu");
+    if (open && hasGsap) gsap.from("#menu > a", { y: 20, opacity: 0, duration: 0.6, ease: "expo.out", stagger: 0.05 });
+  }
+  burger.addEventListener("click", function () { setMenu(!bar.classList.contains("open")); });
+  $$("a", menu).forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+
+  if (hasGsap && W.ScrollTrigger && !reduced) {
+    var mm = gsap.matchMedia();
+
+    // Titoli: parole che salgono dalla maschera
+    $$("[data-split]").forEach(function (el) {
+      gsap.from($$(".wi", el), { yPercent: 115, rotate: 5, duration: 1.2, ease: "expo.out", stagger: 0.06,
+        scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+    });
+    // Blocchi che compaiono a gruppi
+    gsap.set("[data-r]", { opacity: 0 });
+    ScrollTrigger.batch("[data-r]", {
+      start: "top 88%", once: true,
+      onEnter: function (els) { gsap.fromTo(els, { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.09, overwrite: true }); },
+    });
+
+    // Hero: testo che si allontana e immagine che va in profondità
+    gsap.to("#heroCopy", { yPercent: 18, opacity: 0, ease: "none", scrollTrigger: { trigger: "#home", start: "top top", end: "bottom 30%", scrub: true } });
+    gsap.to("#heroMedia", { yPercent: 14, ease: "none", scrollTrigger: { trigger: "#home", start: "top top", end: "bottom top", scrub: true } });
+
+    // Fascia arancio: velocità e inclinazione guidate dallo scroll
+    $$(".marq-track").forEach(function (t, i) {
+      var g = t.firstElementChild; for (var k = 0; k < 3; k++) t.appendChild(g.cloneNode(true));
+      var dir = i ? 1 : -1;
+      var loop = gsap.fromTo(t, { xPercent: dir < 0 ? 0 : -50 }, { xPercent: dir < 0 ? -50 : 0, duration: i ? 70 : 50, ease: "none", repeat: -1 });
+      ScrollTrigger.create({ trigger: ".marq", start: "top bottom", end: "bottom top", onUpdate: function (self) {
+        var v = self.getVelocity();
+        gsap.to(loop, { timeScale: 1 + Math.min(8, Math.abs(v) / 300), duration: 0.3, overwrite: true });
+        gsap.to(t, { skewX: clamp(-v / 400, -8, 8), duration: 0.4, ease: "power3.out", overwrite: "auto" });
+        gsap.to(loop, { timeScale: 1, duration: 1.2, delay: 0.3, ease: "power3.out" });
+      } });
+    });
+
+    // Manifesto: le parole si accendono mentre scorri
+    var mani = $("#maniText");
+    if (mani) {
+      var words = mani.textContent.trim().split(/\s+/); mani.setAttribute("aria-label", mani.textContent.trim()); mani.textContent = "";
+      words.forEach(function (w, i) { var s = D.createElement("span"); s.className = "mw"; s.setAttribute("aria-hidden", "true"); s.textContent = w; mani.appendChild(s); if (i < words.length - 1) mani.appendChild(D.createTextNode(" ")); });
+      gsap.fromTo(".mw", { opacity: 0.16 }, { opacity: 1, ease: "none", stagger: 0.05, scrollTrigger: { trigger: mani, start: "top 80%", end: "bottom 45%", scrub: 0.6 } });
+    }
+
+    // Opere: galleria bloccata con scorrimento orizzontale (desktop)
+    var rail = $("#rail"), fill = $("#railFill"), now = $("#railNow"), pieces = $$(".piece");
+    mm.add("(min-width: 1000px) and (min-height: 620px) and (hover: hover) and (pointer: fine)", function () {
+      R.classList.add("pin");
+      var dist = function () { return Math.max(0, rail.scrollWidth - W.innerWidth + 64); };
+      var tween = gsap.to(rail, { x: function () { return -dist(); }, ease: "none",
+        scrollTrigger: { trigger: "#showPin", start: "top top", end: function () { return "+=" + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true,
+          onUpdate: function (self) {
+            fill.style.transform = "scaleX(" + (0.12 + 0.88 * self.progress) + ")";
+            now.textContent = ("0" + Math.min(5, 1 + Math.floor(self.progress * 5))).slice(-2);
+            gsap.to(".rail .piece, .rail .piece-end", { skewX: clamp(-self.getVelocity() / 600, -4, 4), duration: 0.4, overwrite: "auto" });
+          },
+          onLeave: function () { gsap.to(".rail .piece, .rail .piece-end", { skewX: 0, duration: 0.6 }); } } });
+      pieces.forEach(function (p) {
+        gsap.fromTo($("img", p), { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: p, containerAnimation: tween, start: "left right", end: "right left", scrub: true } });
+      });
+      gsap.to("#bgword", { xPercent: -30, ease: "none", scrollTrigger: { trigger: "#showPin", start: "top top", end: function () { return "+=" + dist(); }, scrub: true } });
+      return function () { R.classList.remove("pin"); gsap.set(rail, { x: 0 }); };
+    });
+    mm.add("(max-width: 999px), (max-height: 619px), (hover: none)", function () {
+      var upd = function () { var max = rail.scrollWidth - rail.clientWidth, p = max > 0 ? rail.scrollLeft / max : 0; fill.style.transform = "scaleX(" + (0.12 + 0.88 * p) + ")"; now.textContent = ("0" + Math.min(5, 1 + Math.round(p * 4))).slice(-2); };
+      rail.addEventListener("scroll", upd, { passive: true }); upd();
+      gsap.to("#bgword", { xPercent: -25, ease: "none", scrollTrigger: { trigger: "#lavori", start: "top bottom", end: "bottom top", scrub: true } });
+      return function () { rail.removeEventListener("scroll", upd); };
+    });
+
+    // Chi siamo: parallasse delle foto e blocco arancio che si apre
+    $$("[data-par]").forEach(function (im) {
+      gsap.fromTo(im, { yPercent: 0 }, { yPercent: parseFloat(im.getAttribute("data-par")), ease: "none", scrollTrigger: { trigger: im.parentNode, start: "top bottom", end: "bottom top", scrub: true } });
+    });
+    gsap.from(".about-block", { scaleX: 0, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: "#aboutMedia", start: "top 75%", once: true } });
+    gsap.fromTo(".about-main, .about-sub", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "expo.inOut", stagger: 0.15, scrollTrigger: { trigger: "#aboutMedia", start: "top 78%", once: true } });
+
+    // Metodo: linea che avanza e numeri che si accendono
+    var sli = $$("#steps li");
+    gsap.to("#stepsLine", { scaleX: 1, ease: "none", scrollTrigger: { trigger: "#steps", start: "top 80%", end: "top 30%", scrub: 0.5,
+      onUpdate: function (self) { sli.forEach(function (li, i) { li.classList.toggle("lit", self.progress >= i / sli.length + 0.04); }); } } });
+    mm.add("(max-width: 799px)", function () {
+      sli.forEach(function (li) { ScrollTrigger.create({ trigger: li, start: "top 70%", onEnter: function () { li.classList.add("lit"); }, onLeaveBack: function () { li.classList.remove("lit"); } }); });
+    });
+
+    // Footer: il marchio si riempie di arancio
+    gsap.to("#wordmark", { backgroundSize: "100% 100%", ease: "none", scrollTrigger: { trigger: "#wordmark", start: "top 95%", end: "bottom 70%", scrub: true } });
+  } else {
+    // Senza GSAP o con movimento ridotto: tutto visibile, galleria a scorrimento normale
+    $$(".marq-track").forEach(function (t) { var g = t.firstElementChild; for (var k = 0; k < 3; k++) t.appendChild(g.cloneNode(true)); });
+    $$("#steps li").forEach(function (li) { li.classList.add("lit"); });
+    $("#wordmark").style.backgroundSize = "100% 100%";
+  }
+
+  /* ---------------------------------------------------------------
+     MICRO-INTERAZIONI (molle stile Framer Motion)
+     --------------------------------------------------------------- */
+  if (fine && !reduced) {
+    // Pulsanti magnetici + luce interna
+    $$(".magnetic, .btn").forEach(function (b) {
+      b.addEventListener("pointermove", function (e) {
+        var r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        b.style.setProperty("--mx", x + "px"); b.style.setProperty("--my", y + "px");
+        if (b.classList.contains("magnetic")) spring(b, { x: (x - r.width / 2) * SITE.MAGNET, y: (y - r.height / 2) * SITE.MAGNET * 1.3 }, { stiffness: 220, damping: 14 });
+      });
+      b.addEventListener("pointerleave", function () { if (b.classList.contains("magnetic")) spring(b, { x: 0, y: 0 }, { stiffness: 180, damping: 10 }); });
+    });
+    // Schede: inclinazione 3D + luce dinamica
+    $$(".tilt, .piece-img").forEach(function (c) {
+      c.addEventListener("pointermove", function (e) {
+        var r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        c.style.setProperty("--cx", (px * 100) + "%"); c.style.setProperty("--cy", (py * 100) + "%");
+        c.style.setProperty("--gx", (px * 100) + "%"); c.style.setProperty("--gy", (py * 100) + "%");
+        spring(c, { rotateY: (px - 0.5) * SITE.TILT, rotateX: -(py - 0.5) * SITE.TILT, transformPerspective: 900 }, { stiffness: 200, damping: 20 });
+      });
+      c.addEventListener("pointerleave", function () { spring(c, { rotateY: 0, rotateX: 0 }, { stiffness: 160, damping: 14 }); });
+    });
+
+    // Cursore che segue il mouse
+    var cur = D.createElement("div"); cur.className = "cur"; cur.setAttribute("aria-hidden", "true");
+    var dot = D.createElement("div"); dot.className = "cur-d"; dot.setAttribute("aria-hidden", "true");
+    D.body.appendChild(cur); D.body.appendChild(dot);
+    var qx = hasGsap ? gsap.quickTo(cur, "x", { duration: 0.5, ease: "power3.out" }) : null, qy = hasGsap ? gsap.quickTo(cur, "y", { duration: 0.5, ease: "power3.out" }) : null;
+    W.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse") return;
+      R.classList.add("cc");
+      if (qx) { qx(e.clientX); qy(e.clientY); } else cur.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)";
+      dot.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)";
+    }, { passive: true });
+    R.addEventListener("pointerleave", function () { R.classList.remove("cc"); });
+    D.addEventListener("pointerover", function (e) {
+      var t = e.target.closest ? e.target.closest("a,button,label,.piece-img,#home") : null;
+      var z = t && t.matches(".piece-img"), water = t && t.id === "home";
+      cur.className = "cur" + (t && !water ? (z ? " t" : " h") : "");
+      cur.textContent = z ? "Apri" : "";
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     Lightbox
+     --------------------------------------------------------------- */
+  var lb = $("#lb"), lbImg = $("#lb-img"), lbCat = $("#lb-cat"), lbTitle = $("#lb-title");
+  var pieces = $$(".piece"), idx = 0, opener = null;
+  function showLb() {
+    var w = pieces[idx], img = $("img", w);
+    lbImg.removeAttribute("src"); lbImg.sizes = "100vw"; lbImg.srcset = img.getAttribute("srcset"); lbImg.src = img.getAttribute("src"); lbImg.alt = img.getAttribute("alt");
+    lbCat.textContent = $("small", w).textContent; lbTitle.textContent = $("h3", w).textContent;
+    if (hasGsap) gsap.fromTo(lbImg, { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "expo.out" });
+  }
+  function openLb(i) { idx = i; opener = D.activeElement; showLb(); lb.hidden = false; if (lenis) lenis.stop(); $("#lb-x").focus(); }
+  function closeLb() { lb.hidden = true; if (lenis) lenis.start(); if (opener && opener.focus) opener.focus(); }
+  function step(d) { idx = (idx + d + pieces.length) % pieces.length; showLb(); }
+  pieces.forEach(function (w, i) { $(".piece-img", w).addEventListener("click", function () { openLb(i); }); });
+  $("#lb-x").addEventListener("click", closeLb);
+  $("#lb-p").addEventListener("click", function () { step(-1); });
+  $("#lb-n").addEventListener("click", function () { step(1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.id === "lb-stage") closeLb(); });
+
+  /* ---------------------------------------------------------------
+     Modulo contatti → messaggio WhatsApp
+     --------------------------------------------------------------- */
+  var sendA = $("#wa-send");
+  function updateSend() {
+    var name = $("#f-name").value.trim(), job = $("#f-job").value, place = $("#f-place").value.trim(), msg = $("#f-msg").value.trim();
+    sendA.href = waLink("Buongiorno, sono " + (name || "un nuovo cliente") + ". Vorrei richiedere un sopralluogo per: " + job + "." + (place ? " Immobile a: " + place + "." : "") + (msg ? " " + msg : ""));
+  }
+  ["#f-name", "#f-job", "#f-place", "#f-msg"].forEach(function (s) { $(s).addEventListener("input", updateSend); $(s).addEventListener("change", updateSend); });
+  $("#form").addEventListener("submit", function (e) { e.preventDefault(); });
+  updateSend();
+
+  var copyBtn = $("#copy");
+  copyBtn.addEventListener("click", function () {
+    var txt = $("#numtxt").textContent;
+    function ok() { copyBtn.textContent = "Copiato"; setTimeout(function () { copyBtn.textContent = "Copia"; }, 1800); }
+    function sel() { var r = D.createRange(); r.selectNodeContents($("#numtxt")); var s = W.getSelection(); s.removeAllRanges(); s.addRange(r); copyBtn.textContent = "Selezionato"; }
+    try { navigator.clipboard.writeText(txt).then(ok, sel); } catch (err) { sel(); }
+  });
+
+  /* ---------------------------------------------------------------
+     Informative legali
+     --------------------------------------------------------------- */
+  var legal = $("#legal"), legalBody = $("#legal-body"), legalTitle = $("#legal-title"), legalScroll = $("#legal-scroll"), legalOpener = null;
+  function openLegal(kind, from) {
+    var t = $("#t-" + kind); if (!t) return;
+    legalBody.textContent = ""; legalBody.appendChild(t.content.cloneNode(true));
+    legalTitle.textContent = kind === "privacy" ? "Informativa sulla privacy" : "Cookie Policy";
+    if (legal.hidden) legalOpener = from || D.activeElement;
+    legal.hidden = false; legalScroll.scrollTop = 0; if (lenis) lenis.stop(); $("#legal-x").focus();
+  }
+  function closeLegal() { legal.hidden = true; if (lenis) lenis.start(); if (legalOpener && legalOpener.focus) legalOpener.focus(); }
+  D.addEventListener("click", function (e) { var b = e.target.closest ? e.target.closest("[data-legal]") : null; if (b) { e.preventDefault(); openLegal(b.getAttribute("data-legal"), b); } });
+  $("#legal-x").addEventListener("click", closeLegal);
+  legal.addEventListener("click", function (e) { if (e.target === legal) closeLegal(); });
+
+  /* =================================================================
+     CHATBOT: percorso guidato WhatsApp (con i numeri) + assistente AI
+     ================================================================= */
+  var fab = $("#wa-fab"), panel = $("#wa-panel"), log = $("#wa-log"), ctl = $("#wa-ctl"), teaser = $("#teaser"), bars = $$("#wa-steps i");
+  var tabGuide = $("#tab-guide"), tabAi = $("#tab-ai"), stepsBar = $("#wa-steps");
+  var WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.5A8.4 8.4 0 1 1 21 11.5Z"/></svg>';
+  var mode = "guide", data = {}, session = 0, lastOpener = null;
+  var guideLog = [], aiTurns = [], aiBusy = false, aiCtl = null;
+
+  function progress(n) { bars.forEach(function (b, i) { b.className = i < n ? "on" : ""; }); }
+  function scrollLog() { log.scrollTop = log.scrollHeight; }
+  function pop(el) {
+    if (reduced) return;
+    var me = el.classList.contains("me");
+    if (M && M.animate) { try { M.animate(el, { opacity: [0, 1], y: [12, 0], scale: [0.94, 1] }, { type: "spring", stiffness: 380, damping: 26 }); return; } catch (e) {} }
+    if (hasGsap) gsap.from(el, { opacity: 0, y: 12, scale: 0.94, transformOrigin: me ? "100% 100%" : "0 100%", duration: 0.6, ease: "back.out(1.8)" });
+  }
+  function bubble(text, who, cls) {
+    var d = D.createElement("div"); d.className = "msg " + who + (cls ? " " + cls : "");
+    var sp = D.createElement("span"); sp.className = "sr-only"; sp.textContent = who === "me" ? "Tu: " : "Real E Group: ";
+    d.appendChild(sp); d.appendChild(D.createTextNode(text));
+    log.appendChild(d); pop(d); scrollLog(); return d;
+  }
+  function thinking(label) { var t = D.createElement("div"); t.className = "thinking"; t.setAttribute("aria-hidden", "true"); t.textContent = label || "Sto scrivendo…"; log.appendChild(t); scrollLog(); return t; }
+  function bot(text, cb) {
+    var my = session, t = thinking();
+    setTimeout(function () { if (my !== session) return; if (t.parentNode) t.parentNode.removeChild(t); bubble(text, "bot"); if (cb) cb(); }, reduced ? 0 : 650);
+  }
+  function clearCtl() { ctl.textContent = ""; }
+  function focusFirst() { var f = ctl.querySelector("input, button, a"); if (f) f.focus({ preventScroll: true }); }
+  function quick(items, cb, cls) {
+    clearCtl();
+    var w = D.createElement("div"); w.className = "chips"; w.setAttribute("role", "group"); w.setAttribute("aria-label", "Scegli una risposta");
+    items.forEach(function (t, i) {
+      var b = D.createElement("button"); b.type = "button"; b.className = "qr" + (cls ? " " + cls : ""); b.textContent = t;
+      b.addEventListener("click", function () { clearCtl(); bubble(t, "me"); cb(t); });
+      w.appendChild(b);
+      if (hasGsap && !reduced) gsap.from(b, { y: 10, opacity: 0, duration: 0.5, delay: i * 0.05, ease: "back.out(2)" });
+    });
+    ctl.appendChild(w); focusFirst();
+  }
+  function ask(o, cb) {
+    clearCtl();
+    var f = D.createElement("form"); f.className = "ask"; f.noValidate = true;
+    var l = D.createElement("label"); l.htmlFor = "wa-input"; l.textContent = o.label;
+    var row = D.createElement("div"); row.className = "ask-row";
+    var i = D.createElement("input"); i.type = o.type || "text"; i.id = "wa-input"; i.placeholder = o.placeholder || ""; i.autocomplete = o.autocomplete || "off"; i.setAttribute("enterkeyhint", "send");
+    if (o.inputmode) i.setAttribute("inputmode", o.inputmode);
+    var b = D.createElement("button"); b.type = "submit"; b.className = "go" + (o.ai ? " ai-go" : ""); b.textContent = o.button || "Invia";
+    var err = D.createElement("p"); err.className = "err"; err.id = "wa-err"; err.setAttribute("role", "alert");
+    row.appendChild(i); row.appendChild(b); f.appendChild(l); f.appendChild(row); f.appendChild(err);
+    if (o.optional) { var sk = D.createElement("button"); sk.type = "button"; sk.className = "skip"; sk.textContent = "Salta questo passaggio"; sk.addEventListener("click", function () { clearCtl(); bubble("Salto", "me"); cb(""); }); f.appendChild(sk); }
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = i.value.replace(/\s+/g, " ").trim();
+      var bad = (!v && !o.optional) || (v && o.min && v.length < o.min) || (v && o.pattern && !o.pattern.test(v));
+      if (bad) { i.setAttribute("aria-invalid", "true"); i.setAttribute("aria-describedby", "wa-err"); err.textContent = o.error || "Controlla il valore inserito."; i.focus(); return; }
+      if (!o.keep) { clearCtl(); bubble(v || "Salto", "me"); } else { i.value = ""; }
+      cb(v);
+    });
+    ctl.appendChild(f); focusFirst();
+    return { input: i, form: f };
+  }
+
+  /* ---- Percorso guidato (sopralluogo su WhatsApp) ---- */
+  var JOBS = ["Ristrutturazione chiavi in mano", "Villa o casa nuova", "Muro in pietra", "Facciate, tetti o altro"];
+  function startGuide(job) {
+    session++; log.textContent = ""; clearCtl(); progress(0); data = {};
+    bot("Ciao! Sono l'assistente di Real E Group. Ti faccio poche domande e preparo il messaggio per il nostro team: lo invii tu su WhatsApp con un tocco.", function () {
+      if (job) { data.job = job; bubble(job, "me"); progress(1); askPlace(); return; }
+      bot("Che tipo di lavoro hai in mente?", function () { quick(JOBS, function (t) { data.job = t; progress(1); askPlace(); }); });
+    });
+  }
+  function askPlace() { bot("Dove si trova l'immobile?", function () { ask({ label: "Località o indirizzo", placeholder: "Es. Alassio, via Roma", autocomplete: "address-level2", min: 2, error: "Scrivi almeno la città o la zona." }, function (v) { data.place = v; progress(2); askDetails(); }); }); }
+  function askDetails() { bot("Vuoi aggiungere qualche dettaglio? Ad esempio metri quadri, stato dell'immobile o cosa vuoi realizzare.", function () { ask({ label: "Dettagli (facoltativo)", placeholder: "Es. appartamento di 90 mq da rifare", optional: true }, function (v) { data.details = v; progress(3); askWhen(); }); }); }
+  function askWhen() { bot("Quando vorresti iniziare?", function () { quick(["Appena possibile", "Entro 3 mesi", "Sto solo valutando"], function (t) { data.when = t; progress(4); askName(); }); }); }
+  function askName() { bot("Come ti chiami?", function () { ask({ label: "Nome e cognome", placeholder: "Nome e cognome", autocomplete: "name", min: 2, error: "Scrivi il tuo nome." }, function (v) { data.name = v; askPhone(); }); }); }
+  function askPhone() { bot("Vuoi lasciare un numero per essere richiamato? Se scrivi da WhatsApp ci arriva già il tuo numero.", function () { ask({ label: "Telefono (facoltativo)", placeholder: "Es. 333 1234567", type: "tel", autocomplete: "tel", inputmode: "tel", optional: true, pattern: /^[+()\d\s.-]{6,20}$/, error: "Inserisci un numero valido, oppure salta." }, function (v) { data.phone = v; finishGuide(); }); }); }
+  function buildMessage() {
+    var m = "Buongiorno Real E Group, sono " + data.name + ".\nVorrei richiedere un sopralluogo.\n\nLavoro: " + data.job + "\nImmobile a: " + data.place + "\n";
+    if (data.details) m += "Dettagli: " + data.details + "\n";
+    m += "Quando: " + data.when + "\n"; if (data.phone) m += "Telefono: " + data.phone + "\n";
+    return m + "\nGrazie!";
+  }
+  function finishGuide() {
+    progress(5);
+    var text = buildMessage();
+    bot("Perfetto " + data.name.split(" ")[0] + "! Ecco il riepilogo. Controllalo e premi il pulsante: si apre WhatsApp con il messaggio già scritto, devi solo inviarlo.", function () {
+      bubble(text, "bot", "sum"); clearCtl();
+      var a = D.createElement("a"); a.className = "cta"; a.href = waLink(text); a.target = "_blank"; a.rel = "noopener";
+      a.innerHTML = WA_ICON + "<span>Invia su WhatsApp</span><span class=\"sr-only\"> (si apre in una nuova scheda)</span>"; ctl.appendChild(a);
+      var row = D.createElement("div"); row.className = "chips";
+      var c = D.createElement("button"); c.type = "button"; c.className = "wa-sec"; c.textContent = "Copia messaggio";
+      c.addEventListener("click", function () { var done = function () { c.textContent = "Copiato ✓"; }; try { navigator.clipboard.writeText(text).then(done, function () { c.textContent = "Selezionalo e copialo"; }); } catch (err) { c.textContent = "Selezionalo e copialo"; } });
+      var r = D.createElement("button"); r.type = "button"; r.className = "wa-sec"; r.textContent = "Ricomincia"; r.addEventListener("click", function () { startGuide(); });
+      row.appendChild(c); row.appendChild(r); ctl.appendChild(row);
+      var h = D.createElement("p"); h.className = "hint"; h.textContent = "Se WhatsApp non si apre, copia il messaggio e scrivi al +39 393 351 8858."; ctl.appendChild(h);
+      a.focus({ preventScroll: true });
+    });
+  }
+
+  /* ---- Assistente AI basato SOLO sulla scheda azienda ---- */
+  var AI_RULES = [
+    "Sei l'assistente virtuale del sito di Real E Group, impresa edile di Alassio.",
+    "Rispondi SOLO con le informazioni della SCHEDA AZIENDA qui sotto. Non usare conoscenze esterne e non inventare nulla:",
+    "niente prezzi, tempi precisi, certificazioni, nomi di persone, anni di attività o lavori non elencati.",
+    "Se la scheda non contiene la risposta, dillo con una frase e invita a contattare l'impresa su WhatsApp o al +39 393 351 8858.",
+    "Se la domanda non riguarda l'impresa, i suoi servizi o il sito, spiega gentilmente che puoi rispondere solo su Real E Group.",
+    "Rispondi nella lingua della domanda (di solito italiano), con tono cortese e professionale, al massimo 4 frasi brevi, testo semplice senza markdown né elenchi puntati con simboli.",
+    "Se l'utente vuole un sopralluogo o un preventivo, suggerisci la scheda 'Richiedi sopralluogo' o il WhatsApp.",
+    "",
+    "SCHEDA AZIENDA:",
+    COMPANY_KB.join("\n"),
+  ].join("\n");
+
+  // Ricerca locale (senza rete): sceglie i passaggi della scheda più vicini alla domanda
+  var LOCAL = [
+    { k: ["chi", "siete", "azienda", "impresa", "real", "ditta", "societa", "storia", "vi occupat"], a: "Real E Group è un'impresa edile di Alassio (REAL&GROUP COSTRUZIONI S.R.L.S.). Seguiamo ville, abitazioni di pregio e opere tradizionali in pietra della Liguria, unendo tecniche moderne e il sapere dei maestri muratori del territorio." },
+    { k: ["serviz", "fate", "lavori", "offrite", "occupate", "cosa"], a: "Ci occupiamo di costruzioni civili e residenziali, edilizia industriale e commerciale, ristrutturazioni chiavi in mano, muri in pietra, opere pubbliche e infrastrutture, strutture e finiture di pregio." },
+    { k: ["ristruttur", "chiavi", "riqualific", "energet", "tetto", "tetti", "facciat", "appartament", "rifare"], a: "Facciamo ristrutturazioni chiavi in mano: riqualificazione energetica, tetti, facciate e gestione integrata del cantiere fino alla consegna delle chiavi, con un solo referente." },
+    { k: ["muro", "muri", "pietra", "muratur", "terrazz", "contenim", "secco", "fasce"], a: "Realizziamo muri in pietra con muratura tradizionale in pietra locale, muri di contenimento e terrazzamenti liguri, lavorati con le tecniche dei maestri muratori." },
+    { k: ["villa", "ville", "casa", "case", "costru", "nuova", "condomin", "residenz", "abitaz"], a: "Costruiamo case, ville, condomini e complessi abitativi: è il servizio di costruzioni civili e residenziali." },
+    { k: ["industri", "capannon", "logistic", "uffici", "negozi", "commerc"], a: "Nell'edilizia industriale e commerciale realizziamo capannoni, centri logistici, uffici e negozi." },
+    { k: ["pubblic", "strade", "strada", "ponti", "ponte", "scavo", "scavi", "infrastrutt", "ingegneria"], a: "Seguiamo anche opere pubbliche e infrastrutture: ingegneria civile, strade, ponti e opere di scavo." },
+    { k: ["finitur", "pavimen", "rivestim", "cartongess", "struttur", "portant"], a: "Ci occupiamo di strutture portanti e finiture di pregio: pavimenti, rivestimenti e cartongesso." },
+    { k: ["dove", "sede", "indirizz", "zona", "alassio", "riviera", "mappa", "trovate", "lavorate"], a: "La sede è in Regione Serre, 7 – 17021 Alassio (SV). Lavoriamo ad Alassio e lungo la Riviera di Ponente." },
+    { k: ["telefon", "numero", "whatsapp", "contatt", "chiamar", "scriver", "email", "mail"], a: "Puoi chiamarci o scriverci su WhatsApp al +39 393 351 8858. Sul sito non è indicato un indirizzo email." },
+    { k: ["prezz", "cost", "quanto", "preventiv", "tariff", "euro", "metro", "budget"], a: "Il sito non riporta prezzi: dipendono dal lavoro. Dopo il sopralluogo prepariamo un preventivo scritto con voci chiare, materiali indicati e tempi stimati. Puoi richiederlo su WhatsApp al +39 393 351 8858." },
+    { k: ["tempi", "tempo", "durata", "quando", "giorni", "settiman", "mesi"], a: "I tempi dipendono dal lavoro e vengono stimati nel preventivo scritto, con date concordate prima di iniziare. Per una stima sul tuo caso scrivici al +39 393 351 8858." },
+    { k: ["sopralluog", "come", "funzion", "metodo", "fasi", "passi", "procedur", "iniziare"], a: "Lavoriamo in cinque passi: sopralluogo, preventivo scritto, pratiche e programma, cantiere con un referente fisso, consegna con controllo finale insieme. Puoi richiedere il sopralluogo dalla scheda 'Richiedi sopralluogo'." },
+    { k: ["perche", "scegliere", "affidab", "sicurezz", "garanz", "qualita", "referente"], a: "Un solo referente dal sopralluogo alla consegna, cantiere sicuro e ordinato, pietra e saperi del territorio uniti a tecniche moderne, preventivi chiari con tempi concordati prima di aprire il cantiere." },
+    { k: ["opere", "realizzat", "foto", "esempi", "progetti", "piscina", "giardino", "soggiorno", "corridoio", "scala"], a: "Nel sito trovi cinque lavori: piscina a sfioro vista mare, soggiorno con soffitto decorato, scala e muro in pietra locale, corridoio con luce lineare e giardino con percorsi in pietra." },
+    { k: ["privacy", "dati", "cookie", "gdpr"], a: "Il modulo e l'assistente non inviano dati ai nostri server: il messaggio parte solo quando lo invii da WhatsApp. Il sito non usa cookie propri né di profilazione. Trovi i dettagli nella Privacy Policy." },
+    { k: ["iva", "partita", "rea", "ateco", "fiscal", "codice", "camera"], a: "REAL&GROUP COSTRUZIONI S.R.L.S., P.IVA / C.F. 01918290097, REA SV 244252, Camera di Commercio di Savona, ATECO 43.91.00." },
+    { k: ["orari", "orario", "aperti", "apertura", "sabato", "domenica"], a: "Il sito non indica orari d'ufficio. Puoi scriverci su WhatsApp al +39 393 351 8858 e ti rispondiamo appena possibile." },
+  ];
+  function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9\s]/g, " "); }
+  function localAnswer(q) {
+    var toks = norm(q).split(/\s+/).filter(function (t) { return t.length > 2; });
+    var nq = " " + norm(q) + " ";
+    var scored = LOCAL.map(function (e) {
+      var s = 0;
+      e.k.forEach(function (k) { if (k.indexOf(" ") > -1 ? nq.indexOf(k) > -1 : toks.some(function (t) { return t.indexOf(k) === 0; })) s += k.length > 4 ? 2 : 1; });
+      return { e: e, s: s };
+    }).sort(function (a, b) { return b.s - a.s; });
+    if (!scored[0].s) return "Su questo il sito non riporta informazioni. Per una risposta precisa scrivici su WhatsApp o chiama il +39 393 351 8858.";
+    var out = scored[0].e.a;
+    if (scored[1].s >= 2 && scored[1].s >= scored[0].s * 0.8) out += " " + scored[1].e.a;
+    return out;
+  }
+  function typeOut(el, text, done) {
+    if (reduced) { el.textContent = text; done(); return; }
+    var i = 0, my = session;
+    (function tick() { if (my !== session) return; i = Math.min(text.length, i + 3); el.textContent = text.slice(0, i); scrollLog(); if (i < text.length) setTimeout(tick, 14); else done(); })();
+  }
+  function aiBubble() {
+    var d = D.createElement("div"); d.className = "msg ai";
+    var who = D.createElement("span"); who.className = "who"; who.textContent = "✦ Assistente AI";
+    var body = D.createElement("span");
+    d.appendChild(who); d.appendChild(body); log.appendChild(d); pop(d); scrollLog();
+    return body;
+  }
+  function askAI(q) {
+    if (aiBusy) return; aiBusy = true;
+    bubble(q, "me");
+    aiTurns.push({ role: "user", content: q });
+    var t = thinking("Sto cercando nelle informazioni del sito…");
+    var my = session;
+    function show(answer) {
+      if (my !== session) return;
+      if (t.parentNode) t.parentNode.removeChild(t);
+      var body = aiBubble();
+      typeOut(body, answer, function () { aiTurns.push({ role: "assistant", content: answer }); aiBusy = false; aiFollow(q); });
+    }
+    function local() { show(localAnswer(q)); }
+    // Ricerca locale nelle informazioni del sito
+    setTimeout(local, reduced ? 0 : 700);
+  }
+  var AI_SUGGEST = ["Che servizi offrite?", "Fate muri in pietra a secco?", "Quanto costa una ristrutturazione?", "Come funziona il sopralluogo?", "Dove siete?"];
+  function aiFollow(q) {
+    var o = ask({ label: "Fai un'altra domanda", placeholder: "Es. Lavorate anche fuori Alassio?", ai: true, keep: true, button: "Chiedi", min: 2, error: "Scrivi una domanda." }, function (v) { askAI(v); });
+    var row = D.createElement("div"); row.className = "chips";
+    var wa = D.createElement("a"); wa.className = "qr"; wa.style.textDecoration = "none"; wa.href = waLink("Buongiorno, ho una domanda: " + q); wa.target = "_blank"; wa.rel = "noopener"; wa.textContent = "Chiedi a noi su WhatsApp";
+    var sv = D.createElement("button"); sv.type = "button"; sv.className = "qr ai-q"; sv.textContent = "Richiedi sopralluogo"; sv.addEventListener("click", function () { setMode("guide", true); });
+    row.appendChild(wa); row.appendChild(sv); ctl.appendChild(row);
+  }
+  function startAI() {
+    session++; log.textContent = ""; clearCtl(); aiTurns = []; aiBusy = false;
+    var hello = bubble("Ciao! Sono l'assistente di Real E Group. Rispondo solo con le informazioni presenti sul sito: servizi, metodo di lavoro, zona e contatti. Per prezzi e tempi ti metto in contatto con il team.\n\nLe domande restano nel tuo browser e non vengono inviate a nessuno.", "bot");
+    hello.classList.add("ai");
+    var o = ask({ label: "Oppure scrivi la tua domanda", placeholder: "Es. Rifate anche i tetti?", ai: true, keep: true, button: "Chiedi", min: 2, error: "Scrivi una domanda." }, function (v) { askAI(v); });
+    // ask() svuota i comandi: rimetto le domande suggerite sopra il campo
+    var w = D.createElement("div"); w.className = "chips";
+    AI_SUGGEST.forEach(function (s) { var b = D.createElement("button"); b.type = "button"; b.className = "qr ai-q"; b.textContent = s; b.addEventListener("click", function () { askAI(s); }); w.appendChild(b); });
+    ctl.insertBefore(w, ctl.firstChild);
+    o.input.focus({ preventScroll: true });
+  }
+  function setMode(m, restart) {
+    if (aiCtl) { try { aiCtl.abort(); } catch (e) {} aiCtl = null; }
+    mode = m;
+    tabGuide.setAttribute("aria-selected", m === "guide" ? "true" : "false");
+    tabAi.setAttribute("aria-selected", m === "ai" ? "true" : "false");
+    stepsBar.hidden = m !== "guide";
+    if (m === "guide") startGuide(restart && typeof restart === "string" ? restart : undefined); else startAI();
+  }
+  tabGuide.addEventListener("click", function () { if (mode !== "guide") setMode("guide"); });
+  tabAi.addEventListener("click", function () { if (mode !== "ai") setMode("ai"); });
+
+  function openChat(o, job, wantAi) {
+    if (o) lastOpener = D.activeElement;
+    var wasHidden = panel.hidden;
+    panel.hidden = !o;
+    fab.setAttribute("aria-expanded", o ? "true" : "false");
+    if (o) {
+      teaser.style.display = "none";
+      if (wasHidden && !reduced) {
+        if (M && M.animate) { try { M.animate(panel, { opacity: [0, 1], scale: [0.85, 1], y: [24, 0] }, { type: "spring", stiffness: 300, damping: 24 }); } catch (e) {} }
+        else if (hasGsap) gsap.fromTo(panel, { opacity: 0, scale: 0.85, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" });
+      }
+      if (wantAi) setMode("ai");
+      else if (job) setMode("guide", job);
+      else if (!log.childNodes.length) setMode(mode);
+      else focusFirst();
+    } else if (lastOpener && lastOpener.focus) (fab.offsetParent !== null ? fab : lastOpener).focus();
+  }
+  fab.addEventListener("click", function () { openChat(panel.hidden); });
+  $("#wa-close").addEventListener("click", function () { openChat(false); });
+  $$("[data-open-chat]").forEach(function (el) { el.addEventListener("click", function (e) { e.preventDefault(); setMenu(false); openChat(true, el.getAttribute("data-job")); }); });
+  $$("[data-open-ai]").forEach(function (el) { el.addEventListener("click", function (e) { e.preventDefault(); openChat(true, null, true); }); });
+  panel.addEventListener("keydown", function (e) {
+    if (e.key !== "Tab") return;
+    var f = $$("button, a[href], input", panel).filter(function (n) { return !n.disabled && n.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && D.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && D.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  D.addEventListener("keydown", function (e) {
+    if (!legal.hidden) { if (e.key === "Escape") closeLegal(); return; }
+    if (!lb.hidden) { if (e.key === "Escape") closeLb(); else if (e.key === "ArrowLeft") step(-1); else if (e.key === "ArrowRight") step(1); return; }
+    if (e.key === "Escape" && !panel.hidden) openChat(false);
+  });
+
+  /* Dati legali aggiuntivi nel piè di pagina */
+  (function () {
+    var x = $("#legalExtra"), parts = [];
+    if (SITE.CAPITALE) parts.push("Capitale sociale: " + SITE.CAPITALE);
+    if (SITE.EMAIL) parts.push('Email: <a href="mailto:' + SITE.EMAIL + '">' + SITE.EMAIL + "</a>");
+    if (SITE.PEC) parts.push("PEC: " + SITE.PEC);
+    if (x && parts.length) x.innerHTML = "<br>" + parts.join("<br>");
+  })();
+
+  /* Avvio */
+  runIntro();
+  if (W.ScrollTrigger) W.addEventListener("load", function () { ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
