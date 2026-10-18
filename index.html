@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#0E131B">
 <link rel="preload" href="fonts/cormorant.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/manrope.woff" as="font" type="font/woff" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23151B25'/%3E%3Cpath d='M6 30 32 9l26 21' fill='none' stroke='%23EE8A3E' stroke-width='3.6'/%3E%3Cg fill='%23fff'%3E%3Crect x='18' y='51' width='16' height='6'/%3E%3Crect x='35.5' y='51' width='10.5' height='6'/%3E%3Crect x='18' y='43' width='7' height='6'/%3E%3Crect x='26.5' y='43' width='12.5' height='6'/%3E%3Crect x='18' y='35' width='12' height='6'/%3E%3Crect x='31.5' y='35' width='14.5' height='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23151B25%22/%3E%3Csvg x=%225%22 y=%229%22 width=%2254%22 height=%2240%22 viewBox=%22210 36 730 530%22%3E%3Cg fill=%22%23fff%22%3E%3Crect x=%22222%22 y=%22210%22 width=%22100%22 height=%22180%22/%3E%3Cpath d=%22M318 223 579 53%22 stroke=%22%23fff%22 stroke-width=%2222%22 fill=%22none%22/%3E%3Crect x=%22360%22 y=%22156%22 width=%2224%22 height=%22282%22/%3E%3Crect x=%22540%22 y=%22108%22 width=%2210%22 height=%22132%22/%3E%3Ccircle cx=%22546%22 cy=%22258%22 r=%2218%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%229%22/%3E%3Cpath d=%22M246 523 546 340 923 543%22 stroke=%22%23fff%22 stroke-width=%2232%22 fill=%22none%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(668 366) rotate(28.4)%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(744 411) rotate(28.4)%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(820 452) rotate(28.4)%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(893 492) rotate(28.4)%22/%3E%3Crect x=%22504%22 y=%22438%22 width=%2236%22 height=%2250%22/%3E%3Crect x=%22546%22 y=%22438%22 width=%2236%22 height=%2250%22/%3E%3Crect x=%22504%22 y=%22496%22 width=%2236%22 height=%2250%22/%3E%3Crect x=%22546%22 y=%22496%22 width=%2236%22 height=%2250%22/%3E%3C/g%3E%3C/svg%3E%3C/svg%3E">
 <link rel="preload" as="image" href="img/pool-v2.webp" type="image/webp">
 
 
@@ -164,7 +164,7 @@ html.intro-on .intro {
 .bar-in { display: flex; align-items: center; justify-content: space-between; height: 80px; transition: height 0.4s var(--ease); }
 .bar.solid .bar-in { height: 66px; }
 .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-.mark { width: 44px; height: 44px; flex: none; display: block; color: var(--white); overflow: visible; transition: transform 0.7s var(--spring); }
+.mark { width: 58px; height: 42px; flex: none; display: block; color: var(--white); overflow: visible; transition: transform 0.7s var(--spring); }
 .brand:hover .mark { transform: rotate(-6deg) scale(1.08); }
 .brand-name { display: grid; gap: 5px; font: 500 1.9rem/1 var(--serif); letter-spacing: 0.01em; }
 .brand-name small { font: 600 0.56rem/1 var(--sans); letter-spacing: 0.32em; text-transform: uppercase; color: var(--orange-light); }
@@ -241,7 +241,7 @@ h1 em .wi { background: linear-gradient(100deg, #EE8A3E 15%, #FFDDBF 45%, #EE8A3
 .mani-text { font: 400 clamp(1.9rem, 4.6vw, 4rem)/1.16 var(--serif); letter-spacing: -0.012em; max-width: 21em; color: var(--ink); }
 .mani-text .mw { display: inline; }
 .mani-sig { display: flex; align-items: center; gap: 16px; margin-top: 44px; color: var(--gray); font-size: 1rem; }
-.mani-sig .mark { --roof: var(--orange); width: 44px; height: 44px; color: var(--navy); }
+.mani-sig .mark { width: 58px; height: 42px; color: var(--navy); }
 .mani-sig b { display: block; font: 500 1.35rem/1.1 var(--serif); color: var(--ink); }
 
 /* ===================== OPERE (galleria orizzontale) ===================== */
@@ -270,7 +270,7 @@ h1 em .wi { background: linear-gradient(100deg, #EE8A3E 15%, #FFDDBF 45%, #EE8A3
 .piece-end::before { content: ""; position: absolute; inset: auto -30% -40% auto; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.28), transparent); transition: transform 0.9s var(--ease); }
 .piece-end:hover { background: var(--orange-deep); }
 .piece-end:hover::before { transform: scale(1.5) translate(-10%, -10%); }
-.piece-end .mark { --roof: var(--white); width: 58px; height: 58px; color: var(--navy); position: relative; }
+.piece-end .mark { width: 76px; height: 55px; color: var(--navy); position: relative; }
 .piece-end b { position: relative; font: italic 500 clamp(2rem, 3vw, 2.9rem)/1.04 var(--serif); }
 .piece-end span { position: relative; display: inline-flex; align-items: center; gap: 12px; font: 600 0.95rem/1.2 var(--sans); }
 .rail-ctl { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; margin-top: 6px; }
@@ -421,7 +421,7 @@ html.pin .show-cta { margin: 0; padding-block: 64px 96px; }
 .foot { background: var(--navy); color: rgba(255, 255, 255, 0.78); overflow: hidden; }
 .foot-grid { display: grid; gap: 44px; padding-block: 76px 40px; }
 .foot-brand { display: flex; align-items: center; gap: 16px; font: 500 2.1rem/1.1 var(--serif); color: var(--white); margin-bottom: 18px; }
-.foot-brand .mark { width: 56px; height: 56px; }
+.foot-brand .mark { width: 74px; height: 54px; }
 .foot-legal { line-height: 1.85; }
 .foot-nav { display: grid; gap: 14px; align-content: start; }
 .foot-nav a, .linkbtn { text-decoration: none; }
@@ -463,7 +463,7 @@ html.pin .show-cta { margin: 0; padding-block: 64px 96px; }
 .panel:not([hidden]) ~ .fab-call { display: none; }
 .panel-head { display: flex; align-items: center; gap: 12px; padding: 14px 14px 12px 16px; background: var(--navy); color: var(--white); }
 .panel-av { width: 40px; height: 40px; flex: none; display: grid; place-items: center; background: rgba(255, 255, 255, 0.08); border-radius: 50%; }
-.panel-av .mark { width: 26px; height: 26px; }
+.panel-av .mark { width: 30px; height: 22px; }
 .panel-head > div { flex: 1 1 auto; min-width: 0; }
 .panel-head strong { display: block; font: 500 1.4rem/1.1 var(--serif); }
 .panel-head span { font-size: 0.8rem; color: rgba(255, 255, 255, 0.72); }
@@ -568,7 +568,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="lg" viewBox="0 0 64 64"><path d="M6 30 32 9l26 21" fill="none" style="stroke:var(--roof,#EE8A3E)" stroke-width="3.6" stroke-linecap="square"/><g fill="currentColor"><rect x="18" y="51" width="16" height="6"/><rect x="35.5" y="51" width="10.5" height="6"/><rect x="18" y="43" width="7" height="6"/><rect x="26.5" y="43" width="12.5" height="6"/><rect x="18" y="35" width="12" height="6"/><rect x="31.5" y="35" width="14.5" height="6"/></g></symbol>
+  <symbol id="lg" viewBox="210 36 730 530"><g fill="currentColor"><rect x="222" y="210" width="100" height="180"/><path d="M318 223 579 53" stroke="currentColor" stroke-width="22" fill="none"/><rect x="360" y="156" width="24" height="282"/><rect x="540" y="108" width="10" height="132"/><circle cx="546" cy="258" r="18" fill="none" stroke="currentColor" stroke-width="9"/><path d="M246 523 546 340 923 543" stroke="currentColor" stroke-width="32" fill="none"/><rect x="-34" y="-9" width="68" height="18" transform="translate(668 366) rotate(28.4)"/><rect x="-34" y="-9" width="68" height="18" transform="translate(744 411) rotate(28.4)"/><rect x="-34" y="-9" width="68" height="18" transform="translate(820 452) rotate(28.4)"/><rect x="-34" y="-9" width="68" height="18" transform="translate(893 492) rotate(28.4)"/><rect x="504" y="438" width="36" height="50"/><rect x="546" y="438" width="36" height="50"/><rect x="504" y="496" width="36" height="50"/><rect x="546" y="496" width="36" height="50"/></g></symbol>
 </svg>
 
 <!-- ============ INTRO 3D ============ -->
@@ -585,7 +585,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
 <header class="bar" id="bar">
   <div class="in bar-in">
     <a class="brand" href="#home" aria-label="Real&amp;Group Costruzioni, inizio pagina">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>
+      <svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg>
       <span class="brand-name">Real&amp;Group<small>Costruzioni S.r.l.s. · Alassio</small></span>
     </a>
     <button class="burger" id="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
@@ -638,7 +638,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
   <section class="mani" id="manifesto" aria-label="Il nostro modo di costruire">
     <div class="in">
       <p class="mani-text" id="maniText">Costruiamo con la pietra di Liguria e con il mestiere dei maestri muratori. Dal primo sopralluogo alla consegna delle chiavi, un solo referente segue il tuo cantiere, perché una casa ben fatta resta per generazioni.</p>
-      <div class="mani-sig" data-r><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg><span><b>Real&amp;Group Costruzioni</b>Impresa edile ad Alassio</span></div>
+      <div class="mani-sig" data-r><svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg><span><b>Real&amp;Group Costruzioni</b>Impresa edile ad Alassio</span></div>
     </div>
   </section>
 
@@ -718,7 +718,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
             <figcaption><small>In cantiere</small><h3>Muri in cemento armato in costruzione</h3></figcaption>
           </figure>
           <a class="piece-end" href="#contatti" data-open-chat>
-            <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>
+            <svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg>
             <b>Il prossimo cantiere può essere il tuo.</b>
             <span>Richiedi un sopralluogo <svg class="arr" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
@@ -930,7 +930,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
   <div class="in">
     <div class="foot-grid">
       <div>
-        <p class="foot-brand"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#lg"/></svg>Real&amp;Group Costruzioni</p>
+        <p class="foot-brand"><svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg>Real&amp;Group Costruzioni</p>
         <p class="foot-legal">Real&amp;Group Costruzioni S.r.l.s.<br>Regione Serre, 7 – 17021 Alassio (SV)<br>P.IVA / C.F. 01918290097<br>Codice REA: SV 244252<br>Camera di Commercio: Savona (SV)<br>Codice ATECO: 43.91.00 – Lavori di muratura e altre opere<span id="legalExtra"></span></p>
       </div>
       <nav class="foot-nav" aria-label="Piè di pagina">
@@ -1023,7 +1023,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
 
 <section class="panel" id="wa-panel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-describedby="wa-desc" hidden>
   <div class="panel-head">
-    <span class="panel-av" aria-hidden="true"><svg class="mark" viewBox="0 0 64 64"><use href="#lg"/></svg></span>
+    <span class="panel-av" aria-hidden="true"><svg class="mark" viewBox="0 0 730 530"><use href="#lg"/></svg></span>
     <div><strong id="wa-title">Real&amp;Group Costruzioni</strong><span id="wa-desc">Richiedi un sopralluogo su WhatsApp</span></div>
     <button class="panel-x" id="wa-close" type="button" aria-label="Chiudi la chat">&times;</button>
   </div>
@@ -1267,7 +1267,7 @@ var COMPANY_KB = [
     var sc = key.shadow.camera; sc.left = -5; sc.right = 5; sc.top = 5; sc.bottom = -5; sc.near = 1; sc.far = 25;
     scene.add(key);
     var rim = new THREE.DirectionalLight(0x8FB4FF, 0.35); rim.position.set(5, 2, -4); scene.add(rim);
-    var roofLight = new THREE.PointLight(0xEE8A3E, 0, 7, 2); roofLight.position.set(0, 2.2, 1.2); group.add(roofLight);
+    var roofLight = new THREE.PointLight(0xEE8A3E, 0, 7, 2); roofLight.position.set(0, -0.6, 1.2); group.add(roofLight);
 
     // Pavimento che riceve solo l'ombra (ambient occlusion morbida sotto i conci)
     var floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: 0.38 }));
@@ -1280,39 +1280,47 @@ var COMPANY_KB = [
     var ao = new THREE.Mesh(new THREE.PlaneGeometry(5.5, 2.4), new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false, opacity: 0 }));
     ao.rotation.x = -Math.PI / 2; ao.position.y = -0.1; scene.add(ao);
 
-    // Conci: coordinate prese dal marchio SVG (viewBox 64)
-    var S = 0.12, CX = 32, CY = 33;
-    var rects = [[18, 51, 16, 6], [35.5, 51, 10.5, 6], [18, 43, 7, 6], [26.5, 43, 12.5, 6], [18, 35, 12, 6], [31.5, 35, 14.5, 6]];
+    // Marchio Real&Group (gru + tetto + finestra): coordinate prese dal logo SVG (viewBox 210 36 730 530)
+    var S = 0.0078, CX = 576, CY = 189;
     var stoneMat = new THREE.MeshStandardMaterial({ color: 0xF3ECE1, roughness: 0.62, metalness: 0.05 });
+    // [x, y, w, h, profondità, rotazione in gradi] — pezzi che cadono e si posano
+    var rects = [[222, 210, 100, 180, 0.5, 0],
+      [504, 438, 36, 50, 0.3, 0], [546, 438, 36, 50, 0.3, 0], [504, 496, 36, 50, 0.3, 0], [546, 496, 36, 50, 0.3, 0],
+      [634, 357, 68, 18, 0.32, 28.4], [710, 402, 68, 18, 0.32, 28.4], [786, 443, 68, 18, 0.32, 28.4], [859, 483, 68, 18, 0.32, 28.4]];
     var blocks = rects.map(function (r, i) {
-      var w = r[2] * S - 0.03, h = r[3] * S - 0.03, d = 0.62;
+      var w = r[2] * S - 0.01, h = r[3] * S - 0.01, d = r[4];
       var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), stoneMat.clone());
       m.material.color.offsetHSL(0, 0, (i % 3 - 1) * 0.025);
       var x = (r[0] + r[2] / 2 - CX) * S, y = (CY - (r[1] + r[3] / 2)) * S;
-      m.userData.home = new THREE.Vector3(x, y, 0);
-      m.position.set(x + (Math.random() - 0.5) * 2, y + 6 + i * 0.5, (Math.random() - 0.5) * 2);
+      m.userData.home = new THREE.Vector3(x, y, 0); m.userData.rz = -r[5] * Math.PI / 180;
+      m.position.set(x + (Math.random() - 0.5) * 2, y + 6 + i * 0.4, (Math.random() - 0.5) * 2);
       m.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
       m.castShadow = true; m.receiveShadow = true;
       group.add(m); return m;
     });
-    // Tetto: due travi arancio luminose + alone (bloom leggero)
+    // gancio della gru: anello che scende insieme ai pezzi
+    var hook = new THREE.Mesh(new THREE.TorusGeometry(18 * S, 4.5 * S, 12, 32), stoneMat.clone());
+    hook.userData.home = new THREE.Vector3((546 - CX) * S, (CY - 258) * S, 0); hook.userData.rz = 0;
+    hook.position.set(hook.userData.home.x, hook.userData.home.y + 5, 0); hook.castShadow = true; group.add(hook); blocks.push(hook);
+    // Travi che "crescono": tetto arancio luminoso, gru in pietra chiara
     var roofMat = new THREE.MeshStandardMaterial({ color: 0x6E2A06, emissive: 0xE2621A, emissiveIntensity: 0.95, roughness: 0.4, toneMapped: false });
-    function beam(x1, y1, x2, y2) {
+    function beam(x1, y1, x2, y2, th, mat) {
       var a = new THREE.Vector2((x1 - CX) * S, (CY - y1) * S), b = new THREE.Vector2((x2 - CX) * S, (CY - y2) * S);
       var len = a.distanceTo(b);
-      var geo = new THREE.BoxGeometry(len, 0.13, 0.16); geo.translate(len / 2, 0, 0);
-      var m = new THREE.Mesh(geo, roofMat); m.position.set(a.x, a.y, 0.1);
+      var geo = new THREE.BoxGeometry(len, th * S, 0.18); geo.translate(len / 2, 0, 0);
+      var m = new THREE.Mesh(geo, mat); m.position.set(a.x, a.y, 0.1);
       m.rotation.z = Math.atan2(b.y - a.y, b.x - a.x); m.scale.x = 0.0001; m.castShadow = true;
       group.add(m); return m;
     }
-    var beams = [beam(32, 9, 6, 30), beam(32, 9, 58, 30)];
+    var beams = [beam(546, 340, 246, 523, 32, roofMat), beam(546, 340, 923, 543, 32, roofMat),
+      beam(372, 438, 372, 156, 24, stoneMat), beam(318, 223, 579, 53, 22, stoneMat), beam(545, 108, 545, 240, 10, stoneMat)];
     var glowTex = (function () {
       var c = D.createElement("canvas"); c.width = c.height = 256; var g = c.getContext("2d");
       var gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, "rgba(238,138,62,0.9)"); gr.addColorStop(0.35, "rgba(238,138,62,0.25)"); gr.addColorStop(1, "rgba(238,138,62,0)");
       g.fillStyle = gr; g.fillRect(0, 0, 256, 256); return new THREE.CanvasTexture(c);
     })();
     var glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0 }));
-    glow.position.set(0, 1.9, -0.2); glow.scale.set(7, 3.6, 1); group.add(glow);
+    glow.position.set(0, -0.6, -0.2); glow.scale.set(7, 3.6, 1); group.add(glow);
     group.scale.setScalar(0.55); group.position.y = 1.5;
 
     var shiftPx = (220 - 120) / 2, shiftWorld = 0;   // il centro dell'intro è 50px più in basso del centro dello schermo
@@ -1359,11 +1367,7 @@ var COMPANY_KB = [
   }
 
   function fallbackIntroSvg() {
-    var svg = '<svg class="intro-svg" viewBox="0 0 64 64" aria-hidden="true"><path class="roof" pathLength="1" d="M6 30 32 9l26 21"/>' +
-      [[18, 51, 16, 6], [35.5, 51, 10.5, 6], [18, 43, 7, 6], [26.5, 43, 12.5, 6], [18, 35, 12, 6], [31.5, 35, 14.5, 6]].map(function (r, i) {
-        return '<rect class="blk" style="--i:' + i + '" x="' + r[0] + '" y="' + r[1] + '" width="' + r[2] + '" height="' + r[3] + '"/>';
-      }).join("") + "</svg>";
-    intro.insertAdjacentHTML("afterbegin", svg);
+    intro.insertAdjacentHTML("afterbegin", '<svg class="intro-svg" viewBox="210 36 730 530" aria-hidden="true" style="color:#fff"><use class="blk" style="--i:0" href="#lg"/></svg>');
   }
 
   function runIntro() {
@@ -1381,7 +1385,7 @@ var COMPANY_KB = [
       introScene.blocks.forEach(function (b, i) {
         var h = b.userData.home;
         tl.to(b.position, { x: h.x, y: h.y, z: 0, duration: 1.1, ease: "bounce.out" }, 0.15 + i * 0.12)
-          .to(b.rotation, { x: 0, y: 0, z: 0, duration: 1.0, ease: "back.out(1.6)" }, 0.15 + i * 0.12);
+          .to(b.rotation, { x: 0, y: 0, z: b.userData.rz || 0, duration: 1.0, ease: "back.out(1.6)" }, 0.15 + i * 0.12);
       });
       tl.to(introScene.ao.material, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0.6);
       introScene.beams.forEach(function (bm, i) { tl.to(bm.scale, { x: 1, duration: 0.9, ease: "expo.out" }, 1.1 + i * 0.12); });
