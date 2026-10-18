@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#0E131B">
 <link rel="preload" href="fonts/cormorant.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/manrope.woff" as="font" type="font/woff" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23151B25%22/%3E%3Csvg x=%225%22 y=%229%22 width=%2254%22 height=%2240%22 viewBox=%22210 36 730 530%22%3E%3Cg fill=%22%23fff%22%3E%3Crect x=%22222%22 y=%22210%22 width=%22100%22 height=%22180%22/%3E%3Cpath d=%22M318 223 579 53%22 stroke=%22%23fff%22 stroke-width=%2222%22 fill=%22none%22/%3E%3Crect x=%22360%22 y=%22156%22 width=%2224%22 height=%22282%22/%3E%3Crect x=%22540%22 y=%22108%22 width=%2210%22 height=%22132%22/%3E%3Ccircle cx=%22546%22 cy=%22258%22 r=%2218%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%229%22/%3E%3Cpath d=%22M246 523 546 340 923 543%22 stroke=%22%23fff%22 stroke-width=%2232%22 fill=%22none%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(668 366) rotate(28.4)%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(744 411) rotate(28.4)%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(820 452) rotate(28.4)%22/%3E%3Crect x=%22-34%22 y=%22-9%22 width=%2268%22 height=%2218%22 transform=%22translate(893 492) rotate(28.4)%22/%3E%3Crect x=%22504%22 y=%22438%22 width=%2236%22 height=%2250%22/%3E%3Crect x=%22546%22 y=%22438%22 width=%2236%22 height=%2250%22/%3E%3Crect x=%22504%22 y=%22496%22 width=%2236%22 height=%2250%22/%3E%3Crect x=%22546%22 y=%22496%22 width=%2236%22 height=%2250%22/%3E%3C/g%3E%3C/svg%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="img/favicon-v2.png"><link rel="apple-touch-icon" href="img/favicon-v2.png">
 <link rel="preload" as="image" href="img/pool-v2.webp" type="image/webp">
 
 
@@ -125,15 +125,19 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ===================== INTRO 3D A TUTTO SCHERMO ===================== */
 .intro { display: none; }
-html.intro-on { background: #0E131B; }
+/* Intro con il logo originale, fisso (nessun ridisegno) */
+.intro canvas, .intro .intro-ui, .intro .intro-line { display: none !important; }
+.intro-logo { position: absolute; left: 50%; top: calc(50% - 50px); width: min(72vw, 62vh, 560px); height: auto; transform: translate(-50%, -50%); }
+
+html.intro-on { background: #4C9CCA; }
 html.intro-on body > *:not(.intro):not(script):not(style) { visibility: hidden; }   /* durante l'intro la pagina sotto non si vede */
 html.intro-on .intro {
   /* Overscan: l'intro sporge 120px sopra e 220px sotto lo schermo, così le barre di Safari/Chrome
      (che si alzano e si abbassano) non lasciano mai vedere la pagina sotto. */
   display: block; position: fixed; left: 0; right: 0; top: -120px; bottom: -220px; width: auto; height: auto;
   z-index: 1000; overflow: hidden;
-  box-shadow: 0 0 0 100vmax #0E131B;   /* se un browser lascia una striscia scoperta, resta blu notte e mai la pagina */
-  background: radial-gradient(120% 90% at 50% 40%, #1B2433 0%, var(--navy-2) 62%);
+  box-shadow: 0 0 0 100vmax #4C9CCA;   /* se un browser lascia una striscia scoperta, resta blu notte e mai la pagina */
+  background: linear-gradient(#5AAAD6, #3F8FBF);
   color: var(--white); will-change: transform;
 }
 .intro canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -164,7 +168,7 @@ html.intro-on .intro {
 .bar-in { display: flex; align-items: center; justify-content: space-between; height: 80px; transition: height 0.4s var(--ease); }
 .bar.solid .bar-in { height: 66px; }
 .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-.mark { width: 58px; height: 42px; flex: none; display: block; color: var(--white); overflow: visible; transition: transform 0.7s var(--spring); }
+.mark { width: 58px; height: 41px; border-radius: 6px; object-fit: cover; flex: none; display: block; color: var(--white); overflow: visible; transition: transform 0.7s var(--spring); }
 .brand:hover .mark { transform: rotate(-6deg) scale(1.08); }
 .brand-name { display: grid; gap: 5px; font: 500 1.9rem/1 var(--serif); letter-spacing: 0.01em; }
 .brand-name small { font: 600 0.56rem/1 var(--sans); letter-spacing: 0.32em; text-transform: uppercase; color: var(--orange-light); }
@@ -422,6 +426,7 @@ html.pin .show-cta { margin: 0; padding-block: 64px 96px; }
 .foot-grid { display: grid; gap: 44px; padding-block: 76px 40px; }
 .foot-brand { display: flex; align-items: center; gap: 16px; font: 500 2.1rem/1.1 var(--serif); color: var(--white); margin-bottom: 18px; }
 .foot-brand .mark { width: 74px; height: 54px; }
+.foot-logo { display: block; width: min(240px, 60vw); height: auto; border-radius: 14px; }
 .foot-legal { line-height: 1.85; }
 .foot-nav { display: grid; gap: 14px; align-content: start; }
 .foot-nav a, .linkbtn { text-decoration: none; }
@@ -585,7 +590,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
 <header class="bar" id="bar">
   <div class="in bar-in">
     <a class="brand" href="#home" aria-label="Real&amp;Group Costruzioni, inizio pagina">
-      <svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg>
+      <img class="mark" src="img/logo-mark-v2.webp" width="770" height="545" alt="" aria-hidden="true">
       <span class="brand-name">Real&amp;Group<small>Costruzioni S.r.l.s. · Alassio</small></span>
     </a>
     <button class="burger" id="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
@@ -638,7 +643,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
   <section class="mani" id="manifesto" aria-label="Il nostro modo di costruire">
     <div class="in">
       <p class="mani-text" id="maniText">Costruiamo con la pietra di Liguria e con il mestiere dei maestri muratori. Dal primo sopralluogo alla consegna delle chiavi, un solo referente segue il tuo cantiere, perché una casa ben fatta resta per generazioni.</p>
-      <div class="mani-sig" data-r><svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg><span><b>Real&amp;Group Costruzioni</b>Impresa edile ad Alassio</span></div>
+      <div class="mani-sig" data-r><img class="mark" src="img/logo-mark-v2.webp" width="770" height="545" alt="" aria-hidden="true"><span><b>Real&amp;Group Costruzioni</b>Impresa edile ad Alassio</span></div>
     </div>
   </section>
 
@@ -718,7 +723,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
             <figcaption><small>In cantiere</small><h3>Muri in cemento armato in costruzione</h3></figcaption>
           </figure>
           <a class="piece-end" href="#contatti" data-open-chat>
-            <svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg>
+            <img class="mark" src="img/logo-mark-v2.webp" width="770" height="545" alt="" aria-hidden="true">
             <b>Il prossimo cantiere può essere il tuo.</b>
             <span>Richiedi un sopralluogo <svg class="arr" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
@@ -930,7 +935,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
   <div class="in">
     <div class="foot-grid">
       <div>
-        <p class="foot-brand"><svg class="mark" viewBox="0 0 730 530" aria-hidden="true"><use href="#lg"/></svg>Real&amp;Group Costruzioni</p>
+        <p class="foot-brand"><img class="foot-logo" src="img/logo-v2.webp" width="1200" height="960" alt="Real&amp;Group Costruzioni S.r.l.s. – Alassio" loading="lazy"></p>
         <p class="foot-legal">Real&amp;Group Costruzioni S.r.l.s.<br>Regione Serre, 7 – 17021 Alassio (SV)<br>P.IVA / C.F. 01918290097<br>Codice REA: SV 244252<br>Camera di Commercio: Savona (SV)<br>Codice ATECO: 43.91.00 – Lavori di muratura e altre opere<span id="legalExtra"></span></p>
       </div>
       <nav class="foot-nav" aria-label="Piè di pagina">
@@ -1023,7 +1028,7 @@ html.cc .panel, html.cc .legal, html.cc .lb { cursor: auto !important; }
 
 <section class="panel" id="wa-panel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-describedby="wa-desc" hidden>
   <div class="panel-head">
-    <span class="panel-av" aria-hidden="true"><svg class="mark" viewBox="0 0 730 530"><use href="#lg"/></svg></span>
+    <span class="panel-av" aria-hidden="true"><img class="mark" src="img/logo-mark-v2.webp" width="770" height="545" alt="" aria-hidden="true"></span>
     <div><strong id="wa-title">Real&amp;Group Costruzioni</strong><span id="wa-desc">Richiedi un sopralluogo su WhatsApp</span></div>
     <button class="panel-x" id="wa-close" type="button" aria-label="Chiudi la chat">&times;</button>
   </div>
@@ -1373,31 +1378,15 @@ var COMPANY_KB = [
   function runIntro() {
     if (!introOn || !intro) { heroIn(0.1); return; }
     if (lenis) lenis.stop();
-    if (!hasGsap) { fallbackIntroSvg(); setTimeout(finishIntro, 2600); return; }
-
-    introScene = buildIntro3D();
-    if (!introScene) fallbackIntroSvg();
-
+    // logo originale, identico all'immagine fornita: compare e resta fermo, poi la pagina si apre
+    intro.insertAdjacentHTML("beforeend", '<img class="intro-logo" src="img/logo-trasp-v2.webp" width="800" height="900" alt="">');
+    var logo = $(".intro-logo", intro);
+    if (!hasGsap) { setTimeout(finishIntro, 2600); return; }
     var tl = introTl = gsap.timeline({ onComplete: finishIntro });
-    tl.to("#introLine", { scaleX: 1, duration: 3.1, ease: "power2.inOut" }, 0);
-    if (introScene) {
-      tl.to(introScene.bg.uniforms.uReveal, { value: 1, duration: 2.6, ease: "power2.inOut" }, 0.1);
-      introScene.blocks.forEach(function (b, i) {
-        var h = b.userData.home;
-        tl.to(b.position, { x: h.x, y: h.y, z: 0, duration: 1.1, ease: "bounce.out" }, 0.15 + i * 0.12)
-          .to(b.rotation, { x: 0, y: 0, z: b.userData.rz || 0, duration: 1.0, ease: "back.out(1.6)" }, 0.15 + i * 0.12);
-      });
-      tl.to(introScene.ao.material, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0.6);
-      introScene.beams.forEach(function (bm, i) { tl.to(bm.scale, { x: 1, duration: 0.9, ease: "expo.out" }, 1.1 + i * 0.12); });
-      tl.to(introScene.glow.material, { opacity: 0.9, duration: 1.2, ease: "power2.out" }, 1.2)
-        .to(introScene.roofLight, { intensity: 2.4, duration: 1.2, ease: "power2.out" }, 1.2)
-        .to(introScene.camera.position, { y: 0.6, duration: 3.2, ease: "power2.inOut" }, 0);
-    }
-    tl.to(".intro-name .ch", { yPercent: -110, duration: 0.9, ease: "expo.out", stagger: 0.045 }, 1.5)
-      .to(".intro-sub", { opacity: 1, duration: 1, ease: "expo.out" }, 1.9)
-      .to({}, { duration: Math.max(0, SITE.INTRO_HOLD - 2.4) });
-    if (introScene) tl.to(introScene.camera.position, { z: "-=4", duration: 0.9, ease: "power3.in" }, ">-0.1");
+    tl.fromTo(logo, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.1)
+      .to({}, { duration: SITE.INTRO_HOLD });
   }
+
 
   /* ---------------------------------------------------------------
      HERO: entrata dei testi + parole che ruotano
