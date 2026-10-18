@@ -127,7 +127,10 @@ html.lenis, html.lenis body { height: auto; }
 .intro { display: none; }
 /* Intro con il logo originale, fisso (nessun ridisegno) */
 .intro canvas, .intro .intro-ui, .intro .intro-line { display: none !important; }
-.intro-logo { position: absolute; left: 50%; top: calc(50% - 50px); width: min(72vw, 62vh, 560px); height: auto; transform: translate(-50%, -50%); }
+.intro-stage { position: absolute; left: 50%; top: calc(50% - 50px); width: min(72vw, 62vh * 0.889, 560px); aspect-ratio: 800 / 900; transform: translate(-50%, -50%); }
+.intro-stage > * { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.intro-stage .il-text { clip-path: inset(61% 100% 0 0); }
+.intro-stage .il-full { opacity: 0; }
 
 html.intro-on { background: #4C9CCA; }
 html.intro-on body > *:not(.intro):not(script):not(style) { visibility: hidden; }   /* durante l'intro la pagina sotto non si vede */
@@ -168,7 +171,7 @@ html.intro-on .intro {
 .bar-in { display: flex; align-items: center; justify-content: space-between; height: 80px; transition: height 0.4s var(--ease); }
 .bar.solid .bar-in { height: 66px; }
 .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-.mark { width: 58px; height: 41px; border-radius: 6px; object-fit: cover; flex: none; display: block; color: var(--white); overflow: visible; transition: transform 0.7s var(--spring); }
+.mark { width: 58px; height: 41px; border-radius: 6px; object-fit: cover; flex: none; display: block; color: var(--white); overflow: clip; transition: transform 0.7s var(--spring); }
 .brand:hover .mark { transform: rotate(-6deg) scale(1.08); }
 .brand-name { display: grid; gap: 5px; font: 500 1.9rem/1 var(--serif); letter-spacing: 0.01em; }
 .brand-name small { font: 600 0.56rem/1 var(--sans); letter-spacing: 0.32em; text-transform: uppercase; color: var(--orange-light); }
@@ -1378,14 +1381,53 @@ var COMPANY_KB = [
   function runIntro() {
     if (!introOn || !intro) { heroIn(0.1); return; }
     if (lenis) lenis.stop();
-    // logo originale, identico all'immagine fornita: compare e resta fermo, poi la pagina si apre
-    intro.insertAdjacentHTML("beforeend", '<img class="intro-logo" src="img/logo-trasp-v2.webp" width="800" height="900" alt="">');
-    var logo = $(".intro-logo", intro);
-    if (!hasGsap) { setTimeout(finishIntro, 2600); return; }
-    var tl = introTl = gsap.timeline({ onComplete: finishIntro });
-    tl.fromTo(logo, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.1)
-      .to({}, { duration: SITE.INTRO_HOLD });
+    /* Il logo Real&Group si costruisce dal nulla (stesse forme e stesso colore del logo originale),
+       poi la scritta si svela e l'immagine originale prende il posto del disegno: il risultato finale è identico al logo. */
+    var C = "#1C2530";
+    var svg = '<svg viewBox="200 22 800 900" aria-hidden="true">' +
+      '<path class="il-roof" d="M546 340 246 523" stroke="' + C + '" stroke-width="32" fill="none"/>' +
+      '<path class="il-roof" d="M546 340 923 543" stroke="' + C + '" stroke-width="32" fill="none"/>' +
+      '<g fill="' + C + '">' +
+        '<rect class="il-win" x="504" y="438" width="36" height="50"/><rect class="il-win" x="546" y="438" width="36" height="50"/>' +
+        '<rect class="il-win" x="504" y="496" width="36" height="50"/><rect class="il-win" x="546" y="496" width="36" height="50"/>' +
+        [[668, 366], [744, 411], [820, 452], [893, 492]].map(function (t) {
+          return '<g transform="translate(' + t[0] + ' ' + t[1] + ') rotate(28.4)"><rect class="il-tile" x="-34" y="-9" width="68" height="18"/></g>';
+        }).join("") +
+        '<rect class="il-mast" x="360" y="156" width="24" height="282"/>' +
+        '<rect class="il-cw" x="222" y="210" width="100" height="180"/>' +
+        '<rect class="il-rope" x="540" y="108" width="10" height="132"/>' +
+      '</g>' +
+      '<path class="il-jib" d="M318 223 579 53" stroke="' + C + '" stroke-width="22" fill="none"/>' +
+      '<circle class="il-ring" cx="546" cy="258" r="18" fill="none" stroke="' + C + '" stroke-width="9"/>' +
+      '</svg>';
+    intro.insertAdjacentHTML("beforeend", '<div class="intro-stage">' + svg +
+      '<img class="il-text" src="img/logo-trasp-v2.webp" width="800" height="900" alt="">' +
+      '<img class="il-full" src="img/logo-trasp-v2.webp" width="800" height="900" alt=""></div>');
+    var st = $(".intro-stage", intro);
+    if (!hasGsap) { $(".il-full", st).style.opacity = 1; setTimeout(finishIntro, 2600); return; }
+
+    // tratti che si disegnano: preparo lunghezza e offset
+    $$(".il-roof, .il-jib, .il-ring", st).forEach(function (el) { var L = el.getTotalLength(); el.style.strokeDasharray = L; el.style.strokeDashoffset = L; });
+    gsap.set(".il-win", { scale: 0, transformOrigin: "50% 50%" });
+    gsap.set(".il-tile", { y: -260, opacity: 0 });
+    gsap.set(".il-mast", { scaleY: 0, transformOrigin: "50% 100%" });
+    gsap.set(".il-cw", { y: -420, opacity: 0 });
+    gsap.set(".il-rope", { scaleY: 0, transformOrigin: "50% 0%" });
+
+    var tl = introTl = gsap.timeline({ onComplete: finishIntro, delay: 0.15 });
+    tl.to(".il-roof", { strokeDashoffset: 0, duration: 0.9, ease: "power3.inOut", stagger: 0.08 }, 0)                 // 1. il tetto si disegna dal colmo
+      .to(".il-win", { scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: 0.07 }, 0.55)                         // 2. la finestra si compone
+      .to(".il-mast", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.7)                                            // 3. la gru si alza
+      .to(".il-jib", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 1.15)                                 //    braccio
+      .to(".il-cw", { y: 0, opacity: 1, duration: 0.7, ease: "bounce.out" }, 1.3)                                       //    contrappeso
+      .to(".il-rope", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 1.55)                                          //    il cavo scende
+      .to(".il-ring", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 1.95)                                //    gancio
+      .to(".il-tile", { y: 0, opacity: 1, duration: 0.55, ease: "bounce.out", stagger: 0.12 }, 1.7)                     // 4. le tegole si posano
+      .to(".il-text", { clipPath: "inset(61% 0% 0 0)", duration: 0.8, ease: "power3.inOut" }, 2.35)                    // 5. la scritta si svela
+      .set(".il-full", { opacity: 1 }, 3.2).set(".intro-stage svg, .il-text", { opacity: 0 }, 3.2)                      //    logo originale identico
+      .to({}, { duration: 0.9 });
   }
+
 
 
   /* ---------------------------------------------------------------
