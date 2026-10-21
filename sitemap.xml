@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://real-group-alassio.vercel.app/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://real-group-alassio.vercel.app/img/pool-v2.webp</image:loc>
+      <image:title>Piscina a sfioro con vista mare – Alassio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://real-group-alassio.vercel.app/img/stairs-v2.webp</image:loc>
+      <image:title>Scala e muro in pietra locale – Alassio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://real-group-alassio.vercel.app/img/living-v2.webp</image:loc>
+      <image:title>Ristrutturazione soggiorno – Alassio</image:title>
+    </image:image>
+  </url>
+</urlset>
