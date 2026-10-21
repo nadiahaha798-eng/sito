@@ -56,5 +56,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.realgroupalassio.it"
+        }
+      ],
+      "destination": "https://realgroupalassio.it/$1",
+      "permanent": true
+    }
   ]
 }
