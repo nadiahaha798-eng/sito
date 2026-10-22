@@ -382,8 +382,19 @@ footer{padding-block:64px calc(36px + env(safe-area-inset-bottom,0px));font-size
 .chat-head .av{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
 .chat-head .av svg{width:26px;height:26px}
 .chat-head b{display:block;font-size:15.5px}
-.chat-head small{color:#cde9e3;font-size:12.5px}
-.chat-head .x{margin-left:auto;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:grid;place-items:center}
+.chat-head small{color:#cde9e3;font-size:12.5px;white-space:nowrap}
+.wa-direct{margin-left:auto;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;background:#25d366;color:#05331a;font-weight:700;font-size:13.5px;text-decoration:none;transition:transform .3s var(--ease),background-color .3s}
+.wa-direct:hover{background:#3be37a;transform:translateY(-1px)}
+.wa-direct svg{width:17px;height:17px}
+.wa-bar{display:flex;align-items:center;gap:10px;margin:0 10px 8px;padding:10px 14px;border-radius:14px;background:#fff;border:1px solid #cfe9d9;color:#111b21;font-size:14px;text-decoration:none;transition:background-color .25s,border-color .25s}
+.wa-bar:hover{background:#e7f8ee;border-color:#25d366}
+.wa-bar > svg:first-child{width:22px;height:22px;color:#1fa855;flex:none}
+.wa-bar b{color:#0b7a3e}
+.wa-bar .arr{width:16px;height:16px;margin-left:auto;color:#0b7a3e;flex:none}
+.qr.qr-wa{display:inline-flex;align-items:center;gap:6px;background:#25d366;border-color:#25d366;color:#05331a;text-decoration:none}
+.qr.qr-wa:hover{background:#1fb457;color:#fff}
+.qr-wa svg{width:16px;height:16px}
+.chat-head .x{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:grid;place-items:center}
 .chat-log{flex:1;overflow-y:auto;padding:16px 12px;display:flex;flex-direction:column;gap:8px;overscroll-behavior:contain}
 .msg{max-width:84%;padding:9px 12px 10px;border-radius:12px;font-size:14.5px;line-height:1.5;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .35s var(--ease) both;color:#111b21}
 .msg.bot{background:#fff;border-top-left-radius:4px;align-self:flex-start}
@@ -403,6 +414,7 @@ footer{padding-block:64px calc(36px + env(safe-area-inset-bottom,0px));font-size
 .chat-input button{width:46px;height:46px;flex:none;border-radius:50%;border:0;background:#00a884;color:#fff;display:grid;place-items:center;cursor:pointer}
 .chat-input button svg{width:20px;height:20px}
 .chat-foot{padding:0 12px 10px;font-size:11.5px;color:#667781;text-align:center;background:#f0f2f5}
+@media (max-width:380px){.wa-direct span{display:none}.wa-direct{padding:0 11px}}
 @media (max-width:520px){.chat{right:12px;left:12px;width:auto;bottom:calc(92px + env(safe-area-inset-bottom,0px))}.teaser{right:16px}}
 @media (pointer:coarse){.btn,.qr,.copy{min-height:44px}}
 
@@ -726,10 +738,12 @@ footer{padding-block:64px calc(36px + env(safe-area-inset-bottom,0px));font-size
 <div class="chat" id="chat" role="dialog" aria-label="Assistente Sigmadent" aria-modal="false">
   <div class="chat-head">
     <div class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14.2 9c-2.6 0-4.4 2-4.4 4.8 0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 3.2-3.3s2.9 1.6 3.2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8 0-2.8-1.8-4.8-4.4-4.8-2.1 0-3.2 1.1-5.8 1.1S16.3 9 14.2 9Z" fill="#1d5a86"/></svg></div>
-    <div><b>Sigmadent · Assistente</b><small>online · poi ti passa allo studio</small></div>
+    <div style="min-width:0"><b>Sigmadent</b><small>Assistente · online</small></div>
+    <a class="wa-direct" href="https://wa.me/393917520733?text=Buongiorno%20Sigmadent%2C%20vorrei%20informazioni." target="_blank" rel="noopener" aria-label="Apri subito WhatsApp con lo studio"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
     <button class="x" type="button" id="chatClose" aria-label="Chiudi l'assistente"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <div class="chat-log" id="chatLog" aria-live="polite"></div>
+  <a class="wa-bar" href="https://wa.me/393917520733?text=Buongiorno%20Sigmadent%2C%20vorrei%20informazioni." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg><span>Preferisci scrivere tu? <b>Apri WhatsApp</b></span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <form class="chat-input" id="chatForm" autocomplete="off">
     <label class="sr" for="chatText">Scrivi un messaggio</label>
     <input type="text" id="chatText" placeholder="Scrivi un messaggio">
@@ -1024,6 +1038,7 @@ $('#chatClose').addEventListener('click', closeChat);
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('chat-open')) closeChat(); });
 $$('[data-ask]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openChat(a.dataset.ask); }));
 
+const WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
 const scrollLog = () => { chatLog.scrollTop = chatLog.scrollHeight; };
 function esc(s) { return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 function addMsg(html, who = 'bot') { const d = document.createElement('div'); d.className = 'msg ' + who; d.innerHTML = html; chatLog.appendChild(d); scrollLog(); return d; }
@@ -1038,7 +1053,10 @@ function say(html, delay) {
 function chips(list) {
   queue = queue.then(() => {
     const row = document.createElement('div'); row.className = 'chips-row';
-    list.forEach(([label, fn]) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'qr'; b.textContent = label; b.addEventListener('click', () => { row.remove(); addMsg(esc(label), 'me'); fn(); }); row.appendChild(b); });
+    list.forEach(([label, fn, url]) => {
+      if (url) { const a = document.createElement('a'); a.className = 'qr qr-wa'; a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.innerHTML = WA_SVG + '<span></span>'; a.lastChild.textContent = label; row.appendChild(a); return; }
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'qr'; b.textContent = label; b.addEventListener('click', () => { row.remove(); addMsg(esc(label), 'me'); fn(); }); row.appendChild(b);
+    });
     chatLog.appendChild(row); scrollLog();
   });
 }
@@ -1047,10 +1065,10 @@ function greet() {
   say('Posso aiutarti a prenotare una visita o rispondere a una domanda. Poi ti passo allo studio su WhatsApp. Di cosa hai bisogno?');
   menu();
 }
-function menu() { C.step = 'menu'; chips([['Prenotare una visita', askReason], ['Ho mal di denti', urgent], ['Info su un trattamento', infoMenu], ['Orari e indirizzo', where]]); }
+function menu() { C.step = 'menu'; chips([['Scrivi subito su WhatsApp', null, waLink('Buongiorno Sigmadent, vorrei informazioni.')], ['Prenotare una visita', askReason], ['Ho mal di denti', urgent], ['Info su un trattamento', infoMenu], ['Orari e indirizzo', where]]); }
 const REASONS = ['Prima visita / controllo', 'Igiene e pulizia', 'Implantologia', 'Ortodonzia invisibile', 'Estetica e sbiancamento', 'Visita per un bambino', 'Altro'];
 function askReason() { C.step = 'reason'; say('Perfetto. Per cosa vorresti venire?'); chips(REASONS.map(r => [r, () => { C.reason = r; askName(); }])); }
-function urgent() { C.reason = 'Mal di denti / urgenza'; say('Mi dispiace, capisco che sia fastidioso. Scrivici subito: lo studio cerca di vederti il prima possibile.'); askName(); }
+function urgent() { C.reason = 'Mal di denti / urgenza'; say('Mi dispiace, capisco che sia fastidioso. Scrivici subito: lo studio cerca di vederti il prima possibile.'); chips([['Scrivi subito su WhatsApp', null, waLink('Buongiorno Sigmadent, ho mal di denti e vorrei una visita il prima possibile.')]]); askName(); }
 function askName() { C.step = 'name'; say('Come ti chiami? Scrivilo qui sotto.'); }
 function askWhen() { C.step = 'when'; say(`Piacere, ${esc(C.name)}! Quando preferisci venire?`); chips([['Mattina', () => setWhen('la mattina')], ['Pomeriggio', () => setWhen('il pomeriggio')], ['Prima possibile', () => setWhen('il primo orario disponibile')]]); }
 function setWhen(w) { C.when = w; handoff(); }
