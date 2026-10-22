@@ -6,7 +6,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-Qi/rb/QnN1NAZQbV8aZknMO3eQ51nBJpy02MuPkFLIE=' 'sha256-T3t2yKFU4EkGC27Q0lHegh2OiC0u8ET0y3aGkhwjWdI=' 'sha256-U1ISDAQHeADHvx7hWvvoAMaZ5kDMmQ7MKNAUybTmC3s=' 'sha256-12hrcsddDKH0+BQIFbZFCj4Y8R4HFxlI/u6zK3USGyg='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-Qi/rb/QnN1NAZQbV8aZknMO3eQ51nBJpy02MuPkFLIE=' 'sha256-iq2b0pfQdebRmlUR/1DxBfJnZmqsDIiFqh6FjKw619U=' 'sha256-U1ISDAQHeADHvx7hWvvoAMaZ5kDMmQ7MKNAUybTmC3s=' 'sha256-12hrcsddDKH0+BQIFbZFCj4Y8R4HFxlI/u6zK3USGyg='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests"
         },
         {
           "key": "X-Content-Type-Options",
