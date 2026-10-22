@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sigmadent Albenga</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Sigmadent Srl, studio dentistico ad Albenga in Via Patrioti 49. Igiene, implantologia, ortodonzia invisibile, estetica. 5,0 su Google. Prenota su WhatsApp.">
+<meta name="theme-color" content="#f6f8fa">
+<!-- DEPLOY STEP: aggiungere og:url e og:image con URL assoluti del dominio definitivo -->
+<meta property="og:title" content="Sigmadent · Studio dentistico ad Albenga">
+<meta property="og:description" content="Cure dentali precise, spiegate con calma. Via Patrioti 49, Albenga. Prenota su WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a bright, calm clinic. White and cool-grey rooms, deep dental blue ink.
+   One dark moment only: the tooth photograph, which opens up to full width as you scroll. */
+:root{
+  --bg:#f6f8fa;
+  --surface:#ffffff;
+  --soft:#edf2f6;
+  --sky:#e2eef7;
+  --ink:#10243a;
+  --ink-2:#4b5d70;
+  --ink-3:#6a7a8b;
+  --line:#dfe6ed;
+  --line-2:#c9d4de;
+  --brand:#1d5a86;
+  --brand-hover:#174a6f;
+  --brand-soft:#d6e7f3;
+  --wa:#1b8f4c;
+  --wa-hover:#167a40;
+  --navy:#0e2236;
+  --star:#f2b01e;
+
+  --f-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gl:max(20px, env(safe-area-inset-left, 0px));
+  --gr:max(20px, env(safe-area-inset-right, 0px));
+  --maxw:1220px;
+  --radius:22px;
+  --shadow:0 1px 2px rgba(16,36,58,.04),0 8px 30px rgba(16,36,58,.07);
+  color-scheme:light;
+}
+html{overflow-x:hidden;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{overflow-x:hidden;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+*,*::before,*::after{box-sizing:border-box}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+::selection{background:var(--brand);color:#fff}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:8px}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--brand);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+h1,h2,h3{margin:0;text-wrap:balance;color:var(--ink)}
+h1,h2{font-family:var(--f-display);font-weight:400;letter-spacing:-.02em;line-height:1.06}
+h1 em,h2 em{font-style:italic;color:var(--brand)}
+h3{font-weight:700;font-size:20px;letter-spacing:-.01em;line-height:1.3}
+p{margin:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:18px}
+.eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor}
+.h2{font-size:clamp(34px,4.4vw,56px)}
+.lede{color:var(--ink-2);font-size:18px;max-width:52ch}
+.sec{padding-block:clamp(80px,10vw,132px)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .45s var(--ease),background-color .3s,border-color .3s,color .3s,box-shadow .3s}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 22px rgba(27,143,76,.25)}
+.btn-wa:hover{background:var(--wa-hover);transform:translateY(-2px)}
+.btn-line{border-color:var(--line-2);background:var(--surface);color:var(--ink)}
+.btn-line:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{transform:translateY(-2px)}
+
+/* top bar + header */
+.topbar{background:var(--navy);color:#c9d6e2;font-size:13.5px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:40px}
+.topbar span{display:inline-flex;align-items:center;gap:8px}
+.topbar svg{width:14px;height:14px;opacity:.8}
+.topbar .stars{color:var(--star);letter-spacing:1px}
+.topbar a{text-decoration:none;color:#fff;font-weight:600}
+.tb-left{display:flex;gap:26px}
+@media (max-width:820px){.topbar{display:none}}
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid transparent;transition:border-color .4s,box-shadow .4s}
+.header.scrolled{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(16,36,58,.06)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand b{display:block;font-family:var(--f-display);font-weight:500;font-size:24px;letter-spacing:-.01em;line-height:1}
+.brand small{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:4px}
+.nav{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;color:var(--ink-2);position:relative;padding:6px 0;transition:color .3s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.nav a:hover{color:var(--ink)}
+.nav a:hover::after{transform:scaleX(1)}
+.header .btn{min-height:46px;padding:0 20px;font-size:14.5px}
+@media (max-width:960px){.nav{display:none}}
+@media (max-width:440px){.header .btn span{display:none}.header .btn{padding:0 14px}.brand small{display:none}}
+
+/* hero */
+.hero{position:relative;padding-block:clamp(40px,6vw,80px) clamp(56px,7vw,96px);overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;right:-18vw;top:-20vw;width:70vw;height:70vw;border-radius:50%;background:radial-gradient(circle,var(--sky) 0%,rgba(226,238,247,0) 65%);pointer-events:none;z-index:-1}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(36px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(42px,5.6vw,76px);margin-top:4px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.hero h1 .ln > span{display:block}
+.hero .lede{margin-top:24px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.trust{display:flex;flex-wrap:wrap;gap:16px 30px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.trust > div{display:flex;align-items:center;gap:12px;min-width:0}
+.trust .ic{width:42px;height:42px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;flex:none;color:var(--brand)}
+.trust .ic svg{width:21px;height:21px}
+.trust b{display:block;font-size:15px;line-height:1.25}
+.trust small{display:block;color:var(--ink-3);font-size:13.5px;line-height:1.3}
+.gstars{color:var(--star);letter-spacing:1px;font-size:14px}
+.hero-media{position:relative;aspect-ratio:1/1;width:100%;display:grid;place-items:center;perspective:1100px}
+.stage-disc{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 38%,#ffffff 0%,#f1f7fc 42%,#dcebf6 100%);box-shadow:inset 0 -40px 90px rgba(29,90,134,.10),0 50px 100px rgba(16,36,58,.08)}
+.ring{position:absolute;border-radius:50%;pointer-events:none}
+.r1{inset:-7%;border:1px solid rgba(29,90,134,.16);animation:spin 36s linear infinite;animation-delay:-9s}
+.r1 b{position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 6px rgba(29,90,134,.12)}
+.r2{inset:-15%;border:1px dashed rgba(29,90,134,.16);animation:spin 90s linear infinite reverse;animation-delay:-20s}
+.r3{inset:9%;border:1.5px solid rgba(255,255,255,.95)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tooth-wrap{position:relative;z-index:2;width:54%;transform-style:preserve-3d;will-change:transform;margin-top:-6%}
+.tooth-float{animation:bob 6.5s ease-in-out infinite;animation-delay:-1.6s}
+.tooth-float img{width:100%;height:auto;filter:brightness(1.16) saturate(.82) contrast(1.04) drop-shadow(0 34px 34px rgba(16,36,58,.16));will-change:transform}
+@keyframes bob{0%,100%{transform:translateY(-12px) rotate(-1.5deg)}50%{transform:translateY(12px) rotate(1.5deg)}}
+.tooth-shadow{position:absolute;z-index:1;left:50%;bottom:15%;width:34%;height:6%;margin-left:-17%;border-radius:50%;background:radial-gradient(closest-side,rgba(16,36,58,.30),rgba(16,36,58,0));animation:shadow 6.5s ease-in-out infinite;animation-delay:-1.6s}
+@keyframes shadow{0%,100%{transform:scale(.8);opacity:.55}50%{transform:scale(1.06);opacity:1}}
+.float{position:absolute;z-index:3;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);border-radius:18px;box-shadow:0 18px 44px rgba(16,36,58,.14);padding:13px 18px;display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.35;will-change:transform}
+.float b{display:block;font-size:15px}
+.float small{color:var(--ink-3)}
+.f1{left:-4%;bottom:18%}
+.f2{right:-4%;top:12%}
+.f3{right:0;bottom:4%}
+.f1 .big{font-family:var(--f-display);font-size:34px;line-height:1;color:var(--ink)}
+.chk{width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;flex:none}
+.chk svg{width:16px;height:16px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 5px rgba(27,143,76,.15);flex:none}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-media{max-width:420px;margin:0 auto;order:-1}
+  .f1{left:-2%}.f2{right:-2%}.f3{display:none}
+}
+@media (max-width:420px){.float{padding:10px 13px;font-size:12.5px}.float b{font-size:13.5px}.f1 .big{font-size:28px}}
+
+/* preloader (only shown when JS runs it) */
+.preloader{position:fixed;inset:0;z-index:200;background:var(--surface);display:none;place-items:center}
+.preloader.show{display:grid}
+.pl-in{display:flex;align-items:center;gap:14px}
+.pl-in svg{width:54px;height:54px}
+.pl-in span{display:block;overflow:hidden;font-family:var(--f-display);font-size:36px;letter-spacing:-.01em;color:var(--ink)}
+.pl-in span i{display:block;font-style:normal}
+.pl-bar{position:absolute;left:50%;bottom:16%;width:120px;height:2px;margin-left:-60px;background:var(--line);overflow:hidden;border-radius:2px}
+.pl-bar i{position:absolute;inset:0;background:var(--brand);transform:scaleX(0);transform-origin:left}
+
+/* word-mask headline reveal */
+.wm{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.wi{display:inline-block}
+
+/* before / after whitening */
+.ba-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.ba-copy .lede{margin-top:20px}
+.ba-points{list-style:none;margin:28px 0 32px;padding:0;display:grid;gap:12px}
+.ba-points li{display:flex;align-items:center;gap:12px;font-weight:600}
+.ba-points li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d5a86' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/13px no-repeat}
+.ba{--pos:50%;position:relative;aspect-ratio:1/1;width:100%;max-width:580px;margin:0 auto;border-radius:32px;background:radial-gradient(circle at 50% 42%,#ffffff 0%,#eef5fb 50%,#dbe9f4 100%);border:1px solid var(--line);overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;box-shadow:var(--shadow)}
+.ba-layer{position:absolute;inset:0;display:grid;place-items:center}
+.ba-layer img{width:58%;height:auto;pointer-events:none;-webkit-user-drag:none}
+.ba .before img{filter:brightness(1.05) sepia(.62) saturate(1.7) hue-rotate(-12deg) contrast(.96) drop-shadow(0 26px 28px rgba(16,36,58,.16))}
+.ba .after img{filter:brightness(1.16) saturate(.82) contrast(1.04) drop-shadow(0 26px 28px rgba(16,36,58,.16))}
+.ba .after{clip-path:inset(0 0 0 var(--pos))}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(16,36,58,.06),0 0 24px rgba(255,255,255,.9);outline:none}
+.ba-handle span{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:#fff;box-shadow:0 10px 26px rgba(16,36,58,.22);display:grid;place-items:center;color:var(--brand);transition:transform .35s var(--ease)}
+.ba-handle span svg{width:24px;height:24px}
+.ba:active .ba-handle span,.ba-handle:focus-visible span{transform:scale(1.1)}
+.ba-handle:focus-visible span{outline:2px solid var(--brand);outline-offset:3px}
+.ba-tag{position:absolute;top:18px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.9);font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);pointer-events:none}
+.ba-tag.l{left:18px}.ba-tag.r{right:18px;color:var(--brand)}
+.ba-note{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:12.5px;color:var(--ink-3);pointer-events:none}
+@media (max-width:900px){.ba-grid{grid-template-columns:1fr}.ba{order:-1}}
+
+/* spotlight on cards */
+.card > *{position:relative}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(29,90,134,.09),rgba(29,90,134,0) 65%);opacity:0;transition:opacity .4s;pointer-events:none}
+.card.feat::before{background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(191,224,246,.16),rgba(191,224,246,0) 65%)}
+.card:hover::before{opacity:1}
+.js-mq .mq-track{animation:none}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding-block:20px}
+.mq-track{display:flex;width:max-content;animation:mq 46s linear infinite;animation-delay:-8s}
+.mq-track span{display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:var(--f-display);font-size:clamp(22px,2.4vw,30px);color:var(--ink);white-space:nowrap}
+.mq-track span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand)}
+@keyframes mq{to{transform:translateX(-50%)}}
+body.paused *{animation-play-state:paused!important}
+
+/* the one dark moment: the photograph opens to full width */
+.reveal-sec{position:relative;height:200vh}
+.reveal-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.reveal-frame{position:absolute;inset:0;clip-path:inset(var(--ci,14%) var(--cx,10%) var(--ci,14%) var(--cx,10%) round var(--cr,32px));background:#14304b}
+.reveal-frame img{width:100%;height:100%;object-fit:cover;transform:scale(var(--zs,1.18));will-change:transform}
+.reveal-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,36,0) 45%,rgba(10,22,36,.72) 100%)}
+.reveal-text{position:absolute;left:0;right:0;bottom:clamp(40px,9vh,96px);text-align:center;color:#fff;opacity:var(--to,0);transform:translateY(calc((1 - var(--to,0))*30px));padding-left:var(--gl);padding-right:var(--gr)}
+.reveal-text h2{color:#fff;font-size:clamp(36px,5.4vw,74px);text-shadow:0 2px 30px rgba(5,15,28,.5)}
+.reveal-text h2 em{color:#bfe0f6}
+.reveal-text p{margin:16px auto 0;max-width:46ch;color:#e3edf5;font-size:18px;text-shadow:0 1px 12px rgba(5,15,28,.6)}
+@media (max-width:720px){.reveal-frame img{object-position:50% 35%}}
+
+/* services */
+.sv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:52px}
+.sv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px 26px;display:flex;flex-direction:column;gap:12px;text-decoration:none;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(16,36,58,.1);border-color:var(--brand-soft)}
+.card .ic{width:56px;height:56px;border-radius:16px;background:var(--sky);color:var(--brand);display:grid;place-items:center;margin-bottom:8px;transition:background-color .35s,color .35s}
+.card .ic svg{width:28px;height:28px}
+.card:hover .ic{background:var(--brand);color:#fff}
+.card p{color:var(--ink-2);font-size:15.5px}
+.card .more{margin-top:auto;padding-top:10px;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:var(--brand)}
+.card .more svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.card:hover .more svg{transform:translateX(4px)}
+.card.feat{background:var(--navy);border-color:var(--navy)}
+.card.feat h3{color:#fff}
+.card.feat p{color:#b9c8d6}
+.card.feat .ic{background:rgba(255,255,255,.1);color:#fff}
+.card.feat:hover .ic{background:#fff;color:var(--navy)}
+.card.feat .more{color:#bfe0f6}
+@media (max-width:960px){.sv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.sv-grid{grid-template-columns:1fr}}
+
+/* why */
+.why{background:var(--surface);border-block:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:start}
+.why-side{position:sticky;top:120px}
+.why-side .lede{margin-top:20px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px}
+.stat .n{font-family:var(--f-display);font-size:48px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .n small{font-size:22px;color:var(--star);margin-left:4px}
+.stat p{margin-top:8px;color:var(--ink-2);font-size:14.5px}
+.reasons{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.reasons li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--bg);transition:background-color .35s,border-color .35s}
+.reasons li:hover{background:var(--surface);border-color:var(--brand-soft)}
+.reasons .ic{width:52px;height:52px;border-radius:14px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--brand)}
+.reasons .ic svg{width:24px;height:24px}
+.reasons h3{font-size:18.5px}
+.reasons p{color:var(--ink-2);font-size:15.5px;margin-top:4px}
+@media (max-width:900px){.why-grid{grid-template-columns:1fr}.why-side{position:static}}
+
+/* process */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px}
+.steps-line{position:absolute;left:28px;right:28px;top:27px;height:2px;background:var(--line);overflow:hidden;border-radius:2px}
+.steps-line i{position:absolute;inset:0;background:var(--brand);transform:scaleX(var(--lp,0));transform-origin:left}
+.step{position:relative;min-width:0}
+.step .num{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:var(--surface);border:2px solid var(--brand);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:19px;box-shadow:0 0 0 8px var(--bg)}
+.step h3{margin-top:24px}
+.step p{margin-top:8px;color:var(--ink-2);font-size:15.5px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:40px 24px}.steps-line{display:none}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* calm band */
+.calm{position:relative;border-radius:32px;background:linear-gradient(135deg,#e3eef8,#f3f7fb 60%);border:1px solid var(--line);padding:clamp(32px,6vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:center;overflow:hidden;isolation:isolate}
+.calm::after{content:"";position:absolute;right:-120px;bottom:-120px;width:340px;height:340px;border-radius:50%;border:1px solid var(--brand-soft);box-shadow:0 0 0 40px rgba(214,231,243,.35),0 0 0 80px rgba(214,231,243,.2);pointer-events:none;z-index:-1}
+.calm ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.calm li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.calm li svg{width:22px;height:22px;flex:none;color:var(--wa);margin-top:2px}
+.calm li b{display:block}
+.calm li span{color:var(--ink-2);font-size:15px}
+@media (max-width:900px){.calm{grid-template-columns:1fr}}
+
+/* reviews */
+.rev-card{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px);align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:32px;padding:clamp(28px,5vw,64px);box-shadow:var(--shadow)}
+.gbox{text-align:center;padding:30px;border-radius:24px;background:var(--bg);border:1px solid var(--line)}
+.glogo{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--ink-2);font-size:14px}
+.glogo svg{width:20px;height:20px}
+.score{font-family:var(--f-display);font-size:clamp(84px,10vw,124px);line-height:1;margin-top:10px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stars{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.stars svg{width:30px;height:30px}
+.stars .bg{fill:#e7ecf1}.stars .fg{fill:var(--star)}
+.gbox p{margin-top:12px;color:var(--ink-2);font-size:15px}
+.rev-copy .lede{margin-top:18px}
+.rev-copy .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+@media (max-width:860px){.rev-card{grid-template-columns:1fr}}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,6vw,90px);align-items:start}
+.faq-grid .intro{position:sticky;top:120px}
+.faq-grid .intro .lede{margin-top:18px}
+.qa{display:grid;gap:12px}
+.qa-item{background:var(--surface);border:1px solid var(--line);border-radius:18px;transition:border-color .3s,box-shadow .3s}
+.qa-item.open{border-color:var(--brand-soft);box-shadow:var(--shadow)}
+.qa-item button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:18px;text-align:left;background:none;border:0;padding:22px 24px;cursor:pointer;font-weight:700;font-size:17px;line-height:1.35}
+.qa-item button i{flex:none;width:32px;height:32px;border-radius:50%;background:var(--sky);position:relative;transition:background-color .3s,transform .5s var(--ease)}
+.qa-item button i::before,.qa-item button i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:var(--brand);transform:translate(-50%,-50%)}
+.qa-item button i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .5s var(--ease)}
+.qa-item.open button i{background:var(--brand);transform:rotate(180deg)}
+.qa-item.open button i::before,.qa-item.open button i::after{background:#fff}
+.qa-item.open button i::after{transform:translate(-50%,-50%) rotate(0)}
+.qa-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.qa-item.open .qa-a{grid-template-rows:1fr}
+.qa-a > div{overflow:hidden}
+.qa-a p{padding:0 24px 22px;color:var(--ink-2);max-width:62ch}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr}.faq-grid .intro{position:static}}
+
+/* booking */
+.book{background:var(--navy);color:#fff;border-radius:36px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.book-form{padding:clamp(28px,5vw,64px)}
+.book-form .eyebrow{color:#9fd0f0}
+.book-form h2{color:#fff}
+.book-form h2 em{color:#9fd0f0}
+.book-form > p{margin-top:16px;color:#b9c8d6;max-width:44ch}
+form{margin-top:32px;display:grid;gap:20px}
+.field{display:grid;gap:8px;min-width:0}
+.field label,.field legend{font-size:13px;font-weight:700;color:#cfdbe6;padding:0}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+input[type=text],select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid transparent;border-radius:14px;padding:14px 16px;transition:border-color .3s,box-shadow .3s;appearance:none;-webkit-appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231d5a86' stroke-width='1.8'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:42px}
+textarea{min-height:92px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#7fc0ea;box-shadow:0 0 0 4px rgba(127,192,234,.3)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{font-size:15px;font-weight:600;color:#fff;border:1.5px solid rgba(255,255,255,.3);border-radius:999px;padding:10px 18px;cursor:pointer;transition:background-color .3s,border-color .3s,color .3s}
+.seg input:checked + label{background:#fff;border-color:#fff;color:var(--navy)}
+.seg input:focus-visible + label{outline:2px solid #7fc0ea;outline-offset:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.err{color:#ffc2b8;font-size:14px}
+.err:empty{display:none}
+.done{display:none;gap:16px;margin-top:30px;padding:24px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+.done.show{display:grid}
+.done pre{margin:0;white-space:pre-wrap;font-family:var(--f-body);font-size:14.5px;color:#e7eef5;background:rgba(0,0,0,.2);padding:14px 16px;border-radius:12px;line-height:1.6}
+.contact{background:#13304b;padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:26px}
+.map{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/10;background:#e9eff4}
+.map svg{display:block;width:100%;height:100%}
+.pin{position:absolute;left:52%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.pin b{background:var(--surface);color:var(--ink);font-size:13px;font-weight:700;padding:8px 12px;border-radius:10px;box-shadow:0 8px 20px rgba(16,36,58,.18);white-space:nowrap}
+.pin span{width:18px;height:18px;margin-top:8px;border-radius:50%;background:var(--brand);border:3px solid #fff;box-shadow:0 0 0 6px rgba(29,90,134,.2)}
+.cinfo{display:grid;gap:20px}
+.cinfo > div{display:grid;gap:4px}
+.cinfo .k{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8fb0c9}
+.cinfo p{color:#e7eef5}
+.phone{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.phone strong{font-family:var(--f-display);font-weight:500;font-size:28px;user-select:all;font-variant-numeric:tabular-nums;color:#fff}
+.copy{font-size:13px;font-weight:700;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;transition:border-color .3s}
+.copy:hover{border-color:#fff}
+.lnk{color:#9fd0f0;text-decoration:none;font-weight:700}
+.lnk:hover{text-decoration:underline}
+@media (max-width:900px){.book{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+
+/* footer */
+footer{padding-block:64px calc(36px + env(safe-area-inset-bottom,0px));font-size:15px;color:var(--ink-2)}
+.foot{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:36px}
+.foot h4{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--brand)}
+.foot-base{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-3)}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}.foot > div:first-child{grid-column:1/-1}}
+
+/* chat, styled like the WhatsApp the patient already knows */
+.chat-launch{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;height:60px;padding:0 22px 0 18px;border-radius:999px;border:0;background:var(--wa);color:#fff;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:15px;box-shadow:0 14px 34px rgba(27,143,76,.35);transition:transform .45s var(--ease),background-color .3s}
+.chat-launch:hover{background:var(--wa-hover);transform:translateY(-3px)}
+.chat-launch svg{width:26px;height:26px}
+.chat-launch .badge{position:absolute;top:-4px;right:-2px;width:20px;height:20px;border-radius:50%;background:#e8483a;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;border:2px solid var(--bg)}
+.chat-open .chat-launch .badge{display:none}
+@media (max-width:560px){.chat-launch{width:60px;padding:0;justify-content:center}.chat-launch .lbl{display:none}}
+.teaser{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(94px + env(safe-area-inset-bottom,0px));z-index:69;width:min(290px,calc(100vw - 40px));background:var(--surface);border:1px solid var(--line);border-radius:18px 18px 6px 18px;padding:14px 38px 14px 16px;font-size:14.5px;line-height:1.45;box-shadow:0 18px 44px rgba(16,36,58,.16);opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease);pointer-events:none;cursor:pointer}
+.teaser.show{opacity:1;transform:none;pointer-events:auto}
+.teaser b{display:block}
+.teaser button{position:absolute;right:8px;top:8px;width:26px;height:26px;border:0;background:none;color:var(--ink-3);cursor:pointer;font-size:18px;line-height:1;border-radius:50%}
+.chat{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(94px + env(safe-area-inset-bottom,0px));z-index:71;width:min(390px,calc(100vw - 24px));height:min(600px,calc(100vh - 130px));height:min(600px,calc(100svh - 130px));display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#efeae2;box-shadow:0 30px 80px rgba(16,36,58,.28);opacity:0;visibility:hidden;transform:translateY(16px) scale(.98);transform-origin:bottom right;transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
+.chat-open .chat{opacity:1;visibility:visible;transform:none}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:#075e54;color:#fff}
+.chat-head .av{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.chat-head .av svg{width:26px;height:26px}
+.chat-head b{display:block;font-size:15.5px}
+.chat-head small{color:#cde9e3;font-size:12.5px}
+.chat-head .x{margin-left:auto;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;display:grid;place-items:center}
+.chat-log{flex:1;overflow-y:auto;padding:16px 12px;display:flex;flex-direction:column;gap:8px;overscroll-behavior:contain}
+.msg{max-width:84%;padding:9px 12px 10px;border-radius:12px;font-size:14.5px;line-height:1.5;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .35s var(--ease) both;color:#111b21}
+.msg.bot{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.me{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg a:not(.btn){color:#027eb5}
+.msg .btn{margin-top:10px;min-height:44px;font-size:14.5px}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.typing{display:inline-flex;gap:4px;padding:13px 14px}
+.typing i{width:7px;height:7px;border-radius:50%;background:#8696a0;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.chips-row{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:100%;animation:pop .35s var(--ease) both}
+.qr{border:1px solid #c5ddd8;background:#fff;color:#075e54;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;transition:background-color .25s,color .25s}
+.qr:hover{background:#075e54;color:#fff}
+.chat-input{display:flex;gap:8px;padding:10px;background:#f0f2f5}
+.chat-input input{flex:1;min-width:0;border-radius:999px;padding:12px 16px;font-size:15px;border:1px solid #e1e5e8;background:#fff;color:#111b21}
+.chat-input button{width:46px;height:46px;flex:none;border-radius:50%;border:0;background:#00a884;color:#fff;display:grid;place-items:center;cursor:pointer}
+.chat-input button svg{width:20px;height:20px}
+.chat-foot{padding:0 12px 10px;font-size:11.5px;color:#667781;text-align:center;background:#f0f2f5}
+@media (max-width:520px){.chat{right:12px;left:12px;width:auto;bottom:calc(92px + env(safe-area-inset-bottom,0px))}.teaser{right:16px}}
+@media (pointer:coarse){.btn,.qr,.copy{min-height:44px}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal-sec{height:auto}
+  .reveal-pin{position:relative;height:80vh}
+  .reveal-frame{--ci:0%!important;--cx:0%!important;--cr:0px!important}
+  .reveal-frame img{--zs:1!important}
+  .reveal-text{--to:1!important}
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="pl-in"><svg viewBox="0 0 40 40"><path class="pl-path" d="M14.2 9c-2.6 0-4.4 2-4.4 4.8 0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 3.2-3.3s2.9 1.6 3.2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8 0-2.8-1.8-4.8-4.4-4.8-2.1 0-3.2 1.1-5.8 1.1S16.3 9 14.2 9Z" fill="#1d5a86" fill-opacity="0" stroke="#1d5a86" stroke-width="1.4" stroke-linejoin="round"/></svg><span><i>Sigmadent</i></span></div>
+  <div class="pl-bar"><i></i></div>
+</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Via Patrioti 49, 17031 Albenga (SV)</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>Tel. e WhatsApp <a href="https://wa.me/393917520733" target="_blank" rel="noopener">391 752 0733</a></span>
+    </div>
+    <span><span class="stars" aria-hidden="true">★★★★★</span>5,0 su Google · 101 recensioni</span>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="brand" href="#top" data-scroll aria-label="Sigmadent, torna all'inizio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#1d5a86"/><path d="M14.2 11c-2.6 0-4.4 2-4.4 4.8 0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 3.2-3.3s2.9 1.6 3.2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8 0-2.8-1.8-4.8-4.4-4.8-2.1 0-3.2 1.1-5.8 1.1S16.3 11 14.2 11Z" fill="#fff"/></svg>
+      <span><b>Sigmadent</b><small>Studio dentistico · Albenga</small></span>
+    </a>
+    <ul class="nav">
+      <li><a href="#trattamenti" data-scroll>Trattamenti</a></li>
+      <li><a href="#studio" data-scroll>Lo studio</a></li>
+      <li><a href="#percorso" data-scroll>Come funziona</a></li>
+      <li><a href="#recensioni" data-scroll>Recensioni</a></li>
+      <li><a href="#contatti" data-scroll>Contatti</a></li>
+    </ul>
+    <a class="btn btn-wa" href="#contatti" data-scroll>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.900 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+      <span>Prenota una visita</span>
+    </a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Studio dentistico ad Albenga</p>
+      <h1><span class="ln"><span data-line>Cure dentali precise,</span></span><span class="ln"><span data-line><em>spiegate con calma.</em></span></span></h1>
+      <p class="lede" data-intro>Sigmadent è il poliambulatorio odontoiatrico di Via Patrioti 49. Dalla pulizia dei denti all'implantologia ti seguiamo noi, con un piano chiaro e un preventivo scritto prima di iniziare.</p>
+      <div class="hero-cta" data-intro>
+        <a class="btn btn-wa" href="#contatti" data-scroll>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+          Prenota su WhatsApp</a>
+        <a class="btn btn-line" href="#trattamenti" data-scroll>Scopri i trattamenti</a>
+      </div>
+      <div class="trust" data-intro>
+        <div><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3Z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-4V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14Z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10C7.2 7.7 9.4 6 12 6Z"/></svg></span><div><b>5,0 <span class="gstars" aria-hidden="true">★★★★★</span></b><small>101 recensioni Google</small></div></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3Z"/></svg></span><div><b>Preventivo chiaro</b><small>Scritto, prima di iniziare</small></div></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></span><div><b>Tutte le cure</b><small>In un unico studio</small></div></div>
+      </div>
+    </div>
+    <div class="hero-media" id="heroStage">
+      <div class="stage-disc" aria-hidden="true"><i class="ring r1"><b></b></i><i class="ring r2"></i><i class="ring r3"></i></div>
+      <div class="tooth-shadow" aria-hidden="true"></div>
+      <div class="tooth-wrap" id="toothWrap">
+        <div class="tooth-float"><img id="heroTooth" src="assets/tooth-cut.webp" alt="Un molare in ceramica bianca lucida, sospeso nell'aria" width="523" height="612"></div>
+      </div>
+      <div class="float f2" data-depth="1.4"><span class="dot"></span><div><b>Prenoti con un messaggio</b><small>Rispondiamo su WhatsApp</small></div></div>
+      <div class="float f1" data-depth="-1.1"><span class="big">5,0</span><div><span class="gstars" aria-hidden="true">★★★★★</span><br><small>101 recensioni su Google</small></div></div>
+      <div class="float f3" data-depth="0.8"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Preventivo scritto</b><small>Prima di iniziare</small></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track"><span>Igiene e prevenzione</span><span>Implantologia</span><span>Ortodonzia invisibile</span><span>Estetica del sorriso</span><span>Conservativa</span><span>Endodonzia</span><span>Protesi</span><span>Pedodonzia</span><span>Igiene e prevenzione</span><span>Implantologia</span><span>Ortodonzia invisibile</span><span>Estetica del sorriso</span><span>Conservativa</span><span>Endodonzia</span><span>Protesi</span><span>Pedodonzia</span></div>
+</div>
+
+<!-- TRATTAMENTI -->
+<section class="sec" id="trattamenti">
+  <div class="wrap">
+    <div class="sv-head">
+      <div>
+        <p class="eyebrow" data-reveal>Trattamenti</p>
+        <h2 class="h2" data-reveal>Tutto quello che serve<br>al tuo <em>sorriso</em>.</h2>
+      </div>
+      <p class="lede" data-reveal>Dalla prevenzione ai lavori più complessi, in un solo studio. Tocca un trattamento per chiedere informazioni.</p>
+    </div>
+    <div class="sv-grid" id="svGrid">
+      <a class="card" href="#contatti" data-ask="Igiene e prevenzione"><span class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5C7 5 5 7 5 9.8c0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 2-3.3s1.7 1.6 2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8C23 7 21 5 18.5 5c-2 0-2.8 1.1-4.5 1.1S11.5 5 9.5 5Z"/><path d="M22.5 1.5v3M21 3h3"/></svg></span><h3>Igiene e prevenzione</h3><p>Pulizia professionale, controllo di gengive e smalto e consigli pratici per la cura a casa.</p><span class="more">Chiedi informazioni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="card feat" href="#contatti" data-ask="Implantologia"><span class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5c3 0 3.8 1 6 1s3-1 6-1c2 0 3.5 1.6 3.5 3.8 0 2-.8 3.4-2 4.7H6.5c-1.2-1.3-2-2.7-2-4.7C4.5 6.1 6 4.5 8 4.5Z"/><path d="M10 13h8l-1 3h-6l-1-3ZM11 16l.6 2.5h4.8L17 16M11.6 18.5l.6 2.5h3.6l.6-2.5M12.2 21l.8 2.5h2l.8-2.5"/></svg></span><h3>Implantologia</h3><p>Impianti per sostituire uno o più denti mancanti, con tempi e costi spiegati fin dalla prima visita.</p><span class="more">Chiedi informazioni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="card" href="#contatti" data-ask="Ortodonzia invisibile"><span class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11c0-3 4.5-5 10-5s10 2 10 5c0 5-4 11-10 11S4 16 4 11Z"/><path d="M7 11.5c1.8 1.2 4.3 2 7 2s5.2-.8 7-2M10 9v4M14 8.5v5M18 9v4" opacity=".7"/></svg></span><h3>Ortodonzia invisibile</h3><p>Allineatori trasparenti per raddrizzare i denti senza l'apparecchio fisso, per adulti e ragazzi.</p><span class="more">Chiedi informazioni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="card" href="#contatti" data-ask="Estetica e sbiancamento"><span class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13c2.5 6 15.5 6 18 0"/><path d="M8 14.5v2M11.5 15.5v2.5M16.5 15.5v2.5M20 14.5v2"/><path d="M21 3l1 2.5 2.5 1-2.5 1L21 10l-1-2.5-2.5-1 2.5-1L21 3Z"/></svg></span><h3>Estetica del sorriso</h3><p>Sbiancamento, faccette e corone in ceramica per un sorriso luminoso e naturale.</p><span class="more">Chiedi informazioni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="card" href="#contatti" data-ask="Conservativa ed endodonzia"><span class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5C7 5 5 7 5 9.8c0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 2-3.3s1.7 1.6 2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8C23 7 21 5 18.5 5c-2 0-2.8 1.1-4.5 1.1S11.5 5 9.5 5Z"/><circle cx="16.5" cy="10.5" r="2"/></svg></span><h3>Conservativa ed endodonzia</h3><p>Carie curate con otturazioni estetiche e devitalizzazioni per salvare il dente naturale.</p><span class="more">Chiedi informazioni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a class="card" href="#contatti" data-ask="Visita per un bambino"><span class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"/><path d="M9.5 16.5c1 1.6 2.6 2.5 4.5 2.5s3.5-.9 4.5-2.5M10.5 11h.01M17.5 11h.01" stroke-width="2.2"/></svg></span><h3>Bambini e ragazzi</h3><p>Prime visite, sigillature e cure con tempi e parole adatti ai più piccoli.</p><span class="more">Chiedi informazioni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- THE MOMENT: the photograph opens up -->
+<section class="reveal-sec" id="revealSec" aria-label="Precisione in ogni dettaglio">
+  <div class="reveal-pin">
+    <div class="reveal-frame" id="revealFrame"><img src="assets/tooth-wide.jpg" alt="" aria-hidden="true" width="2000" height="1125"></div>
+    <div class="reveal-text" id="revealText">
+      <h2>Precisione in <em>ogni dettaglio.</em></h2>
+      <p>Lavoriamo con calma e con metodo, un dente alla volta. Il risultato si vede nel tuo sorriso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="sec" id="sbiancamento">
+  <div class="wrap ba-grid">
+    <div class="ba" id="ba">
+      <div class="ba-layer before"><img src="assets/tooth-cut.webp" alt="" width="523" height="612"></div>
+      <div class="ba-layer after"><img src="assets/tooth-cut.webp" alt="" width="523" height="612"></div>
+      <span class="ba-tag l">Prima</span><span class="ba-tag r">Dopo</span>
+      <div class="ba-handle" id="baHandle" role="slider" tabindex="0" aria-label="Confronto prima e dopo lo sbiancamento" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+      <p class="ba-note">Simulazione illustrativa</p>
+    </div>
+    <div class="ba-copy">
+      <p class="eyebrow" data-reveal>Estetica del sorriso</p>
+      <h2 class="h2" data-reveal>Un sorriso più <em>luminoso</em>, seguito dal dentista.</h2>
+      <p class="lede" data-reveal>Lo sbiancamento professionale schiarisce i denti in modo controllato, sotto la guida del dentista. Il risultato dipende dal colore di partenza: in visita ti diciamo cosa aspettarti. Trascina il cursore per vedere la differenza.</p>
+      <ul class="ba-points" id="baPoints">
+        <li>Valutazione del colore in prima visita</li>
+        <li>Trattamento eseguito in studio</li>
+        <li>Consigli per mantenere il risultato</li>
+      </ul>
+      <a class="btn btn-wa" href="#contatti" data-ask="Estetica e sbiancamento" data-reveal>Chiedi informazioni sullo sbiancamento</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec why" id="studio">
+  <div class="wrap why-grid">
+    <div class="why-side">
+      <p class="eyebrow" data-reveal>Lo studio</p>
+      <h2 class="h2" data-reveal>Perché i pazienti scelgono <em>Sigmadent</em>.</h2>
+      <p class="lede" data-reveal>Siamo un poliambulatorio odontoiatrico nel centro di Albenga. Ti ascoltiamo, ti spieghiamo e poi curiamo, senza fretta e senza sorprese.</p>
+      <div class="stats">
+        <div class="stat"><div class="n"><span data-count="5" data-dec="1">5,0</span><small>★</small></div><p>Valutazione media su Google</p></div>
+        <div class="stat"><div class="n"><span data-count="101">101</span></div><p>Recensioni dei nostri pazienti</p></div>
+      </div>
+    </div>
+    <ul class="reasons" id="reasons">
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12Z"/></svg></span><div><h3>Ti spieghiamo tutto, prima</h3><p>Prima di ogni cura ti diciamo cosa faremo, perché e quanto durerà. Le domande sono sempre benvenute.</p></div></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg></span><div><h3>Preventivo scritto e chiaro</h3><p>Ricevi un preventivo dettagliato prima di iniziare. Sai sempre quanto spendi, voce per voce.</p></div></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><div><h3>Tutte le cure in un solo studio</h3><p>Igiene, conservativa, implantologia, ortodonzia ed estetica. Non devi girare tra più studi.</p></div></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><h3>Nel centro di Albenga</h3><p>Ci trovi in Via Patrioti 49, facile da raggiungere da tutta la piana e dalla riviera.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="percorso">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Come funziona</p>
+    <h2 class="h2" data-reveal>Dal primo messaggio<br>al nuovo <em>sorriso</em>.</h2>
+    <div class="steps" id="steps">
+      <div class="steps-line" aria-hidden="true"><i id="stepsLine"></i></div>
+      <div class="step"><div class="num">1</div><h3>Scrivici su WhatsApp</h3><p>Due righe su cosa ti serve. Ti rispondiamo e fissiamo insieme l'appuntamento.</p></div>
+      <div class="step"><div class="num">2</div><h3>Prima visita</h3><p>Un controllo completo della bocca, con calma. Ascoltiamo i tuoi dubbi e le tue esigenze.</p></div>
+      <div class="step"><div class="num">3</div><h3>Piano di cura</h3><p>Ti spieghiamo le opzioni con parole semplici e ricevi un preventivo scritto. Decidi tu.</p></div>
+      <div class="step"><div class="num">4</div><h3>Cure e controlli</h3><p>Facciamo il lavoro con cura e ti seguiamo anche dopo, con i richiami periodici.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALM -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="calm">
+      <div>
+        <p class="eyebrow" data-reveal>Paura del dentista?</p>
+        <h2 class="h2" data-reveal>Succede a tanti.<br>Qui sei <em>in buone mani</em>.</h2>
+        <p class="lede" data-reveal style="margin-top:18px">Diccelo quando prenoti. Organizziamo l'appuntamento con più tempo e andiamo avanti al tuo ritmo.</p>
+      </div>
+      <ul id="calmList">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>Ogni passaggio spiegato</b><span>Sai sempre cosa stiamo facendo e perché.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>Puoi fermarci quando vuoi</b><span>Alzi la mano e ci fermiamo. Il ritmo lo decidi tu.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>Un ambiente sereno</b><span>Persone gentili, uno studio luminoso, nessuna fretta.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="recensioni" style="padding-top:0">
+  <div class="wrap">
+    <div class="rev-card">
+      <div class="gbox">
+        <span class="glogo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3Z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-4V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14Z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10C7.2 7.7 9.4 6 12 6Z"/></svg>Recensioni Google</span>
+        <div class="score" aria-label="Valutazione 5,0 su 5"><span data-count="5" data-dec="1">5,0</span></div>
+        <div class="stars" id="stars" aria-hidden="true"></div>
+        <p>Media su 101 recensioni</p>
+      </div>
+      <div class="rev-copy">
+        <p class="eyebrow" data-reveal>Dicono di noi</p>
+        <h2 class="h2" data-reveal>Il giudizio che conta è quello dei <em>pazienti</em>.</h2>
+        <p class="lede" data-reveal>Centouno persone hanno raccontato su Google com'è stata la loro esperienza da Sigmadent. Leggi le loro parole prima di prenotare.</p>
+        <div class="row" data-reveal>
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Sigmadent+Srl+Via+Patrioti+49+Albenga" target="_blank" rel="noopener">Leggi le recensioni</a>
+          <a class="btn btn-wa" href="#contatti" data-scroll>Prenota la tua visita</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div class="intro">
+      <p class="eyebrow" data-reveal>Domande frequenti</p>
+      <h2 class="h2" data-reveal>Hai qualche <em>dubbio</em>?</h2>
+      <p class="lede" data-reveal>Ecco le domande che ci fanno più spesso. Per tutto il resto c'è il nostro assistente, in basso a destra.</p>
+    </div>
+    <div class="qa" id="qa">
+      <div class="qa-item"><button type="button" aria-expanded="false">Quanto costa la prima visita?<i aria-hidden="true"></i></button><div class="qa-a"><div><p>Te lo diciamo quando prenoti, così sai tutto prima di venire. Per le cure ricevi sempre un preventivo scritto prima di iniziare.</p></div></div></div>
+      <div class="qa-item"><button type="button" aria-expanded="false">Ho mal di denti, potete vedermi presto?<i aria-hidden="true"></i></button><div class="qa-a"><div><p>Scrivici subito su WhatsApp e raccontaci cosa succede. Facciamo il possibile per trovarti un posto in tempi brevi.</p></div></div></div>
+      <div class="qa-item"><button type="button" aria-expanded="false">Curate anche i bambini?<i aria-hidden="true"></i></button><div class="qa-a"><div><p>Sì. Con i più piccoli usiamo tempi e parole adatti a loro, perché la prima esperienza dal dentista sia serena.</p></div></div></div>
+      <div class="qa-item"><button type="button" aria-expanded="false">È possibile pagare a rate?<i aria-hidden="true"></i></button><div class="qa-a"><div><p>Chiedicelo quando ricevi il preventivo: valutiamo insieme la soluzione di pagamento più comoda per te.</p></div></div></div>
+      <div class="qa-item"><button type="button" aria-expanded="false">Quali sono gli orari dello studio?<i aria-hidden="true"></i></button><div class="qa-a"><div><p>Gli orari aggiornati sono sulla nostra scheda Google. Puoi anche chiederli su WhatsApp, insieme alla prima disponibilità.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec" id="contatti" style="padding-top:0">
+  <div class="wrap">
+    <div class="book">
+      <div class="book-form">
+        <p class="eyebrow">Prenota</p>
+        <h2 class="h2">Prenota la tua visita, <em>in un minuto.</em></h2>
+        <p>Compila i campi: ti prepariamo il messaggio per WhatsApp. Lo invii tu allo studio, con un tocco.</p>
+        <form id="bookForm" novalidate>
+          <div class="two">
+            <div class="field"><label for="fName">Nome e cognome</label><input type="text" id="fName" name="name" autocomplete="name" placeholder="Es. Giulia Rossi"></div>
+            <div class="field"><label for="fReason">Motivo della visita</label>
+              <select id="fReason" name="reason">
+                <option>Prima visita / controllo</option>
+                <option>Igiene e pulizia</option>
+                <option>Mal di denti / urgenza</option>
+                <option>Implantologia</option>
+                <option>Ortodonzia invisibile</option>
+                <option>Estetica e sbiancamento</option>
+                <option>Conservativa ed endodonzia</option>
+                <option>Visita per un bambino</option>
+                <option>Altro</option>
+              </select>
+            </div>
+          </div>
+          <fieldset class="field">
+            <legend>Quando preferisci venire</legend>
+            <div class="seg">
+              <input type="radio" name="when" id="w1" value="la mattina" checked><label for="w1">Mattina</label>
+              <input type="radio" name="when" id="w2" value="il pomeriggio"><label for="w2">Pomeriggio</label>
+              <input type="radio" name="when" id="w3" value="il primo orario disponibile"><label for="w3">Prima possibile</label>
+            </div>
+          </fieldset>
+          <div class="field"><label for="fNote">Note (facoltativo)</label><textarea id="fNote" name="note" placeholder="Es. sento fastidio a un dente in basso a destra"></textarea></div>
+          <p class="err" id="fErr" role="alert"></p>
+          <div><button class="btn btn-wa" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Prepara il messaggio</button></div>
+        </form>
+        <div class="done" id="done" aria-live="polite">
+          <p><b>Messaggio pronto.</b> Non è ancora inviato: premi il pulsante per aprirlo su WhatsApp e invialo allo studio.</p>
+          <pre id="donePre"></pre>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-wa" id="doneLink" href="https://wa.me/393917520733" target="_blank" rel="noopener">Apri WhatsApp e invia</a><button class="btn btn-light" type="button" id="doneEdit">Modifica</button></div>
+        </div>
+      </div>
+      <aside class="contact" aria-label="Contatti dello studio">
+        <div class="map" aria-hidden="true"><svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" id="mapSvg"></svg><div class="pin"><b>Sigmadent · Via Patrioti 49</b><span></span></div></div>
+        <div class="cinfo">
+          <div><span class="k">Indirizzo</span><p>Via Patrioti, 49 · 17031 Albenga (SV)</p><p><a class="lnk" href="https://www.google.com/maps/search/?api=1&query=Via+Patrioti+49+17031+Albenga+SV" target="_blank" rel="noopener">Indicazioni stradali →</a></p></div>
+          <div><span class="k">Telefono e WhatsApp</span><div class="phone"><strong id="phoneNum">391 752 0733</strong><button class="copy" type="button" id="copyBtn">Copia</button></div></div>
+          <div><span class="k">Orari</span><p>Aggiornati sulla <a class="lnk" href="https://www.google.com/maps/search/?api=1&query=Sigmadent+Srl+Albenga" target="_blank" rel="noopener">scheda Google</a> dello studio.</p></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" data-scroll aria-label="Sigmadent">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#1d5a86"/><path d="M14.2 11c-2.6 0-4.4 2-4.4 4.8 0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 3.2-3.3s2.9 1.6 3.2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8 0-2.8-1.8-4.8-4.4-4.8-2.1 0-3.2 1.1-5.8 1.1S16.3 11 14.2 11Z" fill="#fff"/></svg>
+          <span><b>Sigmadent</b><small>Studio dentistico · Albenga</small></span>
+        </a>
+        <p style="margin-top:18px;max-width:34ch">Sigmadent Srl, poliambulatorio odontoiatrico. Via Patrioti 49, 17031 Albenga (SV).</p>
+      </div>
+      <div><h4>Trattamenti</h4><ul><li><a href="#trattamenti" data-scroll>Igiene</a></li><li><a href="#trattamenti" data-scroll>Implantologia</a></li><li><a href="#trattamenti" data-scroll>Ortodonzia</a></li><li><a href="#trattamenti" data-scroll>Estetica</a></li></ul></div>
+      <div><h4>Studio</h4><ul><li><a href="#studio" data-scroll>Chi siamo</a></li><li><a href="#percorso" data-scroll>Come funziona</a></li><li><a href="#faq" data-scroll>Domande frequenti</a></li></ul></div>
+      <div><h4>Contatti</h4><ul><li><a href="https://wa.me/393917520733" target="_blank" rel="noopener">WhatsApp</a></li><li>391 752 0733</li><li><a href="https://www.google.com/maps/search/?api=1&query=Sigmadent+Srl+Albenga" target="_blank" rel="noopener">Google Maps</a></li></ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Sigmadent Srl · P.IVA da inserire</span><span>Privacy · Cookie</span></div>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<div class="teaser" id="teaser" role="status"><button type="button" id="teaserX" aria-label="Chiudi">×</button><b>Ciao! Serve una mano?</b>Ti aiuto a prenotare la visita in 30 secondi.</div>
+<button class="chat-launch" id="chatLaunch" type="button" aria-label="Apri l'assistente Sigmadent" aria-expanded="false" aria-controls="chat">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+  <span class="lbl">Scrivici</span><span class="badge">1</span>
+</button>
+<div class="chat" id="chat" role="dialog" aria-label="Assistente Sigmadent" aria-modal="false">
+  <div class="chat-head">
+    <div class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14.2 9c-2.6 0-4.4 2-4.4 4.8 0 2.4.7 4 1.4 5.8.7 1.9.9 4 1.4 6.4.4 1.8 1.1 3 2.2 3 1.3 0 1.7-1.6 2-3.3.3-1.7.8-3.3 3.2-3.3s2.9 1.6 3.2 3.3c.3 1.7.7 3.3 2 3.3 1.1 0 1.8-1.2 2.2-3 .5-2.4.7-4.5 1.4-6.4.7-1.8 1.4-3.4 1.4-5.8 0-2.8-1.8-4.8-4.4-4.8-2.1 0-3.2 1.1-5.8 1.1S16.3 9 14.2 9Z" fill="#1d5a86"/></svg></div>
+    <div><b>Sigmadent · Assistente</b><small>online · poi ti passa allo studio</small></div>
+    <button class="x" type="button" id="chatClose" aria-label="Chiudi l'assistente"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="chat-log" id="chatLog" aria-live="polite"></div>
+  <form class="chat-input" id="chatForm" autocomplete="off">
+    <label class="sr" for="chatText">Scrivi un messaggio</label>
+    <input type="text" id="chatText" placeholder="Scrivi un messaggio">
+    <button type="submit" aria-label="Invia"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z"/></svg></button>
+  </form>
+  <p class="chat-foot">Assistente automatico · la visita si conferma su WhatsApp con lo studio</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+'use strict';
+const WA_NUM = '393917520733';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const RM = matchMedia('(prefers-reduced-motion: reduce)');
+let reduced = RM.matches;
+const waLink = t => 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(t);
+document.addEventListener('visibilitychange', () => document.body.classList.toggle('paused', document.hidden));
+
+/* smooth scroll: Lenis synced with ScrollTrigger */
+const hasGSAP = !!(window.gsap && window.ScrollTrigger);
+if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
+let lenis = null;
+function startLenis() {
+  if (lenis || reduced || !window.Lenis) return;
+  lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  if (hasGSAP) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis && lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+  else { const raf = t => { if (lenis) { lenis.raf(t); requestAnimationFrame(raf); } }; requestAnimationFrame(raf); }
+}
+function stopLenis() { if (lenis) { lenis.destroy(); lenis = null; } }
+startLenis();
+function goTo(sel) {
+  const el = $(sel); if (!el) return;
+  if (sel === '#top') { if (lenis) lenis.scrollTo(0, { duration: 1.4 }); else scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }
+  if (lenis) lenis.scrollTo(el, { offset: -90, duration: 1.4 });
+  else el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-scroll]'); if (!a) return;
+  const h = a.getAttribute('href'); if (h && h.startsWith('#')) { e.preventDefault(); goTo(h); }
+});
+
+/* header shadow on scroll */
+const header = $('#header');
+const onH = () => header.classList.toggle('scrolled', scrollY > 30);
+addEventListener('scroll', onH, { passive: true }); onH();
+
+/* stars */
+(function () {
+  const d = 'M12 1.8l3 6.4 7 .8-5.2 4.8 1.4 6.9L12 17.3l-6.2 3.4 1.4-6.9L2 9l7-.8 3-6.4Z';
+  const box = $('#stars');
+  for (let i = 0; i < 5; i++) box.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 24 24"><defs><clipPath id="sc${i}"><rect class="sclip" x="0" y="0" width="24" height="24"/></clipPath></defs><path class="bg" d="${d}"/><path class="fg" d="${d}" clip-path="url(#sc${i})"/></svg>`);
+})();
+
+/* light map illustration */
+(function () {
+  let s = '<rect width="400" height="250" fill="#e9eff4"/>';
+  s += '<path d="M330 0 C312 50 340 110 318 160 C300 205 326 230 318 250 L400 250 L400 0Z" fill="#cfe2f0"/>';
+  [[0,40,300,52],[0,95,320,88],[0,150,310,160],[0,205,320,198],[40,0,60,250],[120,0,110,250],[200,0,214,250],[270,0,262,250]].forEach(([a,b,c,d], i) => { s += `<path d="M${a} ${b} L${c} ${d}" stroke="#fff" stroke-width="${i % 3 ? 7 : 11}" stroke-linecap="round"/>`; });
+  s += '<path d="M0 182 C90 170 160 190 240 175 S310 152 400 160" fill="none" stroke="#b9d5ea" stroke-width="6"/>';
+  [[70,60,40,25],[140,105,50,35],[230,60,26,22],[60,165,45,30],[230,170,25,22],[150,215,40,24]].forEach(([x,y,w,h]) => { s += `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="#dfe8ef"/>`; });
+  s += '<text x="16" y="238" fill="#7f93a6" font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">ALBENGA</text>';
+  $('#mapSvg').innerHTML = s;
+})();
+
+/* the photo-reveal moment, driven by scroll progress through its section */
+const revealSec = $('#revealSec'), frame = $('#revealFrame'), rText = $('#revealText');
+let lastR = '';
+function updateReveal() {
+  if (reduced) return;
+  const r = revealSec.getBoundingClientRect();
+  const range = r.height - innerHeight;
+  const p = range > 0 ? clamp(-r.top / range, 0, 1) : 1;
+  const e = 1 - Math.pow(1 - clamp(p / 0.7, 0, 1), 3);
+  const narrow = innerWidth < 720;
+  const ci = (narrow ? 12 : 14) * (1 - e), cx = (narrow ? 5 : 10) * (1 - e), cr = 32 * (1 - e);
+  const zs = 1.18 - 0.18 * e;
+  const to = clamp((p - 0.42) / 0.25, 0, 1);
+  const key = [ci, cx, cr, zs, to].map(v => v.toFixed(3)).join();
+  if (key === lastR) return; lastR = key;
+  frame.style.setProperty('--ci', ci.toFixed(2) + '%'); frame.style.setProperty('--cx', cx.toFixed(2) + '%');
+  frame.style.setProperty('--cr', cr.toFixed(1) + 'px'); frame.style.setProperty('--zs', zs.toFixed(4));
+  rText.style.setProperty('--to', to.toFixed(3));
+}
+
+/* headlines: split into masked words, so they rise line by line */
+const splitHeads = [];
+$$('h2.h2[data-reveal]').forEach(h => {
+  h.removeAttribute('data-reveal');
+  const label = h.textContent.replace(/\s+/g, ' ').trim();
+  const walk = (node, into) => {
+    [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        n.textContent.split(/(\s+)/).forEach((t, ti) => {
+          if (!t) return;
+          // punctuation glued to the previous word (e.g. "</em>." ) must not wrap on its own line
+          if (ti === 0 && !/^\s/.test(t) && into.lastChild && into.lastChild.nodeType === 1) {
+            const prev = [...into.lastChild.querySelectorAll ? into.lastChild.querySelectorAll('.wi') : []].pop();
+            if (prev) { prev.textContent += t; return; }
+          }
+          if (/^\s+$/.test(t)) { into.appendChild(document.createTextNode(' ')); return; }
+          const m = document.createElement('span'); m.className = 'wm';
+          const i = document.createElement('span'); i.className = 'wi'; i.textContent = t;
+          m.appendChild(i); into.appendChild(m);
+        });
+      } else if (n.nodeName === 'BR') into.appendChild(document.createElement('br'));
+      else { const c = n.cloneNode(false); walk(n, c); into.appendChild(c); }
+    });
+  };
+  const frag = document.createElement('span'); walk(h, frag);
+  h.textContent = ''; h.setAttribute('aria-label', label);
+  [...frag.childNodes].forEach(n => h.appendChild(n));
+  [...h.querySelectorAll('.wm')].forEach(m => m.setAttribute('aria-hidden', 'true'));
+  splitHeads.push(h);
+});
+
+/* before / after whitening slider */
+const ba = $('#ba'), baHandle = $('#baHandle');
+let baPos = 50;
+function setBA(v) { baPos = clamp(v, 2, 98); ba.style.setProperty('--pos', baPos.toFixed(2) + '%'); baHandle.setAttribute('aria-valuenow', Math.round(baPos)); }
+let baDrag = false, baTouched = false;
+const baFromEvent = e => { const r = ba.getBoundingClientRect(); setBA((e.clientX - r.left) / r.width * 100); };
+ba.addEventListener('pointerdown', e => { baDrag = baTouched = true; ba.setPointerCapture && ba.setPointerCapture(e.pointerId); if (window.gsap) gsap.killTweensOf(baState); baFromEvent(e); });
+ba.addEventListener('pointermove', e => { if (baDrag) baFromEvent(e); });
+['pointerup', 'pointercancel', 'lostpointercapture'].forEach(t => ba.addEventListener(t, () => { baDrag = false; }));
+baHandle.addEventListener('keydown', e => {
+  const step = e.shiftKey ? 10 : 4;
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); baTouched = true; setBA(baPos - step); }
+  if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); baTouched = true; setBA(baPos + step); }
+  if (e.key === 'Home') { e.preventDefault(); setBA(0); } if (e.key === 'End') { e.preventDefault(); setBA(100); }
+});
+const baState = { p: 50 };
+
+/* spotlight that follows the pointer on service cards */
+$$('.card').forEach(c => c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+
+function pinFinal() {
+  $$('.sclip').forEach(c => c.setAttribute('width', 24));
+  $('#stepsLine').style.setProperty('--lp', 1);
+  frame.removeAttribute('style'); rText.removeAttribute('style');
+  $('#preloader').classList.remove('show');
+  if (hasGSAP) { ScrollTrigger.getAll().forEach(s => s.disable(false)); gsap.set('[data-reveal],[data-intro],[data-line],.card,#reasons li,.step,#calmList li,#baPoints li,.float,#heroTooth,#toothWrap,.stage-disc,.ring,.wi,.mq-track', { clearProps: 'all' }); }
+}
+
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (hasGSAP && !reduced) {
+  gsap.defaults({ ease: 'expo.out', duration: 1.2 });
+  /* preloader: the logo draws itself, then the curtain lifts (once per visit) */
+  let seen = false; try { seen = sessionStorage.getItem('sd-intro') === '1'; sessionStorage.setItem('sd-intro', '1'); } catch (_) {}
+  const pre = $('#preloader');
+  const tl = gsap.timeline({ paused: true });
+  tl.from('[data-line]', { yPercent: 110, duration: 1.3, stagger: 0.12 })
+    .from('.hero-copy .eyebrow', { y: 16, opacity: 0, duration: 0.9 }, 0)
+    .from('[data-intro]', { y: 24, opacity: 0, stagger: 0.1 }, 0.35)
+    .from('.stage-disc', { scale: 0.7, opacity: 0, duration: 1.6 }, 0)
+    .from('.ring', { scale: 0.85, opacity: 0, stagger: 0.12, duration: 1.6 }, 0.1)
+    .from('#heroTooth', { yPercent: 40, scale: 0.7, rotation: -14, opacity: 0, duration: 1.8, ease: 'expo.out' }, 0.15)
+    .from('.float', { yPercent: 40, opacity: 0, scale: 0.9, stagger: 0.14, duration: 1 }, 0.8);
+  if (!seen) {
+    pre.classList.add('show');
+    const path = pre.querySelector('.pl-path'); const len = path.getTotalLength();
+    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+    gsap.timeline({ onComplete: () => pre.classList.remove('show') })
+      .to(path, { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut' })
+      .to('.pl-bar i', { scaleX: 1, duration: 1.1, ease: 'power2.inOut' }, 0)
+      .from('.pl-in span i', { yPercent: 110, duration: 0.8 }, 0.2)
+      .to(path, { fillOpacity: 1, duration: 0.4 }, 0.75)
+      .to(pre, { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, 1.25)
+      .add(() => tl.play(), 1.55);
+  } else tl.play();
+
+  /* hero: the tooth leans toward the pointer, the cards float at different depths */
+  if (finePointer) {
+    const rx = gsap.quickTo('#toothWrap', 'rotationX', { duration: 0.9, ease: 'power3' });
+    const ry = gsap.quickTo('#toothWrap', 'rotationY', { duration: 0.9, ease: 'power3' });
+    const floats = $$('[data-depth]').map(el => ({ d: +el.dataset.depth, x: gsap.quickTo(el, 'x', { duration: 1, ease: 'power3' }), y: gsap.quickTo(el, 'y', { duration: 1, ease: 'power3' }) }));
+    addEventListener('pointermove', e => {
+      const nx = e.clientX / innerWidth - 0.5, ny = e.clientY / innerHeight - 0.5;
+      ry(nx * 22); rx(-ny * 14);
+      floats.forEach(f => { f.x(nx * 18 * f.d); f.y(ny * 14 * f.d); });
+    }, { passive: true });
+    /* magnetic primary buttons */
+    $$('.hero-cta .btn, .header .btn-wa').forEach(b => {
+      const mx = gsap.quickTo(b, 'x', { duration: 0.6, ease: 'power3' }), my = gsap.quickTo(b, 'y', { duration: 0.6, ease: 'power3' });
+      b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * 0.25); my((e.clientY - r.top - r.height / 2) * 0.35); });
+      b.addEventListener('pointerleave', () => { mx(0); my(0); });
+    });
+  }
+  /* hero on scroll: the tooth lifts away, the rings open up */
+  const heroST = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+  gsap.to('#toothWrap', { yPercent: -16, scale: 0.9, ease: 'none', scrollTrigger: heroST });
+  gsap.to('.stage-disc', { scale: 1.12, opacity: 0.6, ease: 'none', scrollTrigger: heroST });
+
+  /* marquee that speeds up with the scroll */
+  $('.marquee').classList.add('js-mq');
+  const mq = gsap.to('.mq-track', { xPercent: -50, repeat: -1, duration: 42, ease: 'none' });
+  ScrollTrigger.create({ trigger: '.marquee', start: 'top bottom', end: 'bottom top', onUpdate: s => {
+    const boost = 1 + Math.min(6, Math.abs(s.getVelocity()) / 350);
+    gsap.to(mq, { timeScale: boost, duration: 0.25, overwrite: true, onComplete: () => gsap.to(mq, { timeScale: 1, duration: 1.4 }) });
+  } });
+
+  /* headlines rise word by word */
+  splitHeads.forEach(h => gsap.from(h.querySelectorAll('.wi'), { yPercent: 115, duration: 1.15, stagger: 0.035, scrollTrigger: { trigger: h, start: 'top 88%', once: true } }));
+  $$('[data-reveal]').forEach(el => gsap.from(el, { y: 36, opacity: 0, scrollTrigger: { trigger: el, start: 'top 90%', once: true } }));
+  gsap.from('#baPoints li', { x: 30, opacity: 0, stagger: 0.1, scrollTrigger: { trigger: '#baPoints', start: 'top 88%', once: true } });
+  /* the slider shows itself off once, unless the visitor already touched it */
+  ScrollTrigger.create({ trigger: ba, start: 'top 70%', once: true, onEnter: () => {
+    if (baTouched) return;
+    gsap.timeline({ onUpdate: () => !baTouched && setBA(baState.p) })
+      .to(baState, { p: 22, duration: 1.1, ease: 'power2.inOut' })
+      .to(baState, { p: 78, duration: 1.4, ease: 'power2.inOut' })
+      .to(baState, { p: 50, duration: 1, ease: 'power2.inOut' });
+  } });
+  gsap.from('.card', { y: 50, opacity: 0, stagger: 0.08, scrollTrigger: { trigger: '#svGrid', start: 'top 85%', once: true } });
+  gsap.from('#reasons li', { y: 40, opacity: 0, stagger: 0.1, scrollTrigger: { trigger: '#reasons', start: 'top 85%', once: true } });
+  gsap.from('#calmList li', { x: 40, opacity: 0, stagger: 0.12, scrollTrigger: { trigger: '#calmList', start: 'top 85%', once: true } });
+  gsap.from('.step', { y: 40, opacity: 0, stagger: 0.15, scrollTrigger: { trigger: '#steps', start: 'top 82%', once: true } });
+  gsap.fromTo('#stepsLine', { '--lp': 0 }, { '--lp': 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 80%', end: 'top 35%', scrub: 0.6 } });
+  gsap.fromTo('.sclip', { attr: { width: 0 } }, { attr: { width: 24 }, duration: 0.6, ease: 'power2.out', stagger: 0.12, scrollTrigger: { trigger: '#stars', start: 'top 88%', once: true } });
+  $$('[data-count]').forEach(el => {
+    const to = +el.dataset.count, dec = +el.dataset.dec || 0, o = { v: 0 };
+    gsap.to(o, { v: to, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: () => el.textContent = o.v.toFixed(dec).replace('.', ',') });
+  });
+  ScrollTrigger.create({ trigger: revealSec, start: 'top bottom', end: 'bottom top', onUpdate: updateReveal, onRefresh: updateReveal });
+  addEventListener('load', () => ScrollTrigger.refresh());
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+} else {
+  addEventListener('scroll', updateReveal, { passive: true });
+  if (reduced) pinFinal();
+}
+updateReveal();
+addEventListener('resize', () => { lastR = ''; updateReveal(); });
+RM.addEventListener('change', () => {
+  reduced = RM.matches;
+  if (reduced) { stopLenis(); pinFinal(); }
+  else { startLenis(); if (hasGSAP) { ScrollTrigger.getAll().forEach(s => s.enable()); ScrollTrigger.refresh(); } lastR = ''; updateReveal(); }
+});
+
+/* FAQ */
+$$('.qa-item button').forEach(b => b.addEventListener('click', () => {
+  const it = b.parentElement, open = !it.classList.contains('open');
+  it.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open));
+  setTimeout(() => hasGSAP && ScrollTrigger.refresh(), 600);
+}));
+
+/* copy phone */
+$('#copyBtn').addEventListener('click', e => {
+  const btn = e.currentTarget;
+  const ok = () => { btn.textContent = 'Copiato'; setTimeout(() => btn.textContent = 'Copia', 1800); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents($('#phoneNum')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selezionato'; setTimeout(() => btn.textContent = 'Copia', 1800); };
+  try { navigator.clipboard.writeText('+39 391 752 0733').then(ok, sel); } catch (_) { sel(); }
+});
+
+/* booking form -> WhatsApp */
+const form = $('#bookForm'), done = $('#done');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#fName').value.trim();
+  if (name.length < 2) { $('#fErr').textContent = 'Scrivi il tuo nome, così lo studio sa chi sei.'; $('#fName').focus(); return; }
+  $('#fErr').textContent = '';
+  const reason = $('#fReason').value, when = form.querySelector('input[name=when]:checked').value, note = $('#fNote').value.trim();
+  const msg = `Buongiorno Sigmadent, sono ${name}.\nVorrei prenotare: ${reason}.\nPreferirei ${when}.` + (note ? `\nNote: ${note}` : '') + `\n(Messaggio dal sito)`;
+  $('#donePre').textContent = msg; $('#doneLink').href = waLink(msg);
+  form.hidden = true; done.classList.add('show'); $('#doneLink').focus();
+  if (hasGSAP) ScrollTrigger.refresh();
+});
+$('#doneEdit').addEventListener('click', () => { form.hidden = false; done.classList.remove('show'); $('#fName').focus(); if (hasGSAP) ScrollTrigger.refresh(); });
+
+/* CHATBOT */
+const chatLaunch = $('#chatLaunch'), chatLog = $('#chatLog'), chatForm = $('#chatForm'), chatText = $('#chatText'), teaser = $('#teaser');
+const C = { started: false, step: 'menu', reason: '', name: '', when: '' };
+let teaserTimer = setTimeout(() => { if (!document.body.classList.contains('chat-open')) { teaser.classList.add('show'); teaserTimer = setTimeout(() => teaser.classList.remove('show'), 9000); } }, 6000);
+$('#teaserX').addEventListener('click', e => { e.stopPropagation(); teaser.classList.remove('show'); });
+teaser.addEventListener('click', () => openChat());
+function openChat(reason) {
+  document.body.classList.add('chat-open'); chatLaunch.setAttribute('aria-expanded', 'true'); teaser.classList.remove('show'); clearTimeout(teaserTimer);
+  if (lenis) lenis.stop();
+  if (reason) {
+    $$('.chips-row', chatLog).forEach(r => r.remove());
+    if (!C.started) { C.started = true; say('Ciao! Sono l\'assistente di <b>Sigmadent</b>.'); }
+    C.reason = reason; addMsg(esc('Vorrei informazioni su: ' + reason), 'me'); topicReply(reason);
+  } else if (!C.started) { C.started = true; greet(); }
+  setTimeout(() => chatText.focus({ preventScroll: true }), 350);
+}
+function closeChat() { document.body.classList.remove('chat-open'); chatLaunch.setAttribute('aria-expanded', 'false'); if (lenis) lenis.start(); chatLaunch.focus(); }
+chatLaunch.addEventListener('click', () => document.body.classList.contains('chat-open') ? closeChat() : openChat());
+$('#chatClose').addEventListener('click', closeChat);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('chat-open')) closeChat(); });
+$$('[data-ask]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openChat(a.dataset.ask); }));
+
+const scrollLog = () => { chatLog.scrollTop = chatLog.scrollHeight; };
+function esc(s) { return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function addMsg(html, who = 'bot') { const d = document.createElement('div'); d.className = 'msg ' + who; d.innerHTML = html; chatLog.appendChild(d); scrollLog(); return d; }
+let queue = Promise.resolve();
+function say(html, delay) {
+  queue = queue.then(() => new Promise(res => {
+    const t = document.createElement('div'); t.className = 'msg bot typing'; t.innerHTML = '<i></i><i></i><i></i>'; chatLog.appendChild(t); scrollLog();
+    setTimeout(() => { t.remove(); addMsg(html); res(); }, reduced ? 0 : (delay || Math.min(1300, 400 + html.length * 8)));
+  }));
+  return queue;
+}
+function chips(list) {
+  queue = queue.then(() => {
+    const row = document.createElement('div'); row.className = 'chips-row';
+    list.forEach(([label, fn]) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'qr'; b.textContent = label; b.addEventListener('click', () => { row.remove(); addMsg(esc(label), 'me'); fn(); }); row.appendChild(b); });
+    chatLog.appendChild(row); scrollLog();
+  });
+}
+function greet() {
+  say('Ciao! Sono l\'assistente di <b>Sigmadent</b>, lo studio dentistico di Via Patrioti 49 ad Albenga.');
+  say('Posso aiutarti a prenotare una visita o rispondere a una domanda. Poi ti passo allo studio su WhatsApp. Di cosa hai bisogno?');
+  menu();
+}
+function menu() { C.step = 'menu'; chips([['Prenotare una visita', askReason], ['Ho mal di denti', urgent], ['Info su un trattamento', infoMenu], ['Orari e indirizzo', where]]); }
+const REASONS = ['Prima visita / controllo', 'Igiene e pulizia', 'Implantologia', 'Ortodonzia invisibile', 'Estetica e sbiancamento', 'Visita per un bambino', 'Altro'];
+function askReason() { C.step = 'reason'; say('Perfetto. Per cosa vorresti venire?'); chips(REASONS.map(r => [r, () => { C.reason = r; askName(); }])); }
+function urgent() { C.reason = 'Mal di denti / urgenza'; say('Mi dispiace, capisco che sia fastidioso. Scrivici subito: lo studio cerca di vederti il prima possibile.'); askName(); }
+function askName() { C.step = 'name'; say('Come ti chiami? Scrivilo qui sotto.'); }
+function askWhen() { C.step = 'when'; say(`Piacere, ${esc(C.name)}! Quando preferisci venire?`); chips([['Mattina', () => setWhen('la mattina')], ['Pomeriggio', () => setWhen('il pomeriggio')], ['Prima possibile', () => setWhen('il primo orario disponibile')]]); }
+function setWhen(w) { C.when = w; handoff(); }
+function handoff() {
+  C.step = 'done';
+  const msg = `Buongiorno Sigmadent, sono ${C.name || '...'}.\nVorrei prenotare: ${C.reason || 'una visita'}.` + (C.when ? `\nPreferirei ${C.when}.` : '') + `\n(Messaggio dal sito)`;
+  say('Ecco il tuo messaggio, già pronto:');
+  say(`<span style="white-space:pre-line">${esc(msg)}</span>`, 500);
+  queue = queue.then(() => { const d = addMsg('Premi il pulsante: si apre WhatsApp con il testo pronto. Ti basta inviarlo.'); d.insertAdjacentHTML('beforeend', `<br><a class="btn btn-wa" href="${waLink(msg)}" target="_blank" rel="noopener">Continua su WhatsApp</a>`); });
+  chips([['Ricomincia', () => { C.reason = C.name = C.when = ''; menu(); }]]);
+}
+function where() {
+  say('Siamo in <b>Via Patrioti 49, 17031 Albenga (SV)</b>. <a href="https://www.google.com/maps/search/?api=1&query=Sigmadent+Srl+Via+Patrioti+49+Albenga" target="_blank" rel="noopener">Apri in Google Maps</a>');
+  say('Gli orari aggiornati sono sulla scheda Google dello studio. Vuoi prenotare?');
+  chips([['Sì, prenoto', askReason], ['Ho un\'altra domanda', infoMenu]]);
+}
+const INFO = {
+  igiene: 'L\'igiene professionale toglie tartaro e macchie e controlla gengive e smalto. Di solito si consiglia ogni 6 mesi.',
+  impianti: 'Gli impianti sostituiscono uno o più denti mancanti. Dopo la visita ti spieghiamo opzioni, tempi e costi con un preventivo chiaro.',
+  invisibile: 'L\'ortodonzia invisibile usa mascherine trasparenti al posto dell\'apparecchio fisso. In prima visita valutiamo se è adatta a te.',
+  estetica: 'Per l\'estetica del sorriso lavoriamo con sbiancamento, faccette e corone in ceramica, puntando sempre su un risultato naturale.',
+  conservativa: 'Curiamo le carie con otturazioni estetiche del colore del dente e, quando serve, con la devitalizzazione per salvare il dente naturale.',
+  bambini: 'Sì, curiamo anche i bambini, con tempi e parole adatti a loro.',
+  prezzi: 'Il prezzo giusto arriva dopo la visita, perché ogni bocca è diversa. Prima di iniziare ricevi sempre un preventivo scritto. Per il costo della prima visita chiedi pure su WhatsApp.',
+  paura: 'Succede a tanti. Ti spieghiamo ogni passaggio prima di farlo e puoi fermarci quando vuoi. Dillo quando prenoti: organizziamo tutto con più calma.'
+};
+function topicReply(reason) {
+  const k = /igien/i.test(reason) ? 'igiene' : /impiant/i.test(reason) ? 'impianti' : /invisib|ortodon/i.test(reason) ? 'invisibile' : /estet|sbianc/i.test(reason) ? 'estetica' : /conserv|endo/i.test(reason) ? 'conservativa' : /bambin/i.test(reason) ? 'bambini' : null;
+  if (k) say(INFO[k]);
+  say('Vuoi che ti prepari il messaggio per prenotare una visita?');
+  chips([['Sì, prenota', askName], ['Altra domanda', infoMenu]]);
+}
+function infoMenu() {
+  say('Su cosa vuoi sapere di più?');
+  chips([['Igiene', () => info('igiene')], ['Impianti', () => info('impianti')], ['Ortodonzia invisibile', () => info('invisibile')], ['Estetica', () => info('estetica')], ['Prezzi', () => info('prezzi')], ['Ho paura del dentista', () => info('paura')]]);
+}
+function info(k) { say(INFO[k]); chips([['Prenota una visita', askReason], ['Altra domanda', infoMenu]]); }
+const INTENTS = [
+  [/urgen|dolor|male|gonfi|rott|scheggi|ascesso|sanguin/i, urgent],
+  [/orar|aper|chius|dove|indirizz|parchegg|arriv|mappa/i, where],
+  [/prezz|cost|quanto|preventiv|rate|pagament/i, () => info('prezzi')],
+  [/bambin|figli|pedodon|piccol/i, () => info('bambini')],
+  [/impiant/i, () => info('impianti')],
+  [/invisibil|apparecch|allineator|ortodon|storti|mascherin/i, () => info('invisibile')],
+  [/igien|pulizia|tartaro|detartr/i, () => info('igiene')],
+  [/paura|ansia|agitat|terror|fobia/i, () => info('paura')],
+  [/sbianc|estetic|faccett|corona/i, () => info('estetica')],
+  [/carie|otturaz|devitaliz|endodon|conservat/i, () => info('conservativa')],
+  [/prenot|appuntament|visita|venire|fissare/i, askReason],
+  [/ciao|salve|buongiorno|buonasera/i, () => { say('Ciao! Come posso aiutarti?'); menu(); }],
+  [/grazie/i, () => { say('Figurati! Se vuoi ti preparo il messaggio per lo studio.'); chips([['Prenota', askReason]]); }]
+];
+chatForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const t = chatText.value.trim(); if (!t) return;
+  chatText.value = '';
+  $$('.chips-row', chatLog).forEach(r => r.remove());
+  addMsg(esc(t), 'me');
+  if (C.step === 'name') {
+    const n = t.replace(/^(mi chiamo|sono|io sono)\s+/i, '').slice(0, 60);
+    C.name = n.charAt(0).toUpperCase() + n.slice(1); askWhen(); return;
+  }
+  const hit = INTENTS.find(([re]) => re.test(t));
+  if (hit) { hit[1](); return; }
+  say('Su questo ti risponde meglio una persona dello studio. Ti preparo il messaggio per WhatsApp?');
+  chips([['Sì, prepara il messaggio', () => { C.reason = C.reason || ('Domanda: ' + t.slice(0, 120)); askName(); }], ['Torna al menu', menu]]);
+});
+})();
+</script>
+
+</body>
+</html>
