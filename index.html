@@ -219,6 +219,18 @@ body.paused *{animation-play-state:paused!important}
 .promise p{color:var(--text-2);max-width:30em}
 @media (max-width:900px){.promise-grid{grid-template-columns:1fr}.promise,.promise + .promise{padding:34px 0;border-left:0}.promise + .promise{border-top:1px solid var(--hair)}}
 
+
+/* studio gallery */
+.studio{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:1fr 1fr;gap:clamp(14px,1.8vw,26px);height:clamp(520px,58vw,720px)}
+.studio figure{position:relative;margin:0;overflow:hidden;border-radius:28px;background:var(--rose);min-height:0}
+.studio figure:first-child{grid-row:1/3}
+.studio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.studio figure:hover img{transform:scale(1.04)}
+.studio figcaption{position:absolute;left:18px;bottom:16px;z-index:1;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.92);font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.studio-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;margin-top:clamp(36px,4vw,56px);padding-top:28px;border-top:1px solid var(--hair)}
+.studio-foot p{color:var(--text-2);max-width:34em}
+@media (max-width:760px){.studio{grid-template-columns:1fr;grid-template-rows:none;height:auto}.studio figure{aspect-ratio:4/3}.studio figure:first-child{grid-row:auto}}
+
 /* the sum (pinned) */
 .sum{position:relative;height:300vh}
 .sum__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
@@ -576,6 +588,25 @@ input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--r
       <div class="promise"><svg class="orn" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M15 21a9 9 0 0 1 18 0c0 6-9 12-9 12s-9-6-9-12Z"/></svg><h3 class="h3">Ti ascoltiamo, prima di tutto</h3><p>La prima visita è un dialogo. Partiamo da quello che senti, da cosa ti preoccupa e dai tuoi tempi.</p></div>
       <div class="promise"><svg class="orn" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M17 13h10l5 5v17H17z"/><path d="M27 13v5h5M21 25h7M21 30h5"/></svg><h3 class="h3">Preventivo scritto, sempre</h3><p>Ogni piano di cura è spiegato con parole semplici e accompagnato da un preventivo scritto. Decidi tu, con calma.</p></div>
       <div class="promise"><svg class="orn" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M14 34V20l10-6 10 6v14M20 34v-8h8v8"/></svg><h3 class="h3">Ogni cura, in un solo studio</h3><p>Igiene, implantologia, ortodonzia ed estetica sotto lo stesso tetto, nel centro di Albenga. Non devi girare tra più studi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="section light" id="studio" aria-labelledby="studioTitle">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="label" data-reveal>Lo studio</p><h2 class="h2" id="studioTitle" data-split>Una sala d'attesa <em>che mette a proprio agio.</em></h2></div>
+      <p class="lead" data-reveal>Poltrone moderne, ambienti ordinati e sale tranquille, nel centro di Albenga. Vieni a conoscerci di persona.</p>
+    </div>
+    <div class="studio" data-reveal>
+      <figure><img src="assets/studio-poltrona.jpg" alt="Poltrona odontoiatrica blu nella sala visite di Sigmadent" width="1206" height="904" loading="lazy"><figcaption>Sala visite</figcaption></figure>
+      <figure><img src="assets/studio-sala-attesa.jpg" alt="Sala d'attesa luminosa dello studio Sigmadent" width="1206" height="904" loading="lazy"><figcaption>Sala d'attesa</figcaption></figure>
+      <figure><img src="assets/studio-sala-visite.jpg" alt="Seconda sala visite con poltrona e riunito dello studio Sigmadent" width="1206" height="904" loading="lazy"><figcaption>Sala visite</figcaption></figure>
+    </div>
+    <div class="studio-foot" data-reveal>
+      <p>Via Patrioti 49, 17031 Albenga (SV). Vedi tutte le foto su Google.</p>
+      <a class="link" href="https://www.google.com/maps/search/?api=1&query=Sigmadent+Srl+Via+Patrioti+49+Albenga" target="_blank" rel="noopener">Foto e recensioni su Google <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
 </section>
